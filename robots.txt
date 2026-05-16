@@ -1,0 +1,18 @@
+# robots.txt — Supply360
+# https://www.supply360.com.pe
+
+# Permitir todos los crawlers
+User-agent: *
+Allow: /
+
+# Bloquear rutas internas o de sistema (si las hubiera en el futuro)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.env$
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://www.supply360.com.pe/sitemap.xml
+
+# Crawl-delay recomendado (segundos entre requests)
+Crawl-delay: 10
