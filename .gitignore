@@ -1,0 +1,73 @@
+# ── Sistema Operativo ──────────────────────────────────────────────
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+
+# ── Editores e IDEs ────────────────────────────────────────────────
+# VS Code
+.vscode/
+!.vscode/extensions.json
+
+# JetBrains (WebStorm, PhpStorm)
+.idea/
+*.iml
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Notepad++
+nppBackup/
+
+# ── Node / NPM (por si se integra build tools en el futuro) ───────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log*
+
+# ── Variables de entorno y credenciales ────────────────────────────
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.p12
+
+# ── Archivos temporales y logs ────────────────────────────────────
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+
+# ── Carpetas de build / dist ──────────────────────────────────────
+dist/
+build/
+out/
+.cache/
+
+# ── Documentación interna (no publicar) ───────────────────────────
+contexto.md
+
+# ── cPanel (archivos de sesión locales) ───────────────────────────
+.cpanel-sync
