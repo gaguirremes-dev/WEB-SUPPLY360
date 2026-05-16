@@ -69,5 +69,6 @@ out/
 # ── Documentación interna (no publicar) ───────────────────────────
 contexto.md
 
-# ── cPanel (archivos de sesión locales) ───────────────────────────
+# ── cPanel (archivos de sesión locales y carpetas del servidor) ───
 .cpanel-sync
+.well-known/
