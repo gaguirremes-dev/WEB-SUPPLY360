@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supply360 | Supply Chain Management End-to-End · Perú</title>
+  <meta name="description" content="Supply360 — Operador estratégico multi-servicios de cadena de suministro global. Del Proveedor de tu Proveedor al Cliente de tu Cliente." />
+
+  <!-- Tailwind config BEFORE CDN -->
+  <script>
+    window.tailwind = window.tailwind || {};
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              100: '#FFF9D6',
+              200: '#FFE566',
+              300: '#FFD700',
+              400: '#FFC400',
+              500: '#FFB300',
+              600: '#E6A800',
+              700: '#CC8800',
+              800: '#A36600',
+            },
+            navy: {
+              400: '#2E5A96',
+              500: '#1E3A6E',
+              600: '#132040',
+              700: '#0A1628',
+              800: '#060D1A',
+            }
+          },
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold: #FFD000;
+      --gold-light: #FFE566;
+      --gold-dark: #E6A800;
+      --navy: #0A1628;
+      --navy-med: #132040;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0A1628;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #0A1628; }
+    ::-webkit-scrollbar-thumb { background: #FFD000; border-radius: 3px; }
+
+    /* Gold gradient text */
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #FFE566 0%, #FFD000 45%, #E6A800 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Buttons */
+    .btn-gold {
+      background: linear-gradient(135deg, #FFD700, #E6A800);
+      color: #0A1628;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 20px rgba(255,208,0,0.3);
+      cursor: pointer;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(255,208,0,0.5); }
+
+    .btn-outline {
+      border: 2px solid rgba(255,208,0,0.6);
+      color: #FFD000;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .btn-outline:hover { background: rgba(255,208,0,0.08); border-color: #FFD000; }
+
+    /* Navbar glass */
+    .nav-glass {
+      background: rgba(10,22,40,0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,208,0,0.12);
+    }
+
+    /* Grid pattern background */
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,208,0,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,208,0,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* Canvas */
+    #hero-canvas {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    /* Orb blur decoration */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+    }
+
+    /* Service card */
+    .svc-card {
+      background: linear-gradient(135deg, rgba(19,32,64,0.92), rgba(10,22,40,0.97));
+      border: 1px solid rgba(255,208,0,0.15);
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .svc-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,208,0,0.45);
+      box-shadow: 0 24px 60px rgba(255,208,0,0.08);
+    }
+    .svc-card.featured {
+      background: linear-gradient(135deg, rgba(255,208,0,0.07), rgba(19,32,64,0.97));
+      border-color: rgba(255,208,0,0.38);
+    }
+
+    /* Service card new */
+    .svc-card-new {
+      border: 1px solid rgba(255,208,0,0.22);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+    .svc-card-new:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,208,0,0.55);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    /* Feature card */
+    .feat-card {
+      background: rgba(19,32,64,0.55);
+      border: 1px solid rgba(255,208,0,0.10);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .feat-card:hover { background: rgba(19,32,64,0.9); border-color: rgba(255,208,0,0.28); }
+
+    /* Divider */
+    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,208,0,0.25), transparent); }
+
+    /* Image placeholder */
+    .img-ph {
+      background: linear-gradient(135deg, rgba(19,32,64,0.7), rgba(10,22,40,0.9));
+      border: 2px dashed rgba(255,208,0,0.28);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 8px;
+      color: rgba(255,208,0,0.6);
+      font-size: 11px; text-align: center; padding: 16px;
+    }
+
+    /* Chain node */
+    .chain-node {
+      width: 56px; height: 56px;
+      border: 2px solid rgba(255,208,0,0.6);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,208,0,0.08);
+      transition: all 0.3s;
+    }
+    .chain-node:hover { background: rgba(255,208,0,0.18); transform: scale(1.1); }
+
+    /* Stat border */
+    .stat-sep { border-right: 1px solid rgba(255,208,0,0.18); }
+    .stat-sep:last-child { border-right: none; }
+
+    /* Pulse ring */
+    @keyframes pulseRing {
+      0%   { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(1.7); opacity: 0; }
+    }
+    .pulse-ring { animation: pulseRing 2s ease-out infinite; }
+
+    /* Float */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+    .float { animation: float 5s ease-in-out infinite; }
+
+    /* Scroll bounce */
+    @keyframes bounceY {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(7px); }
+    }
+    .scroll-bounce { animation: bounceY 2s ease-in-out infinite; }
+
+    /* Form inputs */
+    .form-inp {
+      background: rgba(19,32,64,0.8);
+      border: 1px solid rgba(255,208,0,0.2);
+      color: #fff;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .form-inp:focus {
+      border-color: #FFD000;
+      box-shadow: 0 0 0 3px rgba(255,208,0,0.10);
+    }
+    .form-inp::placeholder { color: rgba(255,255,255,0.28); }
+    .form-inp option { background: #132040; }
+
+    /* Compliance badge */
+    .comp-badge {
+      background: rgba(19,32,64,0.75);
+      border: 1px solid rgba(255,208,0,0.18);
+      border-radius: 10px; padding: 18px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .comp-badge:hover { border-color: rgba(255,208,0,0.4); transform: translateY(-4px); }
+
+    /* Process dot on line */
+    .proc-dot {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: #132040;
+      border: 2px solid #FFD000;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; position: relative; z-index: 2;
+    }
+    .proc-dot.last { background: #FFD000; border-color: #FFE566; }
+
+    /* Mobile menu transition */
+    #mobile-nav { transition: max-height 0.35s ease, opacity 0.3s ease; overflow: hidden; }
+
+    /* Nav link underline */
+    .nav-link {
+      position: relative; color: #9ca3af;
+      font-size: 14px; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: #FFD000;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .nav-link:hover { color: #FFD700; }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    /* Back to top */
+    #back-top {
+      position: fixed; bottom: 28px; right: 28px; z-index: 99;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, #FFD700, #E6A800);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(255,208,0,0.4);
+      cursor: pointer; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    #back-top.visible { opacity: 1; pointer-events: auto; }
+    #back-top:hover { transform: translateY(-3px); }
+  </style>
+</head>
+
+<body class="grid-bg">
+
+<!-- ================================================================
+     NAVBAR
+================================================================ -->
+<nav id="navbar" class="fixed top-0 inset-x-0 z-50 nav-glass">
+  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg overflow-hidden">
+        <img src="LOGO - SUPPLY 360.jpg" alt="Supply360" class="w-full h-full object-contain bg-white p-0.5" />
+      </div>
+      <span class="text-white font-black text-xl tracking-tight">SUPPLY<span class="text-gold-gradient">360</span></span>
+    </a>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#valor"     class="nav-link">Propuesta</a>
+      <a href="#proceso"   class="nav-link">Proceso</a>
+      <a href="#nosotros"  class="nav-link">Nosotros</a>
+      <a href="#contacto"  class="nav-link">Contacto</a>
+    </div>
+
+    <!-- Desktop CTA -->
+    <a href="#contacto" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded-lg text-sm">
+      Solicitar Diagnóstico
+    </a>
+
+    <!-- Hamburger -->
+    <button id="ham-btn" class="md:hidden p-2 text-white" aria-label="Menú">
+      <svg id="ham-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile nav -->
+  <div id="mobile-nav" class="max-h-0 opacity-0 md:hidden bg-navy-700 border-t border-gold-600/20">
+    <div class="px-5 py-5 flex flex-col gap-4">
+      <a href="#servicios" class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Servicios</a>
+      <a href="#valor"     class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Propuesta</a>
+      <a href="#proceso"   class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Proceso</a>
+      <a href="#nosotros"  class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Nosotros</a>
+      <a href="#contacto"  class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Contacto</a>
+      <a href="#contacto" class="btn-gold py-3 rounded-lg text-sm text-center mt-1" onclick="closeMenu()">Solicitar Diagnóstico</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================================================================
+     HERO
+================================================================ -->
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-700">
+  <!-- Video background -->
+  <video autoplay muted loop playsinline
+    class="absolute inset-0 w-full h-full object-cover"
+    style="opacity:0.28;">
+    <source src="assets/Background loop del Hero.mp4" type="video/mp4">
+  </video>
+  <!-- Dark gradient overlay on video -->
+  <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0.35) 40%, rgba(10,22,40,0.7) 100%);"></div>
+
+  <canvas id="hero-canvas"></canvas>
+
+  <!-- Orbs -->
+  <div class="orb w-96 h-96 bg-yellow-400/10 top-1/4 -left-32"></div>
+  <div class="orb w-72 h-72 bg-blue-900/40 bottom-1/4 -right-20"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24 pb-16">
+
+    <!-- Badge -->
+    <div id="h-badge" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-400/35 bg-yellow-400/8 text-yellow-300 text-sm font-medium mb-8">
+      <span class="relative flex h-2 w-2">
+        <span class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
+      </span>
+      Operador Estratégico · Supply Chain · Perú
+    </div>
+
+    <!-- Headline -->
+    <h1 id="h-title" class="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6">
+      <span class="text-white">La cadena de</span><br>
+      <span class="text-gold-gradient">suministro completa</span><br>
+      <span class="text-white">en un solo socio</span>
+    </h1>
+
+    <!-- Sub -->
+    <p id="h-sub" class="text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
+      Del <span class="text-yellow-300 font-semibold">proveedor de tu proveedor</span>
+      al <span class="text-yellow-300 font-semibold">cliente de tu cliente</span>.
+      Gestión integral, trazable y predictiva en tiempo real.
+    </p>
+
+    <!-- CTAs -->
+    <div id="h-ctas" class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+      <a href="#contacto" class="btn-gold px-10 py-4 rounded-xl text-base inline-block">Solicitar Diagnóstico Operativo</a>
+      <a href="#servicios" class="btn-outline px-10 py-4 rounded-xl text-base inline-block">Ver Servicios</a>
+    </div>
+
+    <!-- Mini stats strip -->
+    <div id="h-stats" class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+      <div><div class="text-3xl font-black text-gold-gradient">360°</div><div class="text-gray-400 text-xs mt-1">Visibilidad Total</div></div>
+      <div><div class="text-3xl font-black text-gold-gradient">24/7</div><div class="text-gray-400 text-xs mt-1">Monitoreo Activo</div></div>
+      <div><div class="text-3xl font-black text-gold-gradient">100%</div><div class="text-gray-400 text-xs mt-1">Trazabilidad</div></div>
+      <div><div class="text-3xl font-black text-gold-gradient">E2E</div><div class="text-gray-400 text-xs mt-1">Cobertura Total</div></div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-500 text-xs scroll-bounce">
+    <span>scroll</span>
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ================================================================
+     STATS BAR
+================================================================ -->
+<section class="py-12 bg-navy-600 border-y border-yellow-400/15">
+  <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-0">
+    <div class="stat-sep text-center px-4">
+      <div class="flex items-end justify-center gap-0.5">
+        <span class="text-4xl font-black text-gold-gradient counter" data-target="500">0</span>
+        <span class="text-yellow-400 font-black text-2xl mb-1">+</span>
+      </div>
+      <div class="text-gray-400 text-xs mt-1">Clientes Atendidos</div>
+    </div>
+    <div class="stat-sep text-center px-4">
+      <div class="flex items-end justify-center gap-0.5">
+        <span class="text-4xl font-black text-gold-gradient counter" data-target="98">0</span>
+        <span class="text-yellow-400 font-black text-2xl mb-1">%</span>
+      </div>
+      <div class="text-gray-400 text-xs mt-1">Entregas a Tiempo</div>
+    </div>
+    <div class="stat-sep text-center px-4">
+      <div class="flex items-end justify-center gap-0.5">
+        <span class="text-4xl font-black text-gold-gradient counter" data-target="15">0</span>
+        <span class="text-yellow-400 font-black text-2xl mb-1">+</span>
+      </div>
+      <div class="text-gray-400 text-xs mt-1">Años de Experiencia</div>
+    </div>
+    <div class="text-center px-4">
+      <div class="flex items-end justify-center gap-0.5">
+        <span class="text-4xl font-black text-gold-gradient counter" data-target="3">0</span>
+        <span class="text-yellow-400 font-black text-2xl mb-1">M+</span>
+      </div>
+      <div class="text-gray-400 text-xs mt-1">Unidades Gestionadas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     VIDEO SHOWCASE
+================================================================ -->
+<section class="py-20 relative overflow-hidden" style="background:#060D1A;">
+  <div class="orb w-80 h-80 bg-yellow-400/8 -top-20 left-0"></div>
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <div class="text-center mb-10">
+      <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Operación en Acción</span>
+      <h2 class="text-3xl md:text-4xl font-black text-white mt-3 mb-3">
+        Así operamos tu <span class="text-gold-gradient">cadena de suministro</span>
+      </h2>
+      <p class="text-gray-400 text-base max-w-xl mx-auto">Tecnología, precisión y visibilidad 360° en cada eslabón.</p>
+    </div>
+
+    <div class="relative rounded-2xl overflow-hidden shadow-2xl" style="border:1px solid rgba(255,208,0,0.22);">
+      <video
+        id="showcase-video"
+        src="assets/video1.mp4"
+        class="w-full aspect-video object-cover"
+        loop muted playsinline
+        poster="assets/Card B — Almacenamiento WMS.jpeg">
+      </video>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-5xl mx-auto"></div>
+
+<!-- ================================================================
+     PROPUESTA DE VALOR
+================================================================ -->
+<section id="valor" class="py-24 relative overflow-hidden">
+  <div class="orb w-80 h-80 bg-yellow-400/8 top-0 right-0"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="text-center mb-16 reveal">
+      <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Propuesta de Valor</span>
+      <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-5 leading-tight">
+        Del proveedor de tu proveedor<br>
+        <span class="text-gold-gradient">al cliente de tu cliente</span>
+      </h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        Sincronizamos absolutamente cada eslabón de tu cadena de suministro.
+        Una sola interfaz, un solo socio, visibilidad total.
+      </p>
+    </div>
+
+    <!-- Supply chain flow -->
+    <div class="relative mb-16 reveal-stagger">
+      <!-- Connecting line (desktop) -->
+      <div class="hidden md:block absolute top-[28px] left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-yellow-400/10 via-yellow-400/50 to-yellow-400/10 z-0"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
+        <!-- Node 1 -->
+        <div class="chain-item text-center flex flex-col items-center gap-3">
+          <div class="chain-node">
+            <svg class="w-7 h-7 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="text-yellow-300 text-xs font-bold uppercase tracking-wider">Tier 2</div>
+          <div class="text-white font-bold text-sm text-center">Proveedor<br>de Origen</div>
+          <div class="text-gray-500 text-xs">Materias Primas</div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="hidden md:flex items-start justify-center pt-4 text-yellow-600">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </div>
+
+        <!-- Node 2 (FEATURED) -->
+        <div class="chain-item text-center flex flex-col items-center gap-3">
+          <div class="chain-node" style="width:68px;height:68px;border-color:#FFD000;background:rgba(255,208,0,0.15);">
+            <svg class="w-9 h-9 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          <div class="text-yellow-300 text-xs font-bold uppercase tracking-wider">Hub Central</div>
+          <div class="text-white font-bold text-sm text-center">Almacén<br>Inteligente</div>
+          <div class="text-gray-500 text-xs">WMS · Maquila · Cross-Dock</div>
+        </div>
+
+        <!-- Arrow -->
+        <div class="hidden md:flex items-start justify-center pt-4 text-yellow-600">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="chain-item text-center flex flex-col items-center gap-3">
+          <div class="chain-node">
+            <svg class="w-7 h-7 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+            </svg>
+          </div>
+          <div class="text-yellow-300 text-xs font-bold uppercase tracking-wider">End</div>
+          <div class="text-white font-bold text-sm text-center">Cliente<br>Final</div>
+          <div class="text-gray-500 text-xs">Retail · E-com · B2B</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Value cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-stagger">
+      <div class="feat-card rounded-2xl p-6">
+        <div class="w-11 h-11 rounded-xl bg-yellow-400/15 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+          </svg>
+        </div>
+        <h3 class="text-white font-bold text-lg mb-2">Visibilidad 360° en Tiempo Real</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Control total del inventario, estado de pedidos y KPIs operativos desde un único panel de control integrado.</p>
+      </div>
+
+      <div class="feat-card rounded-2xl p-6" style="border-color:rgba(255,208,0,0.25);">
+        <div class="w-11 h-11 rounded-xl bg-yellow-400/15 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+          </svg>
+        </div>
+        <h3 class="text-white font-bold text-lg mb-2">Reducción de Costos Operativos</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">Elimina quiebres de stock, convierte costos fijos en variables y digitaliza toda tu operación logística.</p>
+      </div>
+
+      <div class="feat-card rounded-2xl p-6">
+        <div class="w-11 h-11 rounded-xl bg-yellow-400/15 flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3 class="text-white font-bold text-lg mb-2">Cumplimiento Normativo Garantizado</h3>
+        <p class="text-gray-400 text-sm leading-relaxed">DIGESA, SENASA, ISO y pleno cumplimiento con normativa peruana para licitaciones públicas y privadas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-5xl mx-auto"></div>
+
+<!-- ================================================================
+     SERVICIOS
+================================================================ -->
+<section id="servicios" class="py-24 relative" style="background:linear-gradient(180deg,#060D1A 0%,#0A1628 60%,#060D1A 100%);">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center mb-16 reveal">
+      <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Portafolio Multi-Servicios</span>
+      <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-4 leading-tight">
+        Cobertura total de la<br>
+        <span class="text-gold-gradient">cadena de suministro</span>
+      </h2>
+      <p class="text-gray-400 max-w-xl mx-auto">Tres fases estratégicas coordinadas por un solo equipo de expertos.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- ── Card A: Inbound ── -->
+      <div class="svc-card-new rounded-2xl flex flex-col overflow-hidden">
+        <!-- Image with label overlay -->
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img src="assets/Card A — Inbound Logistics.jpeg"
+               alt="Inbound Logistics"
+               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+          <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,13,26,0.95) 0%, rgba(6,13,26,0.3) 60%, transparent 100%);"></div>
+          <div class="absolute bottom-4 left-5">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest" style="background:rgba(255,208,0,0.18);border:1px solid rgba(255,208,0,0.5);color:#FFD700;">
+              A · Inbound Logistics
+            </span>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="p-7 flex flex-col flex-1" style="background:#0E1D36;">
+          <h3 class="text-white text-xl font-black mb-1 leading-snug">Suministro &amp; Logística de Origen</h3>
+          <p class="text-gray-400 text-sm mb-6 leading-relaxed">Controlamos el flujo desde la materia prima hasta tu planta o almacén central.</p>
+
+          <ul class="space-y-4 flex-1">
+            <li class="flex gap-3 items-start">
+              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <div>
+                <div class="text-white font-semibold text-sm leading-snug">Desarrollo y Homologación de Proveedores</div>
+                <div class="text-gray-500 text-xs mt-0.5">Consultoría e integración Tier 1 y Tier 2</div>
+              </div>
+            </li>
+            <li class="flex gap-3 items-start">
+              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <div>
+                <div class="text-white font-semibold text-sm leading-snug">Planeamiento de Demanda y S&amp;OP</div>
+                <div class="text-gray-500 text-xs mt-0.5">Control de OC, PO tracking y planificación TI</div>
+              </div>
+            </li>
+            <li class="flex gap-3 items-start">
+              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <div>
+                <div class="text-white font-semibold text-sm leading-snug">Logística Internacional y Aduanas</div>
+                <div class="text-gray-500 text-xs mt-0.5">Importaciones, desaduanaje y regímenes especiales</div>
+              </div>
+            </li>
+          </ul>
+
+          <a href="#contacto" class="btn-outline mt-7 block text-center py-3 rounded-xl text-sm font-bold">Consultar Servicio →</a>
+        </div>
+      </div>
+
+      <!-- ── Card B: In-House FEATURED ── -->
+      <div class="svc-card-new rounded-2xl flex flex-col overflow-hidden relative" style="box-shadow:0 0 50px rgba(255,208,0,0.15), 0 0 0 2px rgba(255,208,0,0.5);">
+        <!-- Featured ribbon -->
+        <div class="absolute top-4 right-4 z-20 bg-yellow-400 text-navy-700 text-xs font-black px-3 py-1 rounded-full" style="color:#060D1A;">
+          ★ CORE
+        </div>
+
+        <!-- Image -->
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img src="assets/Card B — Almacenamiento WMS.jpeg"
+               alt="Almacén Inteligente WMS"
+               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+          <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,13,26,0.95) 0%, rgba(6,13,26,0.2) 60%, transparent 100%);"></div>
+          <div class="absolute bottom-4 left-5">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest" style="background:rgba(255,208,0,0.28);border:1px solid rgba(255,208,0,0.8);color:#FFD700;">
+              B · In-House &amp; Hubs
+            </span>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="p-7 flex flex-col flex-1" style="background:linear-gradient(135deg,#12233F,#0E1D36);">
+          <h3 class="text-white text-xl font-black mb-1 leading-snug">Almacenamiento, WMS &amp; Valor Agregado</h3>
+          <p class="text-gray-300 text-sm mb-6 leading-relaxed">El corazón inteligente de tu operación con visibilidad 360° en tiempo real.</p>
+
+          <ul class="space-y-4 flex-1">
+            <li class="flex gap-3 items-start">
+              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm-1 14.414l-3.707-3.707 1.414-1.414L11 13.586l5.293-5.293 1.414 1.414L11 16.414z"/>
+              </svg>
+              <div>
+                <div class="text-white font-semibold text-sm leading-snug">Gestión de Almacenes Inteligentes (WMS)</div>
+                <div class="text-gray-400 text-xs mt-0.5">Refrigerado, seco y valorizado — inventario en tiempo real</div>
+              </div>
+            </li>
+            <li class="flex gap-3 items-start">
+              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm-1 14.414l-3.707-3.707 1.414-1.414L11 13.586l5.293-5.293 1.414 1.414L11 16.414z"/>
+              </svg>
+              <div>
+                <div class="text-white font-semibold text-sm leading-snug">Maquila y Acondicionamiento de Producto</div>
+                <div class="text-gray-400 text-xs mt-0.5">Kitting, etiquetado, embolsado, packs promocionales</div>
+              </div>
+            </li>
+            <li class="flex gap-3 items-start">
+              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm-1 14.414l-3.707-3.707 1.414-1.414L11 13.586l5.293-5.293 1.414 1.414L11 16.414z"/>
+              </svg>
+              <div>
+                <div class="text-white font-semibold text-sm leading-snug">Cross-Docking Avanzado</div>
+                <div class="text-gray-400 text-xs mt-0.5">Flujo continuo sin almacenamiento prolongado</div>
+              </div>
+            </li>
+          </ul>
+
+          <a href="#contacto" class="btn-gold mt-7 block text-center py-3 rounded-xl text-sm font-bold border-0">Consultar Servicio →</a>
+        </div>
+      </div>
+
+      <!-- ── Card C: Outbound ── -->
+      <div class="svc-card-new rounded-2xl flex flex-col overflow-hidden">
+        <!-- Image -->
+        <div class="relative h-56 overflow-hidden flex-shrink-0">
+          <img src="assets/Card C — Outbound  Distribución.jpeg"
+               alt="Distribución y Última Milla"
+               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+          <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,13,26,0.95) 0%, rgba(6,13,26,0.3) 60%, transparent 100%);"></div>
+          <div class="absolute bottom-4 left-5">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest" style="background:rgba(255,208,0,0.18);border:1px solid rgba(255,208,0,0.5);color:#FFD700;">
+              C · Outbound Logistics
+            </span>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="p-7 flex flex-col flex-1" style="background:#0E1D36;">
+          <h3 class="text-white text-xl font-black mb-1 leading-snug">Distribución, Última Milla &amp; Reversa</h3>
+          <p class="text-gray-400 text-sm mb-6 leading-relaxed">Entrega impecable, trazable y predictiva hasta el consumidor final.</p>
+
+          <ul class="space-y-4 flex-1">
+            <li class="flex gap-3 items-start">
+              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <div>
+                <div class="text-white font-semibold text-sm leading-snug">Distribución B2B / Canal Moderno</div>
+                <div class="text-gray-500 text-xs mt-0.5">Retail, supermercados y cadenas nacionales</div>
+              </div>
+            </li>
+            <li class="flex gap-3 items-start">
+              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <div>
+                <div class="text-white font-semibold text-sm leading-snug">E-commerce Fulfillment y Última Milla</div>
+                <div class="text-gray-500 text-xs mt-0.5">Integración API, picking ágil, tracking en vivo</div>
+              </div>
+            </li>
+            <li class="flex gap-3 items-start">
+              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <div>
+                <div class="text-white font-semibold text-sm leading-snug">Logística Inversa Dinámica</div>
+                <div class="text-gray-500 text-xs mt-0.5">Devoluciones, re-acondicionamiento de activos</div>
+              </div>
+            </li>
+          </ul>
+
+          <a href="#contacto" class="btn-outline mt-7 block text-center py-3 rounded-xl text-sm font-bold">Consultar Servicio →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-5xl mx-auto"></div>
+
+<!-- ================================================================
+     POR QUÉ SUPPLY360
+================================================================ -->
+<section id="nosotros" class="py-24 relative overflow-hidden">
+  <div class="orb w-96 h-96 bg-yellow-400/8 -top-20 -right-24"></div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Image -->
+      <div id="why-img" class="relative">
+        <div class="rounded-2xl h-[440px] overflow-hidden">
+          <img src="assets/Sección Por qué Supply360.jpeg"
+               alt="Por qué Supply360 — Equipo y Operaciones"
+               class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Floating KPI card -->
+        <div class="absolute -bottom-5 -right-5 bg-navy-600 border border-yellow-400/35 rounded-xl p-4 shadow-2xl float" style="background:#132040;">
+          <div class="text-gold-gradient text-3xl font-black">98%</div>
+          <div class="text-gray-400 text-xs mt-0.5">On-Time Delivery Rate</div>
+          <div class="flex gap-1 mt-2">
+            <div class="h-1 w-10 bg-yellow-400 rounded"></div>
+            <div class="h-1 w-4 bg-yellow-400/30 rounded"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div id="why-content">
+        <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">¿Por qué Supply360?</span>
+        <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-8 leading-tight">
+          Un socio estratégico,<br>
+          <span class="text-gold-gradient">no solo un proveedor</span>
+        </h2>
+
+        <div class="space-y-4">
+          <div class="feat-card rounded-xl p-5 flex gap-4">
+            <div class="w-10 h-10 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-bold">Visibilidad en Tiempo Real</h4>
+              <p class="text-gray-400 text-sm mt-0.5">Dashboard integrado con KPIs de inventario, despachos y alertas operativas al instante.</p>
+            </div>
+          </div>
+
+          <div class="feat-card rounded-xl p-5 flex gap-4">
+            <div class="w-10 h-10 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-bold">Integración Tecnológica Total</h4>
+              <p class="text-gray-400 text-sm mt-0.5">Conectamos vía API con tu ERP, e-commerce y sistemas de gestión sin fricción operativa.</p>
+            </div>
+          </div>
+
+          <div class="feat-card rounded-xl p-5 flex gap-4">
+            <div class="w-10 h-10 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-bold">Cumplimiento Normativo Perú</h4>
+              <p class="text-gray-400 text-sm mt-0.5">Certificaciones DIGESA, SENASA, DIGEMID. Habilitados para licitaciones públicas y auditorías internacionales.</p>
+            </div>
+          </div>
+
+          <div class="feat-card rounded-xl p-5 flex gap-4">
+            <div class="w-10 h-10 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="text-white font-bold">Cobertura Nacional</h4>
+              <p class="text-gray-400 text-sm mt-0.5">Red de almacenes hubs y puntos de distribución en todo el Perú con capacidad de escalamiento inmediato.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-5xl mx-auto"></div>
+
+<!-- ================================================================
+     PROCESO
+================================================================ -->
+<section id="proceso" class="py-24">
+  <div class="max-w-3xl mx-auto px-6">
+
+    <div class="text-center mb-16 reveal">
+      <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Metodología</span>
+      <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-4 leading-tight">
+        Cómo trabajamos<br><span class="text-gold-gradient">contigo</span>
+      </h2>
+      <p class="text-gray-400">Un proceso claro, medible y orientado a resultados desde el primer día.</p>
+    </div>
+
+    <!-- Timeline -->
+    <div class="space-y-0" id="proc-timeline">
+
+      <!-- Step -->
+      <div class="proc-step flex gap-6">
+        <div class="flex flex-col items-center">
+          <div class="proc-dot"><span class="text-yellow-400 font-black text-sm">01</span></div>
+          <div class="w-0.5 flex-1 my-1" style="background:linear-gradient(to bottom,rgba(255,208,0,0.4),rgba(255,208,0,0.1));min-height:32px;"></div>
+        </div>
+        <div class="feat-card rounded-xl p-5 flex-1 mb-5">
+          <h3 class="text-white font-black text-lg mb-1">Diagnóstico Operativo</h3>
+          <p class="text-gray-400 text-sm">Analizamos tu cadena actual, identificamos cuellos de botella, riesgos y oportunidades de mejora con KPIs claros.</p>
+        </div>
+      </div>
+
+      <div class="proc-step flex gap-6">
+        <div class="flex flex-col items-center">
+          <div class="proc-dot"><span class="text-yellow-400 font-black text-sm">02</span></div>
+          <div class="w-0.5 flex-1 my-1" style="background:linear-gradient(to bottom,rgba(255,208,0,0.4),rgba(255,208,0,0.1));min-height:32px;"></div>
+        </div>
+        <div class="feat-card rounded-xl p-5 flex-1 mb-5">
+          <h3 class="text-white font-black text-lg mb-1">Diseño del Modelo Logístico</h3>
+          <p class="text-gray-400 text-sm">Diseñamos la arquitectura de servicios a medida: almacenamiento, rutas, tecnología y SLA específicos para tu negocio.</p>
+        </div>
+      </div>
+
+      <div class="proc-step flex gap-6">
+        <div class="flex flex-col items-center">
+          <div class="proc-dot"><span class="text-yellow-400 font-black text-sm">03</span></div>
+          <div class="w-0.5 flex-1 my-1" style="background:linear-gradient(to bottom,rgba(255,208,0,0.4),rgba(255,208,0,0.1));min-height:32px;"></div>
+        </div>
+        <div class="feat-card rounded-xl p-5 flex-1 mb-5">
+          <h3 class="text-white font-black text-lg mb-1">Implementación e Integración</h3>
+          <p class="text-gray-400 text-sm">Activamos la operación, conectamos sistemas (WMS/ERP/API) y capacitamos a tu equipo en los nuevos procesos.</p>
+        </div>
+      </div>
+
+      <div class="proc-step flex gap-6">
+        <div class="flex flex-col items-center">
+          <div class="proc-dot"><span class="text-yellow-400 font-black text-sm">04</span></div>
+          <div class="w-0.5 flex-1 my-1" style="background:linear-gradient(to bottom,rgba(255,208,0,0.4),rgba(255,208,0,0.1));min-height:32px;"></div>
+        </div>
+        <div class="feat-card rounded-xl p-5 flex-1 mb-5">
+          <h3 class="text-white font-black text-lg mb-1">Operación y Control 24/7</h3>
+          <p class="text-gray-400 text-sm">Operamos tu cadena con monitoreo continuo, reportes periódicos y alertas preventivas en tiempo real.</p>
+        </div>
+      </div>
+
+      <div class="proc-step flex gap-6">
+        <div class="flex flex-col items-center">
+          <div class="proc-dot last"><span class="text-navy-700 font-black text-sm">05</span></div>
+        </div>
+        <div class="feat-card rounded-xl p-5 flex-1" style="border-color:rgba(255,208,0,0.3);">
+          <h3 class="text-gold-gradient font-black text-lg mb-1">Optimización Continua</h3>
+          <p class="text-gray-400 text-sm">Revisamos KPIs periódicamente, proponemos mejoras y escalamos la operación con el crecimiento de tu negocio.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider max-w-5xl mx-auto"></div>
+
+<!-- ================================================================
+     CTA / COTIZADOR
+================================================================ -->
+<section id="contacto" class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0" style="background:linear-gradient(135deg,#060D1A,#0A1628,#132040);"></div>
+  <div class="orb w-96 h-96 bg-yellow-400/12 -top-20 left-1/4"></div>
+  <div class="absolute inset-0 grid-bg opacity-40"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+      <!-- Copy -->
+      <div id="cta-copy">
+        <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Habla con un Experto</span>
+        <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-6 leading-tight">
+          Solicita tu<br>
+          <span class="text-gold-gradient">Diagnóstico Operativo</span><br>
+          Gratuito
+        </h2>
+        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+          Cuéntanos sobre tu operación y un especialista de Supply360 te contactará
+          en menos de 24 horas con un análisis personalizado.
+        </p>
+
+        <div class="space-y-3 mb-10">
+          <div class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Sin compromiso — diagnóstico 100% gratuito
+          </div>
+          <div class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Respuesta en menos de 24 horas hábiles
+          </div>
+          <div class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Propuesta personalizada para tu rubro y volumen
+          </div>
+          <div class="flex items-center gap-3 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Confidencialidad garantizada · Ley N° 29733
+          </div>
+        </div>
+
+        <div class="pt-8 border-t border-yellow-400/15">
+          <p class="text-gray-400 text-xs mb-3 uppercase tracking-wider font-semibold">Contacto directo</p>
+          <div class="space-y-2">
+            <a href="mailto:info@supply360.com.pe" class="flex items-center gap-2 text-gray-300 hover:text-yellow-300 transition-colors text-sm">
+              <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              info@supply360.com.pe
+            </a>
+            <a href="mailto:operaciones@supply360.com.pe" class="flex items-center gap-2 text-gray-300 hover:text-yellow-300 transition-colors text-sm">
+              <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              operaciones@supply360.com.pe
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div id="cta-form" class="svc-card rounded-2xl p-8">
+        <h3 class="text-white font-bold text-lg mb-6">Cuéntanos sobre tu operación</h3>
+
+        <form id="contact-form" class="space-y-4" onsubmit="submitForm(event)">
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="text-gray-400 text-xs font-medium mb-1 block">Nombre*</label>
+              <input type="text" placeholder="Tu nombre" required class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
+            </div>
+            <div>
+              <label class="text-gray-400 text-xs font-medium mb-1 block">Cargo*</label>
+              <input type="text" placeholder="Ej: Gerente de Logística" required class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
+            </div>
+          </div>
+
+          <div>
+            <label class="text-gray-400 text-xs font-medium mb-1 block">Empresa*</label>
+            <input type="text" placeholder="Nombre de tu empresa" required class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
+          </div>
+
+          <div>
+            <label class="text-gray-400 text-xs font-medium mb-1 block">Email Corporativo*</label>
+            <input type="email" placeholder="nombre@empresa.com" required class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
+          </div>
+
+          <div>
+            <label class="text-gray-400 text-xs font-medium mb-1 block">Teléfono / WhatsApp</label>
+            <input type="tel" placeholder="+51 999 999 999" class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
+          </div>
+
+          <div>
+            <label class="text-gray-400 text-xs font-medium mb-1 block">Servicio de Interés*</label>
+            <select required class="form-inp w-full px-4 py-3 rounded-lg text-sm">
+              <option value="">Seleccionar servicio...</option>
+              <option>Inbound Logistics / Abastecimiento</option>
+              <option>Almacenamiento WMS / Valor Agregado</option>
+              <option>Distribución / Última Milla</option>
+              <option>E-commerce Fulfillment</option>
+              <option>Solución End-to-End Completa</option>
+              <option>Diagnóstico / Auditoría Operativa</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="text-gray-400 text-xs font-medium mb-1 block">Cuéntanos tu reto logístico</label>
+            <textarea rows="3" placeholder="Describe brevemente tu operación actual y el principal desafío que quieres resolver..."
+              class="form-inp w-full px-4 py-3 rounded-lg text-sm resize-none"></textarea>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <input type="checkbox" id="privacy" required class="mt-1 accent-yellow-400" />
+            <label for="privacy" class="text-gray-500 text-xs leading-relaxed">
+              Acepto las <a href="#" class="text-yellow-300 hover:underline">Políticas de Privacidad</a>
+              y el tratamiento de mis datos según la Ley N° 29733 (LPDP).
+            </label>
+          </div>
+
+          <button type="submit" id="submit-btn" class="btn-gold w-full py-4 rounded-xl text-base border-0">
+            Solicitar Diagnóstico Gratuito →
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CUMPLIMIENTO
+================================================================ -->
+<section class="py-16 bg-navy-800">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <h3 class="text-white font-black text-2xl mb-2">
+        Cumplimiento <span class="text-gold-gradient">Regulatorio</span>
+      </h3>
+      <p class="text-gray-400 text-sm">Habilitados para licitaciones públicas, auditorías internacionales y contratos con el Estado Peruano</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="comp-grid">
+      <div class="comp-badge">
+        <div class="text-yellow-400 font-black text-xl mb-1">DIGESA</div>
+        <div class="text-gray-400 text-xs">Habilitación sanitaria de almacenes</div>
+      </div>
+      <div class="comp-badge">
+        <div class="text-yellow-400 font-black text-xl mb-1">SENASA</div>
+        <div class="text-gray-400 text-xs">Productos agropecuarios certificados</div>
+      </div>
+      <div class="comp-badge">
+        <div class="text-yellow-400 font-black text-xl mb-1">ISO</div>
+        <div class="text-gray-400 text-xs">Certificaciones de calidad operativa</div>
+      </div>
+      <div class="comp-badge">
+        <div class="text-yellow-400 font-black text-xl mb-1">INDECOPI</div>
+        <div class="text-gray-400 text-xs">Libro de Reclamaciones digital activo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer class="bg-navy-800 border-t border-yellow-400/12">
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
+
+    <!-- Brand -->
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-9 h-9 rounded-lg overflow-hidden">
+          <img src="LOGO - SUPPLY 360.jpg" alt="Supply360" class="w-full h-full object-contain bg-white p-0.5" />
+        </div>
+        <span class="text-white font-black text-xl">SUPPLY<span class="text-gold-gradient">360</span></span>
+      </div>
+      <p class="text-gray-400 text-sm leading-relaxed mb-5">
+        Soluciones Multiservicios, Gestión de Cadena de Suministro y Logística Integral End-to-End.
+      </p>
+      <div class="flex gap-3">
+        <a href="#" class="w-8 h-8 rounded-lg bg-navy-600 border border-yellow-400/15 flex items-center justify-center text-gray-400 hover:text-yellow-300 hover:border-yellow-400/40 transition-all" style="background:#132040;">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="#" class="w-8 h-8 rounded-lg bg-navy-600 border border-yellow-400/15 flex items-center justify-center text-gray-400 hover:text-yellow-300 hover:border-yellow-400/40 transition-all" style="background:#132040;">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Servicios -->
+    <div>
+      <h4 class="text-white font-bold mb-5">Servicios</h4>
+      <ul class="space-y-2.5">
+        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Inbound Logistics</a></li>
+        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Almacenamiento WMS</a></li>
+        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Maquila y Kitting</a></li>
+        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Cross-Docking Avanzado</a></li>
+        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Distribución B2B</a></li>
+        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">E-commerce Fulfillment</a></li>
+        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Logística Inversa</a></li>
+      </ul>
+    </div>
+
+    <!-- Empresa -->
+    <div>
+      <h4 class="text-white font-bold mb-5">Empresa</h4>
+      <ul class="space-y-2.5">
+        <li><a href="#valor"    class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Propuesta de Valor</a></li>
+        <li><a href="#nosotros" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Por Qué Supply360</a></li>
+        <li><a href="#proceso"  class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Metodología</a></li>
+        <li><a href="#"         class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Certificaciones</a></li>
+        <li><a href="#"         class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Política de Privacidad</a></li>
+        <li><a href="#"         class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Términos de Servicio</a></li>
+        <li><a href="#"         class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Libro de Reclamaciones</a></li>
+      </ul>
+    </div>
+
+    <!-- Contacto -->
+    <div>
+      <h4 class="text-white font-bold mb-5">Contacto</h4>
+      <ul class="space-y-3">
+        <li class="flex items-start gap-2 text-gray-400 text-sm">
+          <svg class="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <div>
+            <a href="mailto:info@supply360.com.pe" class="hover:text-yellow-300 transition-colors block">info@supply360.com.pe</a>
+            <a href="mailto:operaciones@supply360.com.pe" class="hover:text-yellow-300 transition-colors block">operaciones@supply360.com.pe</a>
+          </div>
+        </li>
+        <li class="flex items-start gap-2 text-gray-400 text-sm">
+          <svg class="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>[Sede Central — Lima, Perú]</span>
+        </li>
+        <li class="flex items-start gap-2 text-gray-400 text-sm">
+          <svg class="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          <span>[Almacenes Hub — Lima]</span>
+        </li>
+      </ul>
+      <a href="#contacto" class="btn-gold inline-block mt-5 px-5 py-2.5 rounded-lg text-sm">
+        Solicitar Diagnóstico →
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-yellow-400/10 py-6">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-3">
+      <p class="text-gray-500 text-xs">© 2026 SUPPLY360 — Todos los derechos reservados.</p>
+      <div class="flex gap-6">
+        <a href="#" class="text-gray-500 hover:text-yellow-300 text-xs transition-colors">Política de Privacidad</a>
+        <a href="#" class="text-gray-500 hover:text-yellow-300 text-xs transition-colors">Términos de Servicio</a>
+        <a href="#" class="text-gray-500 hover:text-yellow-300 text-xs transition-colors">Libro de Reclamaciones</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
+  <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/>
+  </svg>
+</button>
+
+<!-- ================================================================
+     JAVASCRIPT
+================================================================ -->
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ── Mobile nav ──────────────────────────────────────────────────
+const hamBtn = document.getElementById('ham-btn');
+const mobileNav = document.getElementById('mobile-nav');
+let menuOpen = false;
+
+hamBtn.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  if (menuOpen) {
+    mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
+    mobileNav.style.opacity = '1';
+  } else {
+    mobileNav.style.maxHeight = '0';
+    mobileNav.style.opacity = '0';
+  }
+});
+
+function closeMenu() {
+  menuOpen = false;
+  mobileNav.style.maxHeight = '0';
+  mobileNav.style.opacity = '0';
+}
+
+// ── Back to top ─────────────────────────────────────────────────
+const backTop = document.getElementById('back-top');
+window.addEventListener('scroll', () => {
+  backTop.classList.toggle('visible', window.scrollY > 500);
+});
+
+// ── Smooth scroll for anchor links ──────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+    }
+  });
+});
+
+// ── Hero Particle Canvas ─────────────────────────────────────────
+(function () {
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let pts = [];
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function mkPt() {
+    return {
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      r: Math.random() * 1.8 + 0.8,
+      op: Math.random() * 0.5 + 0.2,
+      gold: Math.random() > 0.65,
+    };
+  }
+
+  function init() {
+    resize();
+    pts = Array.from({ length: 90 }, mkPt);
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const D = 140;
+    pts.forEach((p, i) => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.gold ? `rgba(255,208,0,${p.op})` : `rgba(30,58,110,${p.op})`;
+      ctx.fill();
+
+      for (let j = i + 1; j < pts.length; j++) {
+        const dx = pts[j].x - p.x, dy = pts[j].y - p.y;
+        const d = Math.sqrt(dx * dx + dy * dy);
+        if (d < D) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(255,208,0,${(1 - d / D) * 0.22})`;
+          ctx.lineWidth = 0.6;
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(pts[j].x, pts[j].y);
+          ctx.stroke();
+        }
+      }
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init(); draw();
+})();
+
+// ── Hero entrance ────────────────────────────────────────────────
+gsap.timeline({ delay: 0.15 })
+  .from('#h-badge',  { opacity: 0, y: 18, duration: 0.6, ease: 'power2.out' })
+  .from('#h-title',  { opacity: 0, y: 42, duration: 0.85, ease: 'power3.out' }, '-=0.3')
+  .from('#h-sub',    { opacity: 0, y: 28, duration: 0.7, ease: 'power2.out' }, '-=0.4')
+  .from('#h-ctas',   { opacity: 0, y: 18, duration: 0.6, ease: 'power2.out' }, '-=0.3')
+  .from('#h-stats > *', { opacity: 0, y: 18, duration: 0.5, stagger: 0.1, ease: 'power2.out' }, '-=0.2');
+
+// ── Counters ─────────────────────────────────────────────────────
+document.querySelectorAll('.counter').forEach(el => {
+  const target = +el.dataset.target;
+  ScrollTrigger.create({
+    trigger: el, start: 'top 88%', once: true,
+    onEnter: () => {
+      gsap.to({ v: 0 }, {
+        v: target, duration: 2.2, ease: 'power2.out',
+        onUpdate() { el.textContent = Math.round(this.targets()[0].v); }
+      });
+    }
+  });
+});
+
+// ── Generic reveal helper ────────────────────────────────────────
+function reveal(selector, opts = {}) {
+  gsap.from(selector, {
+    opacity: 0,
+    y: opts.y ?? 50,
+    x: opts.x ?? 0,
+    stagger: opts.stagger ?? 0,
+    duration: opts.dur ?? 0.85,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: typeof selector === 'string' ? selector : selector[0],
+      start: 'top 82%',
+      once: true,
+      ...opts.st
+    }
+  });
+}
+
+// ── Section reveals ──────────────────────────────────────────────
+reveal('.reveal');
+gsap.utils.toArray('.reveal-stagger').forEach(section => {
+  gsap.from(section.children, {
+    opacity: 0, y: 45, stagger: 0.15, duration: 0.75, ease: 'power3.out',
+    scrollTrigger: { trigger: section, start: 'top 80%', once: true }
+  });
+});
+
+// Services cards
+gsap.from('.svc-card-new', {
+  opacity: 0, y: 60, stagger: 0.18, duration: 0.85, ease: 'power3.out',
+  scrollTrigger: { trigger: '#servicios .grid', start: 'top 80%', once: true }
+});
+
+// Why section — slide from sides
+gsap.from('#why-img', {
+  opacity: 0, x: -60, duration: 0.9, ease: 'power3.out',
+  scrollTrigger: { trigger: '#nosotros', start: 'top 78%', once: true }
+});
+gsap.from('#why-content', {
+  opacity: 0, x: 60, duration: 0.9, ease: 'power3.out',
+  scrollTrigger: { trigger: '#nosotros', start: 'top 78%', once: true }
+});
+gsap.from('#why-content .feat-card', {
+  opacity: 0, x: 40, stagger: 0.12, duration: 0.65, ease: 'power2.out',
+  scrollTrigger: { trigger: '#why-content', start: 'top 72%', once: true }
+});
+
+// Process steps
+gsap.from('.proc-step', {
+  opacity: 0, x: -36, stagger: 0.15, duration: 0.7, ease: 'power2.out',
+  scrollTrigger: { trigger: '#proc-timeline', start: 'top 80%', once: true }
+});
+
+// CTA
+gsap.from('#cta-copy', {
+  opacity: 0, x: -50, duration: 0.9, ease: 'power3.out',
+  scrollTrigger: { trigger: '#contacto', start: 'top 78%', once: true }
+});
+gsap.from('#cta-form', {
+  opacity: 0, x: 50, duration: 0.9, ease: 'power3.out',
+  scrollTrigger: { trigger: '#contacto', start: 'top 78%', once: true }
+});
+
+// Compliance
+gsap.from('#comp-grid > *', {
+  opacity: 0, y: 28, stagger: 0.1, duration: 0.65, ease: 'power2.out',
+  scrollTrigger: { trigger: '#comp-grid', start: 'top 85%', once: true }
+});
+
+// Autoplay showcase video when it enters viewport
+ScrollTrigger.create({
+  trigger: '#showcase-video',
+  start: 'top 75%',
+  once: true,
+  onEnter: () => document.getElementById('showcase-video').play()
+});
+
+// ── Form submit ──────────────────────────────────────────────────
+function submitForm(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submit-btn');
+  btn.textContent = '✓ Solicitud Enviada — Te contactamos pronto';
+  btn.style.background = '#16a34a';
+  btn.style.boxShadow = 'none';
+  btn.disabled = true;
+}
+</script>
+</body>
+</html>
