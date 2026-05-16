@@ -3,7 +3,7 @@ deployment:
   tasks:
     # ── Ruta de despliegue ──────────────────────────────────────────
     # Reemplaza USUARIO con tu nombre de cuenta cPanel
-    - export DEPLOYPATH=/home/corpo46/public_html/
+    - export DEPLOYPATH=/home/corpor46/public_html/
 
     # ── Crear carpeta assets si no existe ──────────────────────────
     - /bin/mkdir -p $DEPLOYPATH/assets/favicon
