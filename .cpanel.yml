@@ -1,0 +1,34 @@
+---
+deployment:
+  tasks:
+    # ── Ruta de despliegue ──────────────────────────────────────────
+    # Reemplaza USUARIO con tu nombre de cuenta cPanel
+    - export DEPLOYPATH=/home/USUARIO/public_html/
+
+    # ── Crear carpeta assets si no existe ──────────────────────────
+    - /bin/mkdir -p $DEPLOYPATH/assets/favicon
+
+    # ── Archivos raíz ──────────────────────────────────────────────
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp sitemap.xml $DEPLOYPATH
+    - /bin/cp robots.txt $DEPLOYPATH
+    - /bin/cp "LOGO - SUPPLY 360.jpg" $DEPLOYPATH
+
+    # ── Assets: imágenes y videos ──────────────────────────────────
+    - /bin/cp assets/video1.mp4 $DEPLOYPATH/assets/
+    - /bin/cp assets/Background\ loop\ del\ Hero.mp4 $DEPLOYPATH/assets/
+    - /bin/cp assets/Card\ A\ \—\ Inbound\ Logistics.jpeg $DEPLOYPATH/assets/
+    - /bin/cp assets/Card\ B\ \—\ Almacenamiento\ WMS.jpeg $DEPLOYPATH/assets/
+    - /bin/cp assets/Card\ C\ \—\ Outbound\ \ Distribución.jpeg $DEPLOYPATH/assets/
+    - /bin/cp assets/Sección\ Por\ qué\ Supply360.jpeg $DEPLOYPATH/assets/
+
+    # ── Assets: favicons y manifest ────────────────────────────────
+    - /bin/cp assets/favicon/favicon.ico $DEPLOYPATH/assets/favicon/
+    - /bin/cp assets/favicon/favicon-16x16.png $DEPLOYPATH/assets/favicon/
+    - /bin/cp assets/favicon/favicon-32x32.png $DEPLOYPATH/assets/favicon/
+    - /bin/cp assets/favicon/favicon-48x48.png $DEPLOYPATH/assets/favicon/
+    - /bin/cp assets/favicon/favicon-96x96.png $DEPLOYPATH/assets/favicon/
+    - /bin/cp assets/favicon/favicon-180x180.png $DEPLOYPATH/assets/favicon/
+    - /bin/cp assets/favicon/android-chrome-192x192.png $DEPLOYPATH/assets/favicon/
+    - /bin/cp assets/favicon/android-chrome-512x512.png $DEPLOYPATH/assets/favicon/
+    - /bin/cp assets/favicon/site.webmanifest $DEPLOYPATH/assets/favicon/
