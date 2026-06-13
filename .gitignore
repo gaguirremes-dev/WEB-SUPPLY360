@@ -72,3 +72,7 @@ contexto.md
 # ── cPanel (archivos de sesión locales y carpetas del servidor) ───
 .cpanel-sync
 .well-known/
+
+# ── Libro de Reclamaciones (credenciales y registros) ─────────────
+config.smtp.php
+reclamaciones/
