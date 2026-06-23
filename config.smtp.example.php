@@ -11,3 +11,7 @@ define('SMTP_PASS', 'TU_CONTRASEÑA_AQUI');
 define('SMTP_FROM_NAME', 'Supply Logistic 360');
 
 define('EMPRESA_NOTIF_EMAIL', 'reclamaciones@supplylogistic360.com');
+
+// hCaptcha (https://dashboard.hcaptcha.com)
+define('HCAPTCHA_SITE_KEY',   'TU_SITE_KEY_AQUI');
+define('HCAPTCHA_SECRET_KEY', 'TU_SECRET_KEY_AQUI');
