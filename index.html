@@ -1,1476 +1,944 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="NjBq8Xo_eoUXoBHod00JvhDMA4mJ4gVwY20z5rCpJus" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Supply360 | Supply Chain Management End-to-End · Perú</title>
-  <meta name="description" content="Supply360 — Operador estratégico multi-servicios de cadena de suministro global. Del Proveedor de tu Proveedor al Cliente de tu Cliente." />
+  <meta name="description" content="Supply360 — Operador estratégico multi-servicios de cadena de suministro global. Del Proveedor de tu Proveedor al Cliente de tu Cliente. Inbound · WMS · Distribución · E-commerce." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.supply360.com.pe/" />
 
-  <!-- Favicon & Web Manifest -->
-  <link rel="icon"             type="image/x-icon"         href="assets/favicon/favicon.ico" />
-  <link rel="icon"             type="image/png" sizes="16x16"  href="assets/favicon/favicon-16x16.png" />
-  <link rel="icon"             type="image/png" sizes="32x32"  href="assets/favicon/favicon-32x32.png" />
-  <link rel="icon"             type="image/png" sizes="48x48"  href="assets/favicon/favicon-48x48.png" />
-  <link rel="icon"             type="image/png" sizes="96x96"  href="assets/favicon/favicon-96x96.png" />
-  <link rel="apple-touch-icon" sizes="180x180"              href="assets/favicon/favicon-180x180.png" />
-  <link rel="manifest"                                       href="assets/favicon/site.webmanifest" />
-  <meta name="theme-color"     content="#FFD000" />
-  <meta name="msapplication-TileColor" content="#0A1628" />
-
-  <!-- SEO & Open Graph -->
+  <!-- Open Graph -->
   <meta property="og:type"        content="website" />
   <meta property="og:url"         content="https://www.supply360.com.pe/" />
   <meta property="og:title"       content="Supply360 | Supply Chain Management End-to-End · Perú" />
   <meta property="og:description" content="Operador estratégico multi-servicios de cadena de suministro global. Del Proveedor de tu Proveedor al Cliente de tu Cliente." />
   <meta property="og:image"       content="https://www.supply360.com.pe/assets/favicon/android-chrome-512x512.png" />
-  <meta name="twitter:card"       content="summary_large_image" />
-  <meta name="twitter:title"      content="Supply360 | Supply Chain Management" />
+  <meta property="og:locale"      content="es_PE" />
+  <meta property="og:site_name"   content="Supply360" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Supply360 | Supply Chain Management" />
   <meta name="twitter:description" content="Gestión integral, trazable y predictiva. Inbound · WMS · Distribución · E-commerce." />
-  <meta name="twitter:image"      content="https://www.supply360.com.pe/assets/favicon/android-chrome-512x512.png" />
+  <meta name="twitter:image"       content="https://www.supply360.com.pe/assets/favicon/android-chrome-512x512.png" />
 
-  <!-- Canonical -->
-  <link rel="canonical" href="https://www.supply360.com.pe/" />
-
-  <!-- Tailwind config BEFORE CDN -->
-  <script>
-    window.tailwind = window.tailwind || {};
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            gold: {
-              100: '#FFF9D6',
-              200: '#FFE566',
-              300: '#FFD700',
-              400: '#FFC400',
-              500: '#FFB300',
-              600: '#E6A800',
-              700: '#CC8800',
-              800: '#A36600',
-            },
-            navy: {
-              400: '#2E5A96',
-              500: '#1E3A6E',
-              600: '#132040',
-              700: '#0A1628',
-              800: '#060D1A',
-            }
-          },
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
-        }
-      }
-    };
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Supply360",
+    "alternateName": "Supply360 S.A.C.S.",
+    "url": "https://www.supply360.com.pe",
+    "logo": "https://www.supply360.com.pe/assets/logo/LOGO%20SUPPLY%20360.png",
+    "description": "Operador estratégico multi-servicios de cadena de suministro global",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. República de Chile Nro. 324 Int. 601, Edificio Polaris",
+      "addressLocality": "Jesús María, Lima",
+      "addressCountry": "PE"
+    },
+    "email": "info@supply360.com",
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61589657582574",
+      "https://www.instagram.com/supply360.pe/",
+      "https://www.tiktok.com/@supply.360",
+      "https://www.youtube.com/@supply360_peru"
+    ]
+  }
   </script>
 
-  <!-- Tailwind Play CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Favicon -->
+  <link rel="icon"             type="image/x-icon"         href="assets/favicon/favicon.ico" />
+  <link rel="icon"             type="image/png" sizes="32x32"  href="assets/favicon/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180"              href="assets/favicon/favicon-180x180.png" />
+  <link rel="manifest"                                       href="assets/favicon/site.webmanifest" />
+  <meta name="theme-color"     content="#F65726" />
 
-  <!-- GSAP + ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <style>
-    :root {
-      --gold: #FFD000;
-      --gold-light: #FFE566;
-      --gold-dark: #E6A800;
-      --navy: #0A1628;
-      --navy-med: #132040;
-    }
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/main.css" />
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0A1628;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #0A1628; }
-    ::-webkit-scrollbar-thumb { background: #FFD000; border-radius: 3px; }
-
-    /* Gold gradient text */
-    .text-gold-gradient {
-      background: linear-gradient(135deg, #FFE566 0%, #FFD000 45%, #E6A800 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    /* Buttons */
-    .btn-gold {
-      background: linear-gradient(135deg, #FFD700, #E6A800);
-      color: #0A1628;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 20px rgba(255,208,0,0.3);
-      cursor: pointer;
-    }
-    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 0 35px rgba(255,208,0,0.5); }
-
-    .btn-outline {
-      border: 2px solid rgba(255,208,0,0.6);
-      color: #FFD000;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    .btn-outline:hover { background: rgba(255,208,0,0.08); border-color: #FFD000; }
-
-    /* Navbar glass */
-    .nav-glass {
-      background: rgba(10,22,40,0.88);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,208,0,0.12);
-    }
-
-    /* Grid pattern background */
-    .grid-bg {
-      background-image:
-        linear-gradient(rgba(255,208,0,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,208,0,0.025) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
-
-    /* Canvas */
-    #hero-canvas {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      opacity: 0.45;
-      pointer-events: none;
-    }
-
-    /* Orb blur decoration */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      pointer-events: none;
-    }
-
-    /* Service card */
-    .svc-card {
-      background: linear-gradient(135deg, rgba(19,32,64,0.92), rgba(10,22,40,0.97));
-      border: 1px solid rgba(255,208,0,0.15);
-      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-    }
-    .svc-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255,208,0,0.45);
-      box-shadow: 0 24px 60px rgba(255,208,0,0.08);
-    }
-    .svc-card.featured {
-      background: linear-gradient(135deg, rgba(255,208,0,0.07), rgba(19,32,64,0.97));
-      border-color: rgba(255,208,0,0.38);
-    }
-
-    /* Service card new */
-    .svc-card-new {
-      border: 1px solid rgba(255,208,0,0.22);
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-    }
-    .svc-card-new:hover {
-      transform: translateY(-8px);
-      border-color: rgba(255,208,0,0.55);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-    }
-
-    /* Feature card */
-    .feat-card {
-      background: rgba(19,32,64,0.55);
-      border: 1px solid rgba(255,208,0,0.10);
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .feat-card:hover { background: rgba(19,32,64,0.9); border-color: rgba(255,208,0,0.28); }
-
-    /* Divider */
-    .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(255,208,0,0.25), transparent); }
-
-    /* Image placeholder */
-    .img-ph {
-      background: linear-gradient(135deg, rgba(19,32,64,0.7), rgba(10,22,40,0.9));
-      border: 2px dashed rgba(255,208,0,0.28);
-      display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      gap: 8px;
-      color: rgba(255,208,0,0.6);
-      font-size: 11px; text-align: center; padding: 16px;
-    }
-
-    /* Chain node */
-    .chain-node {
-      width: 56px; height: 56px;
-      border: 2px solid rgba(255,208,0,0.6);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      background: rgba(255,208,0,0.08);
-      transition: all 0.3s;
-    }
-    .chain-node:hover { background: rgba(255,208,0,0.18); transform: scale(1.1); }
-
-    /* Stat border */
-    .stat-sep { border-right: 1px solid rgba(255,208,0,0.18); }
-    .stat-sep:last-child { border-right: none; }
-
-    /* Pulse ring */
-    @keyframes pulseRing {
-      0%   { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(1.7); opacity: 0; }
-    }
-    .pulse-ring { animation: pulseRing 2s ease-out infinite; }
-
-    /* Float */
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-10px); }
-    }
-    .float { animation: float 5s ease-in-out infinite; }
-
-    /* Scroll bounce */
-    @keyframes bounceY {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(7px); }
-    }
-    .scroll-bounce { animation: bounceY 2s ease-in-out infinite; }
-
-    /* Form inputs */
-    .form-inp {
-      background: rgba(19,32,64,0.8);
-      border: 1px solid rgba(255,208,0,0.2);
-      color: #fff;
-      outline: none;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
-    .form-inp:focus {
-      border-color: #FFD000;
-      box-shadow: 0 0 0 3px rgba(255,208,0,0.10);
-    }
-    .form-inp::placeholder { color: rgba(255,255,255,0.28); }
-    .form-inp option { background: #132040; }
-
-    /* Compliance badge */
-    .comp-badge {
-      background: rgba(19,32,64,0.75);
-      border: 1px solid rgba(255,208,0,0.18);
-      border-radius: 10px; padding: 18px;
-      text-align: center;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .comp-badge:hover { border-color: rgba(255,208,0,0.4); transform: translateY(-4px); }
-
-    /* Process dot on line */
-    .proc-dot {
-      width: 48px; height: 48px;
-      border-radius: 50%;
-      background: #132040;
-      border: 2px solid #FFD000;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; position: relative; z-index: 2;
-    }
-    .proc-dot.last { background: #FFD000; border-color: #FFE566; }
-
-    /* Mobile menu transition */
-    #mobile-nav { transition: max-height 0.35s ease, opacity 0.3s ease; overflow: hidden; }
-
-    /* Nav link underline */
-    .nav-link {
-      position: relative; color: #9ca3af;
-      font-size: 14px; font-weight: 500;
-      transition: color 0.2s;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute; bottom: -4px; left: 0; right: 0;
-      height: 2px; background: #FFD000;
-      transform: scaleX(0); transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-    .nav-link:hover { color: #FFD700; }
-    .nav-link:hover::after { transform: scaleX(1); }
-
-    /* Back to top */
-    #back-top {
-      position: fixed; bottom: 28px; right: 28px; z-index: 99;
-      width: 44px; height: 44px; border-radius: 50%;
-      background: linear-gradient(135deg, #FFD700, #E6A800);
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 20px rgba(255,208,0,0.4);
-      cursor: pointer; opacity: 0; pointer-events: none;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-    #back-top.visible { opacity: 1; pointer-events: auto; }
-    #back-top:hover { transform: translateY(-3px); }
-  </style>
+  <!-- Preload critical assets -->
+  <link rel="preload" as="image" href="assets/logo/LOGO SUPPLY 360.png" />
 </head>
+<body>
 
-<body class="grid-bg">
+  <!-- ── Scroll progress ──────────────────────────────── -->
+  <div id="scroll-progress" aria-hidden="true"></div>
 
-<!-- ================================================================
-     NAVBAR
-================================================================ -->
-<nav id="navbar" class="fixed top-0 inset-x-0 z-50 nav-glass">
-  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
+  <!-- ── Mobile overlay ───────────────────────────────── -->
+  <div class="mob-overlay" aria-hidden="true"></div>
 
-    <!-- Logo -->
-    <a href="#" class="flex items-center gap-3">
-      <div class="w-9 h-9 rounded-lg overflow-hidden">
-        <img src="LOGO - SUPPLY 360.png" alt="Supply360" class="w-full h-full object-contain bg-white p-0.5" />
-      </div>
-      <span class="text-white font-black text-xl tracking-tight">SUPPLY<span class="text-gold-gradient">360</span></span>
-    </a>
+  <!-- ═══════════════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════════════════ -->
+  <nav id="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="container nav-inner">
 
-    <!-- Desktop links -->
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#servicios" class="nav-link">Servicios</a>
-      <a href="#valor"     class="nav-link">Propuesta</a>
-      <a href="#proceso"   class="nav-link">Proceso</a>
-      <a href="#nosotros"  class="nav-link">Nosotros</a>
-      <a href="#contacto"  class="nav-link">Contacto</a>
-      <a href="https://rrhh.supplylogistic360.com" target="_blank" rel="noopener" class="nav-link">Intranet</a>
-    </div>
+      <a href="#hero" class="nav-logo" aria-label="Supply360 — Inicio">
+        <img src="assets/logo/LOGO SUPPLY 360.png"
+             alt="Supply360 logo" width="140" height="34" />
+      </a>
 
-    <!-- Desktop CTA -->
-    <a href="#contacto" class="hidden md:inline-flex btn-gold px-5 py-2.5 rounded-lg text-sm">
-      Solicitar Diagnóstico
-    </a>
-
-    <!-- Hamburger -->
-    <button id="ham-btn" class="md:hidden p-2 text-white" aria-label="Menú">
-      <svg id="ham-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </div>
-
-  <!-- Mobile nav -->
-  <div id="mobile-nav" class="max-h-0 opacity-0 md:hidden bg-navy-700 border-t border-gold-600/20">
-    <div class="px-5 py-5 flex flex-col gap-4">
-      <a href="#servicios" class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Servicios</a>
-      <a href="#valor"     class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Propuesta</a>
-      <a href="#proceso"   class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Proceso</a>
-      <a href="#nosotros"  class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Nosotros</a>
-      <a href="#contacto"  class="text-gray-300 hover:text-gold-300 py-1" onclick="closeMenu()">Contacto</a>
-      <a href="https://rrhh.supplylogistic360.com" target="_blank" rel="noopener" class="text-gray-300 hover:text-gold-300 py-1">Intranet</a>
-      <a href="#contacto" class="btn-gold py-3 rounded-lg text-sm text-center mt-1" onclick="closeMenu()">Solicitar Diagnóstico</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ================================================================
-     HERO
-================================================================ -->
-<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-navy-700">
-  <!-- Video background -->
-  <video autoplay muted loop playsinline
-    class="absolute inset-0 w-full h-full object-cover"
-    style="opacity:0.28;">
-    <source src="assets/Background loop del Hero.mp4" type="video/mp4">
-  </video>
-  <!-- Dark gradient overlay on video -->
-  <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(10,22,40,0.55) 0%, rgba(10,22,40,0.35) 40%, rgba(10,22,40,0.7) 100%);"></div>
-
-  <canvas id="hero-canvas"></canvas>
-
-  <!-- Orbs -->
-  <div class="orb w-96 h-96 bg-yellow-400/10 top-1/4 -left-32"></div>
-  <div class="orb w-72 h-72 bg-blue-900/40 bottom-1/4 -right-20"></div>
-
-  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24 pb-16">
-
-    <!-- Badge -->
-    <div id="h-badge" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-yellow-400/35 bg-yellow-400/8 text-yellow-300 text-sm font-medium mb-8">
-      <span class="relative flex h-2 w-2">
-        <span class="pulse-ring absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-2 w-2 bg-yellow-400"></span>
-      </span>
-      Operador Estratégico · Supply Chain · Perú
-    </div>
-
-    <!-- Headline -->
-    <h1 id="h-title" class="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-6">
-      <span class="text-white">La cadena de</span><br>
-      <span class="text-gold-gradient">suministro completa</span><br>
-      <span class="text-white">en un solo socio</span>
-    </h1>
-
-    <!-- Sub -->
-    <p id="h-sub" class="text-gray-400 text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed mb-10">
-      Del <span class="text-yellow-300 font-semibold">proveedor de tu proveedor</span>
-      al <span class="text-yellow-300 font-semibold">cliente de tu cliente</span>.
-      Gestión integral, trazable y predictiva en tiempo real.
-    </p>
-
-    <!-- CTAs -->
-    <div id="h-ctas" class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-      <a href="#contacto" class="btn-gold px-10 py-4 rounded-xl text-base inline-block">Solicitar Diagnóstico Operativo</a>
-      <a href="#servicios" class="btn-outline px-10 py-4 rounded-xl text-base inline-block">Ver Servicios</a>
-    </div>
-
-    <!-- Mini stats strip -->
-    <div id="h-stats" class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-      <div><div class="text-3xl font-black text-gold-gradient">360°</div><div class="text-gray-400 text-xs mt-1">Visibilidad Total</div></div>
-      <div><div class="text-3xl font-black text-gold-gradient">24/7</div><div class="text-gray-400 text-xs mt-1">Monitoreo Activo</div></div>
-      <div><div class="text-3xl font-black text-gold-gradient">100%</div><div class="text-gray-400 text-xs mt-1">Trazabilidad</div></div>
-      <div><div class="text-3xl font-black text-gold-gradient">E2E</div><div class="text-gray-400 text-xs mt-1">Cobertura Total</div></div>
-    </div>
-  </div>
-
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-gray-500 text-xs scroll-bounce">
-    <span>scroll</span>
-    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-    </svg>
-  </div>
-</section>
-
-<!-- ================================================================
-     STATS BAR
-================================================================ -->
-<section class="py-12 bg-navy-600 border-y border-yellow-400/15">
-  <div class="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-0">
-    <div class="stat-sep text-center px-4">
-      <div class="flex items-end justify-center gap-0.5">
-        <span class="text-4xl font-black text-gold-gradient counter" data-target="500">0</span>
-        <span class="text-yellow-400 font-black text-2xl mb-1">+</span>
-      </div>
-      <div class="text-gray-400 text-xs mt-1">Clientes Atendidos</div>
-    </div>
-    <div class="stat-sep text-center px-4">
-      <div class="flex items-end justify-center gap-0.5">
-        <span class="text-4xl font-black text-gold-gradient counter" data-target="98">0</span>
-        <span class="text-yellow-400 font-black text-2xl mb-1">%</span>
-      </div>
-      <div class="text-gray-400 text-xs mt-1">Entregas a Tiempo</div>
-    </div>
-    <div class="stat-sep text-center px-4">
-      <div class="flex items-end justify-center gap-0.5">
-        <span class="text-4xl font-black text-gold-gradient counter" data-target="15">0</span>
-        <span class="text-yellow-400 font-black text-2xl mb-1">+</span>
-      </div>
-      <div class="text-gray-400 text-xs mt-1">Años de Experiencia</div>
-    </div>
-    <div class="text-center px-4">
-      <div class="flex items-end justify-center gap-0.5">
-        <span class="text-4xl font-black text-gold-gradient counter" data-target="3">0</span>
-        <span class="text-yellow-400 font-black text-2xl mb-1">M+</span>
-      </div>
-      <div class="text-gray-400 text-xs mt-1">Unidades Gestionadas</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-     VIDEO SHOWCASE
-================================================================ -->
-<section class="py-20 relative overflow-hidden" style="background:#060D1A;">
-  <div class="orb w-80 h-80 bg-yellow-400/8 -top-20 left-0"></div>
-  <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <div class="text-center mb-10">
-      <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Operación en Acción</span>
-      <h2 class="text-3xl md:text-4xl font-black text-white mt-3 mb-3">
-        Así operamos tu <span class="text-gold-gradient">cadena de suministro</span>
-      </h2>
-      <p class="text-gray-400 text-base max-w-xl mx-auto">Tecnología, precisión y visibilidad 360° en cada eslabón.</p>
-    </div>
-
-    <div class="relative rounded-2xl overflow-hidden shadow-2xl" style="border:1px solid rgba(255,208,0,0.22);">
-      <video
-        id="showcase-video"
-        src="assets/video1.mp4"
-        class="w-full aspect-video object-cover"
-        loop muted playsinline
-        poster="assets/Card B — Almacenamiento WMS.jpeg">
-      </video>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider max-w-5xl mx-auto"></div>
-
-<!-- ================================================================
-     PROPUESTA DE VALOR
-================================================================ -->
-<section id="valor" class="py-24 relative overflow-hidden">
-  <div class="orb w-80 h-80 bg-yellow-400/8 top-0 right-0"></div>
-
-  <div class="max-w-7xl mx-auto px-6">
-
-    <!-- Header -->
-    <div class="text-center mb-16 reveal">
-      <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Propuesta de Valor</span>
-      <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-5 leading-tight">
-        Del proveedor de tu proveedor<br>
-        <span class="text-gold-gradient">al cliente de tu cliente</span>
-      </h2>
-      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-        Sincronizamos absolutamente cada eslabón de tu cadena de suministro.
-        Una sola interfaz, un solo socio, visibilidad total.
-      </p>
-    </div>
-
-    <!-- Supply chain flow -->
-    <div class="relative mb-16 reveal-stagger">
-      <!-- Connecting line (desktop) -->
-      <div class="hidden md:block absolute top-[28px] left-[12%] right-[12%] h-0.5 bg-gradient-to-r from-yellow-400/10 via-yellow-400/50 to-yellow-400/10 z-0"></div>
-
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 relative z-10">
-        <!-- Node 1 -->
-        <div class="chain-item text-center flex flex-col items-center gap-3">
-          <div class="chain-node">
-            <svg class="w-7 h-7 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <div class="text-yellow-300 text-xs font-bold uppercase tracking-wider">Tier 2</div>
-          <div class="text-white font-bold text-sm text-center">Proveedor<br>de Origen</div>
-          <div class="text-gray-500 text-xs">Materias Primas</div>
-        </div>
-
-        <!-- Arrow -->
-        <div class="hidden md:flex items-start justify-center pt-4 text-yellow-600">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </div>
-
-        <!-- Node 2 (FEATURED) -->
-        <div class="chain-item text-center flex flex-col items-center gap-3">
-          <div class="chain-node" style="width:68px;height:68px;border-color:#FFD000;background:rgba(255,208,0,0.15);">
-            <svg class="w-9 h-9 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
-          </div>
-          <div class="text-yellow-300 text-xs font-bold uppercase tracking-wider">Hub Central</div>
-          <div class="text-white font-bold text-sm text-center">Almacén<br>Inteligente</div>
-          <div class="text-gray-500 text-xs">WMS · Maquila · Cross-Dock</div>
-        </div>
-
-        <!-- Arrow -->
-        <div class="hidden md:flex items-start justify-center pt-4 text-yellow-600">
-          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </div>
-
-        <!-- Node 3 -->
-        <div class="chain-item text-center flex flex-col items-center gap-3">
-          <div class="chain-node">
-            <svg class="w-7 h-7 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
-            </svg>
-          </div>
-          <div class="text-yellow-300 text-xs font-bold uppercase tracking-wider">End</div>
-          <div class="text-white font-bold text-sm text-center">Cliente<br>Final</div>
-          <div class="text-gray-500 text-xs">Retail · E-com · B2B</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Value cards -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal-stagger">
-      <div class="feat-card rounded-2xl p-6">
-        <div class="w-11 h-11 rounded-xl bg-yellow-400/15 flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-          </svg>
-        </div>
-        <h3 class="text-white font-bold text-lg mb-2">Visibilidad 360° en Tiempo Real</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Control total del inventario, estado de pedidos y KPIs operativos desde un único panel de control integrado.</p>
+      <div class="nav-links" role="list">
+        <a href="#flujo"     class="nav-link" role="listitem">Flujo Operativo</a>
+        <a href="#servicios" class="nav-link" role="listitem">Servicios</a>
+        <a href="#plataforma"class="nav-link" role="listitem">Plataforma</a>
+        <a href="#casos"     class="nav-link" role="listitem">Casos</a>
+        <a href="#contacto"  class="nav-link" role="listitem">Contacto</a>
       </div>
 
-      <div class="feat-card rounded-2xl p-6" style="border-color:rgba(255,208,0,0.25);">
-        <div class="w-11 h-11 rounded-xl bg-yellow-400/15 flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-          </svg>
+      <div class="nav-right">
+        <div class="magnetic">
+          <a href="#contacto" class="btn btn-primary">Solicitar Diagnóstico</a>
         </div>
-        <h3 class="text-white font-bold text-lg mb-2">Reducción de Costos Operativos</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Elimina quiebres de stock, convierte costos fijos en variables y digitaliza toda tu operación logística.</p>
-      </div>
-
-      <div class="feat-card rounded-2xl p-6">
-        <div class="w-11 h-11 rounded-xl bg-yellow-400/15 flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-          </svg>
-        </div>
-        <h3 class="text-white font-bold text-lg mb-2">Cumplimiento Normativo Garantizado</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">DIGESA, SENASA, ISO y pleno cumplimiento con normativa peruana para licitaciones públicas y privadas.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider max-w-5xl mx-auto"></div>
-
-<!-- ================================================================
-     SERVICIOS
-================================================================ -->
-<section id="servicios" class="py-24 relative" style="background:linear-gradient(180deg,#060D1A 0%,#0A1628 60%,#060D1A 100%);">
-  <div class="max-w-7xl mx-auto px-6">
-
-    <div class="text-center mb-16 reveal">
-      <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Portafolio Multi-Servicios</span>
-      <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-4 leading-tight">
-        Cobertura total de la<br>
-        <span class="text-gold-gradient">cadena de suministro</span>
-      </h2>
-      <p class="text-gray-400 max-w-xl mx-auto">Tres fases estratégicas coordinadas por un solo equipo de expertos.</p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-      <!-- ── Card A: Inbound ── -->
-      <div class="svc-card-new rounded-2xl flex flex-col overflow-hidden">
-        <!-- Image with label overlay -->
-        <div class="relative h-56 overflow-hidden flex-shrink-0">
-          <img src="assets/Card A — Inbound Logistics.jpeg"
-               alt="Inbound Logistics"
-               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-          <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,13,26,0.95) 0%, rgba(6,13,26,0.3) 60%, transparent 100%);"></div>
-          <div class="absolute bottom-4 left-5">
-            <span class="inline-block px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest" style="background:rgba(255,208,0,0.18);border:1px solid rgba(255,208,0,0.5);color:#FFD700;">
-              A · Inbound Logistics
-            </span>
-          </div>
-        </div>
-
-        <!-- Body -->
-        <div class="p-7 flex flex-col flex-1" style="background:#0E1D36;">
-          <h3 class="text-white text-xl font-black mb-1 leading-snug">Suministro &amp; Logística de Origen</h3>
-          <p class="text-gray-400 text-sm mb-6 leading-relaxed">Controlamos el flujo desde la materia prima hasta tu planta o almacén central.</p>
-
-          <ul class="space-y-4 flex-1">
-            <li class="flex gap-3 items-start">
-              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <div>
-                <div class="text-white font-semibold text-sm leading-snug">Desarrollo y Homologación de Proveedores</div>
-                <div class="text-gray-500 text-xs mt-0.5">Consultoría e integración Tier 1 y Tier 2</div>
-              </div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <div>
-                <div class="text-white font-semibold text-sm leading-snug">Planeamiento de Demanda y S&amp;OP</div>
-                <div class="text-gray-500 text-xs mt-0.5">Control de OC, PO tracking y planificación TI</div>
-              </div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <div>
-                <div class="text-white font-semibold text-sm leading-snug">Logística Internacional y Aduanas</div>
-                <div class="text-gray-500 text-xs mt-0.5">Importaciones, desaduanaje y regímenes especiales</div>
-              </div>
-            </li>
-          </ul>
-
-          <a href="#contacto" class="btn-outline mt-7 block text-center py-3 rounded-xl text-sm font-bold">Consultar Servicio →</a>
-        </div>
-      </div>
-
-      <!-- ── Card B: In-House FEATURED ── -->
-      <div class="svc-card-new rounded-2xl flex flex-col overflow-hidden relative" style="box-shadow:0 0 50px rgba(255,208,0,0.15), 0 0 0 2px rgba(255,208,0,0.5);">
-        <!-- Featured ribbon -->
-        <div class="absolute top-4 right-4 z-20 bg-yellow-400 text-navy-700 text-xs font-black px-3 py-1 rounded-full" style="color:#060D1A;">
-          ★ CORE
-        </div>
-
-        <!-- Image -->
-        <div class="relative h-56 overflow-hidden flex-shrink-0">
-          <img src="assets/Card B — Almacenamiento WMS.jpeg"
-               alt="Almacén Inteligente WMS"
-               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-          <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,13,26,0.95) 0%, rgba(6,13,26,0.2) 60%, transparent 100%);"></div>
-          <div class="absolute bottom-4 left-5">
-            <span class="inline-block px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest" style="background:rgba(255,208,0,0.28);border:1px solid rgba(255,208,0,0.8);color:#FFD700;">
-              B · In-House &amp; Hubs
-            </span>
-          </div>
-        </div>
-
-        <!-- Body -->
-        <div class="p-7 flex flex-col flex-1" style="background:linear-gradient(135deg,#12233F,#0E1D36);">
-          <h3 class="text-white text-xl font-black mb-1 leading-snug">Almacenamiento, WMS &amp; Valor Agregado</h3>
-          <p class="text-gray-300 text-sm mb-6 leading-relaxed">El corazón inteligente de tu operación con visibilidad 360° en tiempo real.</p>
-
-          <ul class="space-y-4 flex-1">
-            <li class="flex gap-3 items-start">
-              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm-1 14.414l-3.707-3.707 1.414-1.414L11 13.586l5.293-5.293 1.414 1.414L11 16.414z"/>
-              </svg>
-              <div>
-                <div class="text-white font-semibold text-sm leading-snug">Gestión de Almacenes Inteligentes (WMS)</div>
-                <div class="text-gray-400 text-xs mt-0.5">Refrigerado, seco y valorizado — inventario en tiempo real</div>
-              </div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm-1 14.414l-3.707-3.707 1.414-1.414L11 13.586l5.293-5.293 1.414 1.414L11 16.414z"/>
-              </svg>
-              <div>
-                <div class="text-white font-semibold text-sm leading-snug">Maquila y Acondicionamiento de Producto</div>
-                <div class="text-gray-400 text-xs mt-0.5">Kitting, etiquetado, embolsado, packs promocionales</div>
-              </div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm-1 14.414l-3.707-3.707 1.414-1.414L11 13.586l5.293-5.293 1.414 1.414L11 16.414z"/>
-              </svg>
-              <div>
-                <div class="text-white font-semibold text-sm leading-snug">Cross-Docking Avanzado</div>
-                <div class="text-gray-400 text-xs mt-0.5">Flujo continuo sin almacenamiento prolongado</div>
-              </div>
-            </li>
-          </ul>
-
-          <a href="#contacto" class="btn-gold mt-7 block text-center py-3 rounded-xl text-sm font-bold border-0">Consultar Servicio →</a>
-        </div>
-      </div>
-
-      <!-- ── Card C: Outbound ── -->
-      <div class="svc-card-new rounded-2xl flex flex-col overflow-hidden">
-        <!-- Image -->
-        <div class="relative h-56 overflow-hidden flex-shrink-0">
-          <img src="assets/Card C — Outbound  Distribución.jpeg"
-               alt="Distribución y Última Milla"
-               class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-          <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(6,13,26,0.95) 0%, rgba(6,13,26,0.3) 60%, transparent 100%);"></div>
-          <div class="absolute bottom-4 left-5">
-            <span class="inline-block px-3 py-1 rounded-full text-xs font-black uppercase tracking-widest" style="background:rgba(255,208,0,0.18);border:1px solid rgba(255,208,0,0.5);color:#FFD700;">
-              C · Outbound Logistics
-            </span>
-          </div>
-        </div>
-
-        <!-- Body -->
-        <div class="p-7 flex flex-col flex-1" style="background:#0E1D36;">
-          <h3 class="text-white text-xl font-black mb-1 leading-snug">Distribución, Última Milla &amp; Reversa</h3>
-          <p class="text-gray-400 text-sm mb-6 leading-relaxed">Entrega impecable, trazable y predictiva hasta el consumidor final.</p>
-
-          <ul class="space-y-4 flex-1">
-            <li class="flex gap-3 items-start">
-              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <div>
-                <div class="text-white font-semibold text-sm leading-snug">Distribución B2B / Canal Moderno</div>
-                <div class="text-gray-500 text-xs mt-0.5">Retail, supermercados y cadenas nacionales</div>
-              </div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <div>
-                <div class="text-white font-semibold text-sm leading-snug">E-commerce Fulfillment y Última Milla</div>
-                <div class="text-gray-500 text-xs mt-0.5">Integración API, picking ágil, tracking en vivo</div>
-              </div>
-            </li>
-            <li class="flex gap-3 items-start">
-              <svg class="w-5 h-5 text-yellow-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <div>
-                <div class="text-white font-semibold text-sm leading-snug">Logística Inversa Dinámica</div>
-                <div class="text-gray-500 text-xs mt-0.5">Devoluciones, re-acondicionamiento de activos</div>
-              </div>
-            </li>
-          </ul>
-
-          <a href="#contacto" class="btn-outline mt-7 block text-center py-3 rounded-xl text-sm font-bold">Consultar Servicio →</a>
-        </div>
+        <button class="nav-ham" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
 
     </div>
-  </div>
-</section>
+  </nav>
 
-<div class="divider max-w-5xl mx-auto"></div>
-
-<!-- ================================================================
-     POR QUÉ SUPPLY360
-================================================================ -->
-<section id="nosotros" class="py-24 relative overflow-hidden">
-  <div class="orb w-96 h-96 bg-yellow-400/8 -top-20 -right-24"></div>
-
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-
-      <!-- Image -->
-      <div id="why-img" class="relative">
-        <div class="rounded-2xl h-[440px] overflow-hidden">
-          <img src="assets/Sección Por qué Supply360.jpeg"
-               alt="Por qué Supply360 — Equipo y Operaciones"
-               class="w-full h-full object-cover" />
-        </div>
-
-        <!-- Floating KPI card -->
-        <div class="absolute -bottom-5 -right-5 bg-navy-600 border border-yellow-400/35 rounded-xl p-4 shadow-2xl float" style="background:#132040;">
-          <div class="text-gold-gradient text-3xl font-black">98%</div>
-          <div class="text-gray-400 text-xs mt-0.5">On-Time Delivery Rate</div>
-          <div class="flex gap-1 mt-2">
-            <div class="h-1 w-10 bg-yellow-400 rounded"></div>
-            <div class="h-1 w-4 bg-yellow-400/30 rounded"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Content -->
-      <div id="why-content">
-        <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">¿Por qué Supply360?</span>
-        <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-8 leading-tight">
-          Un socio estratégico,<br>
-          <span class="text-gold-gradient">no solo un proveedor</span>
-        </h2>
-
-        <div class="space-y-4">
-          <div class="feat-card rounded-xl p-5 flex gap-4">
-            <div class="w-10 h-10 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-white font-bold">Visibilidad en Tiempo Real</h4>
-              <p class="text-gray-400 text-sm mt-0.5">Dashboard integrado con KPIs de inventario, despachos y alertas operativas al instante.</p>
-            </div>
-          </div>
-
-          <div class="feat-card rounded-xl p-5 flex gap-4">
-            <div class="w-10 h-10 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-white font-bold">Integración Tecnológica Total</h4>
-              <p class="text-gray-400 text-sm mt-0.5">Conectamos vía API con tu ERP, e-commerce y sistemas de gestión sin fricción operativa.</p>
-            </div>
-          </div>
-
-          <div class="feat-card rounded-xl p-5 flex gap-4">
-            <div class="w-10 h-10 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-white font-bold">Cumplimiento Normativo Perú</h4>
-              <p class="text-gray-400 text-sm mt-0.5">Certificaciones DIGESA, SENASA, DIGEMID. Habilitados para licitaciones públicas y auditorías internacionales.</p>
-            </div>
-          </div>
-
-          <div class="feat-card rounded-xl p-5 flex gap-4">
-            <div class="w-10 h-10 rounded-lg bg-yellow-400/15 flex items-center justify-center flex-shrink-0">
-              <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-              </svg>
-            </div>
-            <div>
-              <h4 class="text-white font-bold">Cobertura Nacional</h4>
-              <p class="text-gray-400 text-sm mt-0.5">Red de almacenes hubs y puntos de distribución en todo el Perú con capacidad de escalamiento inmediato.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider max-w-5xl mx-auto"></div>
-
-<!-- ================================================================
-     PROCESO
-================================================================ -->
-<section id="proceso" class="py-24">
-  <div class="max-w-3xl mx-auto px-6">
-
-    <div class="text-center mb-16 reveal">
-      <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Metodología</span>
-      <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-4 leading-tight">
-        Cómo trabajamos<br><span class="text-gold-gradient">contigo</span>
-      </h2>
-      <p class="text-gray-400">Un proceso claro, medible y orientado a resultados desde el primer día.</p>
-    </div>
-
-    <!-- Timeline -->
-    <div class="space-y-0" id="proc-timeline">
-
-      <!-- Step -->
-      <div class="proc-step flex gap-6">
-        <div class="flex flex-col items-center">
-          <div class="proc-dot"><span class="text-yellow-400 font-black text-sm">01</span></div>
-          <div class="w-0.5 flex-1 my-1" style="background:linear-gradient(to bottom,rgba(255,208,0,0.4),rgba(255,208,0,0.1));min-height:32px;"></div>
-        </div>
-        <div class="feat-card rounded-xl p-5 flex-1 mb-5">
-          <h3 class="text-white font-black text-lg mb-1">Diagnóstico Operativo</h3>
-          <p class="text-gray-400 text-sm">Analizamos tu cadena actual, identificamos cuellos de botella, riesgos y oportunidades de mejora con KPIs claros.</p>
-        </div>
-      </div>
-
-      <div class="proc-step flex gap-6">
-        <div class="flex flex-col items-center">
-          <div class="proc-dot"><span class="text-yellow-400 font-black text-sm">02</span></div>
-          <div class="w-0.5 flex-1 my-1" style="background:linear-gradient(to bottom,rgba(255,208,0,0.4),rgba(255,208,0,0.1));min-height:32px;"></div>
-        </div>
-        <div class="feat-card rounded-xl p-5 flex-1 mb-5">
-          <h3 class="text-white font-black text-lg mb-1">Diseño del Modelo Logístico</h3>
-          <p class="text-gray-400 text-sm">Diseñamos la arquitectura de servicios a medida: almacenamiento, rutas, tecnología y SLA específicos para tu negocio.</p>
-        </div>
-      </div>
-
-      <div class="proc-step flex gap-6">
-        <div class="flex flex-col items-center">
-          <div class="proc-dot"><span class="text-yellow-400 font-black text-sm">03</span></div>
-          <div class="w-0.5 flex-1 my-1" style="background:linear-gradient(to bottom,rgba(255,208,0,0.4),rgba(255,208,0,0.1));min-height:32px;"></div>
-        </div>
-        <div class="feat-card rounded-xl p-5 flex-1 mb-5">
-          <h3 class="text-white font-black text-lg mb-1">Implementación e Integración</h3>
-          <p class="text-gray-400 text-sm">Activamos la operación, conectamos sistemas (WMS/ERP/API) y capacitamos a tu equipo en los nuevos procesos.</p>
-        </div>
-      </div>
-
-      <div class="proc-step flex gap-6">
-        <div class="flex flex-col items-center">
-          <div class="proc-dot"><span class="text-yellow-400 font-black text-sm">04</span></div>
-          <div class="w-0.5 flex-1 my-1" style="background:linear-gradient(to bottom,rgba(255,208,0,0.4),rgba(255,208,0,0.1));min-height:32px;"></div>
-        </div>
-        <div class="feat-card rounded-xl p-5 flex-1 mb-5">
-          <h3 class="text-white font-black text-lg mb-1">Operación y Control 24/7</h3>
-          <p class="text-gray-400 text-sm">Operamos tu cadena con monitoreo continuo, reportes periódicos y alertas preventivas en tiempo real.</p>
-        </div>
-      </div>
-
-      <div class="proc-step flex gap-6">
-        <div class="flex flex-col items-center">
-          <div class="proc-dot last"><span class="text-navy-700 font-black text-sm">05</span></div>
-        </div>
-        <div class="feat-card rounded-xl p-5 flex-1" style="border-color:rgba(255,208,0,0.3);">
-          <h3 class="text-gold-gradient font-black text-lg mb-1">Optimización Continua</h3>
-          <p class="text-gray-400 text-sm">Revisamos KPIs periódicamente, proponemos mejoras y escalamos la operación con el crecimiento de tu negocio.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider max-w-5xl mx-auto"></div>
-
-<!-- ================================================================
-     CTA / COTIZADOR
-================================================================ -->
-<section id="contacto" class="py-24 relative overflow-hidden">
-  <div class="absolute inset-0" style="background:linear-gradient(135deg,#060D1A,#0A1628,#132040);"></div>
-  <div class="orb w-96 h-96 bg-yellow-400/12 -top-20 left-1/4"></div>
-  <div class="absolute inset-0 grid-bg opacity-40"></div>
-
-  <div class="relative z-10 max-w-6xl mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-      <!-- Copy -->
-      <div id="cta-copy">
-        <span class="text-yellow-300 text-xs font-bold tracking-widest uppercase">Habla con un Experto</span>
-        <h2 class="text-4xl md:text-5xl font-black text-white mt-3 mb-6 leading-tight">
-          Solicita tu<br>
-          <span class="text-gold-gradient">Diagnóstico Operativo</span><br>
-          Gratuito
-        </h2>
-        <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-          Cuéntanos sobre tu operación y un especialista de Supply360 te contactará
-          en menos de 24 horas con un análisis personalizado.
-        </p>
-
-        <div class="space-y-3 mb-10">
-          <div class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Sin compromiso — diagnóstico 100% gratuito
-          </div>
-          <div class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Respuesta en menos de 24 horas hábiles
-          </div>
-          <div class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Propuesta personalizada para tu rubro y volumen
-          </div>
-          <div class="flex items-center gap-3 text-gray-300 text-sm">
-            <svg class="w-4 h-4 text-yellow-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            Confidencialidad garantizada · Ley N° 29733
-          </div>
-        </div>
-
-        <div class="pt-8 border-t border-yellow-400/15">
-          <p class="text-gray-400 text-xs mb-3 uppercase tracking-wider font-semibold">Contacto directo</p>
-          <div class="space-y-2">
-            <a href="mailto:info@supply360.com.pe" class="flex items-center gap-2 text-gray-300 hover:text-yellow-300 transition-colors text-sm">
-              <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              info@supply360.com.pe
-            </a>
-            <a href="mailto:operaciones@supply360.com.pe" class="flex items-center gap-2 text-gray-300 hover:text-yellow-300 transition-colors text-sm">
-              <svg class="w-4 h-4 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              operaciones@supply360.com.pe
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Form -->
-      <div id="cta-form" class="svc-card rounded-2xl p-8">
-        <h3 class="text-white font-bold text-lg mb-6">Cuéntanos sobre tu operación</h3>
-
-        <form id="contact-form" class="space-y-4" onsubmit="submitForm(event)">
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label class="text-gray-400 text-xs font-medium mb-1 block">Nombre*</label>
-              <input type="text" placeholder="Tu nombre" required class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
-            </div>
-            <div>
-              <label class="text-gray-400 text-xs font-medium mb-1 block">Cargo*</label>
-              <input type="text" placeholder="Ej: Gerente de Logística" required class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
-            </div>
-          </div>
-
-          <div>
-            <label class="text-gray-400 text-xs font-medium mb-1 block">Empresa*</label>
-            <input type="text" placeholder="Nombre de tu empresa" required class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
-          </div>
-
-          <div>
-            <label class="text-gray-400 text-xs font-medium mb-1 block">Email Corporativo*</label>
-            <input type="email" placeholder="nombre@empresa.com" required class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
-          </div>
-
-          <div>
-            <label class="text-gray-400 text-xs font-medium mb-1 block">Teléfono / WhatsApp</label>
-            <input type="tel" placeholder="+51 999 999 999" class="form-inp w-full px-4 py-3 rounded-lg text-sm" />
-          </div>
-
-          <div>
-            <label class="text-gray-400 text-xs font-medium mb-1 block">Servicio de Interés*</label>
-            <select required class="form-inp w-full px-4 py-3 rounded-lg text-sm">
-              <option value="">Seleccionar servicio...</option>
-              <option>Inbound Logistics / Abastecimiento</option>
-              <option>Almacenamiento WMS / Valor Agregado</option>
-              <option>Distribución / Última Milla</option>
-              <option>E-commerce Fulfillment</option>
-              <option>Solución End-to-End Completa</option>
-              <option>Diagnóstico / Auditoría Operativa</option>
-            </select>
-          </div>
-
-          <div>
-            <label class="text-gray-400 text-xs font-medium mb-1 block">Cuéntanos tu reto logístico</label>
-            <textarea rows="3" placeholder="Describe brevemente tu operación actual y el principal desafío que quieres resolver..."
-              class="form-inp w-full px-4 py-3 rounded-lg text-sm resize-none"></textarea>
-          </div>
-
-          <div class="flex items-start gap-3">
-            <input type="checkbox" id="privacy" required class="mt-1 accent-yellow-400" />
-            <label for="privacy" class="text-gray-500 text-xs leading-relaxed">
-              Acepto las <a href="#" class="text-yellow-300 hover:underline">Políticas de Privacidad</a>
-              y el tratamiento de mis datos según la Ley N° 29733 (LPDP).
-            </label>
-          </div>
-
-          <button type="submit" id="submit-btn" class="btn-gold w-full py-4 rounded-xl text-base border-0">
-            Solicitar Diagnóstico Gratuito →
-          </button>
-        </form>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-     CUMPLIMIENTO
-================================================================ -->
-<section class="py-16 bg-navy-800">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-10">
-      <h3 class="text-white font-black text-2xl mb-2">
-        Cumplimiento <span class="text-gold-gradient">Regulatorio</span>
-      </h3>
-      <p class="text-gray-400 text-sm">Habilitados para licitaciones públicas, auditorías internacionales y contratos con el Estado Peruano</p>
-    </div>
-
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="comp-grid">
-      <div class="comp-badge">
-        <div class="text-yellow-400 font-black text-xl mb-1">DIGESA</div>
-        <div class="text-gray-400 text-xs">Habilitación sanitaria de almacenes</div>
-      </div>
-      <div class="comp-badge">
-        <div class="text-yellow-400 font-black text-xl mb-1">SENASA</div>
-        <div class="text-gray-400 text-xs">Productos agropecuarios certificados</div>
-      </div>
-      <div class="comp-badge">
-        <div class="text-yellow-400 font-black text-xl mb-1">ISO</div>
-        <div class="text-gray-400 text-xs">Certificaciones de calidad operativa</div>
-      </div>
-      <div class="comp-badge">
-        <div class="text-yellow-400 font-black text-xl mb-1">INDECOPI</div>
-        <div class="text-gray-400 text-xs">Libro de Reclamaciones digital activo</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================================================================
-     FOOTER
-================================================================ -->
-<footer class="bg-navy-800 border-t border-yellow-400/12">
-  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
-
-    <!-- Brand -->
-    <div>
-      <div class="flex items-center gap-3 mb-4">
-        <div class="w-9 h-9 rounded-lg overflow-hidden">
-          <img src="LOGO - SUPPLY 360.png" alt="Supply360" class="w-full h-full object-contain bg-white p-0.5" />
-        </div>
-        <span class="text-white font-black text-xl">SUPPLY<span class="text-gold-gradient">360</span></span>
-      </div>
-      <p class="text-gray-400 text-sm leading-relaxed mb-5">
-        Soluciones Multiservicios, Gestión de Cadena de Suministro y Logística Integral End-to-End.
-      </p>
-      <div class="flex gap-3">
-        <a href="https://www.facebook.com/profile.php?id=61589657582574" target="_blank" rel="noopener" aria-label="Facebook" class="w-8 h-8 rounded-lg bg-navy-600 border border-yellow-400/15 flex items-center justify-center text-gray-400 hover:text-yellow-300 hover:border-yellow-400/40 transition-all" style="background:#132040;">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>
-        <a href="https://www.instagram.com/supply360.pe/" target="_blank" rel="noopener" aria-label="Instagram" class="w-8 h-8 rounded-lg bg-navy-600 border border-yellow-400/15 flex items-center justify-center text-gray-400 hover:text-yellow-300 hover:border-yellow-400/40 transition-all" style="background:#132040;">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        </a>
-        <a href="https://www.tiktok.com/@supply.360" target="_blank" rel="noopener" aria-label="TikTok" class="w-8 h-8 rounded-lg bg-navy-600 border border-yellow-400/15 flex items-center justify-center text-gray-400 hover:text-yellow-300 hover:border-yellow-400/40 transition-all" style="background:#132040;">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
-        </a>
-        <a href="https://www.youtube.com/@supply360_peru" target="_blank" rel="noopener" aria-label="YouTube" class="w-8 h-8 rounded-lg bg-navy-600 border border-yellow-400/15 flex items-center justify-center text-gray-400 hover:text-yellow-300 hover:border-yellow-400/40 transition-all" style="background:#132040;">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- Servicios -->
-    <div>
-      <h4 class="text-white font-bold mb-5">Servicios</h4>
-      <ul class="space-y-2.5">
-        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Inbound Logistics</a></li>
-        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Almacenamiento WMS</a></li>
-        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Maquila y Kitting</a></li>
-        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Cross-Docking Avanzado</a></li>
-        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Distribución B2B</a></li>
-        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">E-commerce Fulfillment</a></li>
-        <li><a href="#servicios" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Logística Inversa</a></li>
-      </ul>
-    </div>
-
-    <!-- Empresa -->
-    <div>
-      <h4 class="text-white font-bold mb-5">Empresa</h4>
-      <ul class="space-y-2.5">
-        <li><a href="#valor"    class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Propuesta de Valor</a></li>
-        <li><a href="#nosotros" class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Por Qué Supply360</a></li>
-        <li><a href="#proceso"  class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Metodología</a></li>
-        <li><a href="#"         class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Certificaciones</a></li>
-        <li><a href="#"         class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Política de Privacidad</a></li>
-        <li><a href="#"         class="text-gray-400 hover:text-yellow-300 text-sm transition-colors">Términos de Servicio</a></li>
-        <li class="pt-1">
-          <!-- OBLIGATORIO LEY PERUANA - Aviso Virtual INDECOPI -->
-          <a href="libro-de-reclamaciones.php"
-             title="Libro de Reclamaciones Virtual - Ley N° 29571"
-             class="inline-block rounded-xl overflow-hidden border-2 border-white/20 hover:border-yellow-400/60 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-yellow-400/20"
-             style="max-width: 110px;">
-              <img src="Libro-reclamaciones/AvisoVirtual_page1.png"
-                   alt="Libro de Reclamaciones Virtual - INDECOPI - Ley N° 29571"
-                   loading="lazy"
-                   class="w-full h-auto block"
-                   style="max-width: 110px;">
-          </a>
-          <p class="text-gray-500 text-[9px] mt-1.5 leading-tight" style="max-width:110px;">
-              Haz clic para ingresar tu queja o reclamo.
-          </p>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Contacto -->
-    <div>
-      <h4 class="text-white font-bold mb-5">Contacto</h4>
-      <ul class="space-y-3">
-        <li class="flex items-start gap-2 text-gray-400 text-sm">
-          <svg class="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          <div>
-            <a href="mailto:info@supply360.com.pe" class="hover:text-yellow-300 transition-colors block">info@supply360.com.pe</a>
-            <a href="mailto:operaciones@supply360.com.pe" class="hover:text-yellow-300 transition-colors block">operaciones@supply360.com.pe</a>
-          </div>
-        </li>
-        <li class="flex items-start gap-2 text-gray-400 text-sm">
-          <svg class="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          <span>[Sede Central — Lima, Perú]</span>
-        </li>
-        <li class="flex items-start gap-2 text-gray-400 text-sm">
-          <svg class="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-          <span>[Almacenes Hub — Lima]</span>
-        </li>
-      </ul>
-      <a href="#contacto" class="btn-gold inline-block mt-5 px-5 py-2.5 rounded-lg text-sm">
-        Solicitar Diagnóstico →
+  <!-- Mobile drawer -->
+  <div id="mobile-menu" role="dialog" aria-label="Menú móvil" aria-modal="true">
+    <a href="#flujo"      class="mob-link">Flujo Operativo</a>
+    <a href="#servicios"  class="mob-link">Servicios</a>
+    <a href="#plataforma" class="mob-link">Plataforma</a>
+    <a href="#casos"      class="mob-link">Casos de Uso</a>
+    <a href="#contacto"   class="mob-link">Contacto</a>
+    <a href="https://rrhh.supplylogistic360.com" target="_blank" rel="noopener noreferrer"
+       class="mob-link">Intranet ↗</a>
+    <div class="mob-cta" style="margin-top:1.5rem;">
+      <a href="#contacto" class="btn btn-primary" style="width:100%;justify-content:center;">
+        Solicitar Diagnóstico
       </a>
     </div>
   </div>
 
-  <!-- Bottom bar -->
-  <div class="border-t border-yellow-400/10 py-6">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-3">
-      <p class="text-gray-500 text-xs">© 2026 SUPPLY360 — Todos los derechos reservados.</p>
-      <div class="flex gap-6">
-        <a href="#" class="text-gray-500 hover:text-yellow-300 text-xs transition-colors">Política de Privacidad</a>
-        <a href="#" class="text-gray-500 hover:text-yellow-300 text-xs transition-colors">Términos de Servicio</a>
-        <a href="libro-de-reclamaciones.php" class="text-gray-500 hover:text-yellow-300 text-xs transition-colors">Libro de Reclamaciones</a>
+  <!-- ═══════════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════════ -->
+  <section id="hero" aria-labelledby="hero-title">
+
+    <video class="hero-video" autoplay muted loop playsinline
+           preload="metadata" aria-hidden="true">
+      <source src="assets/Background loop del Hero.mp4" type="video/mp4" />
+    </video>
+
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-grid-lines" aria-hidden="true"></div>
+
+    <div class="container hero-inner">
+
+      <!-- Content -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Operador Estratégico · Supply Chain · Perú
+        </div>
+
+        <h1 id="hero-title" class="hero-title">
+          <span class="line">La cadena de</span>
+          <span class="line"><span class="text-gradient">suministro</span></span>
+          <span class="line">completa.</span>
+        </h1>
+
+        <p class="hero-sub">
+          Del <em>proveedor de tu proveedor</em> al <em>cliente de tu cliente</em>.
+          Gestión integral, trazable y predictiva en tiempo real.
+        </p>
+
+        <div class="hero-ctas">
+          <div class="magnetic">
+            <a href="#contacto" class="btn btn-primary">
+              Solicitar Diagnóstico Operativo
+              <svg viewBox="0 0 20 20" fill="none" width="16" height="16" aria-hidden="true">
+                <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+          <div class="magnetic">
+            <a href="#servicios" class="btn btn-ghost-dark">Ver Servicios</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Dashboard -->
+      <aside class="hero-dash" aria-label="Panel operativo en tiempo real">
+        <div class="dash-header">
+          <span class="dash-name">Supply360 OS</span>
+          <span class="dash-live" aria-label="Sistema activo">LIVE</span>
+        </div>
+
+        <div class="dash-metric">
+          <div class="dash-metric-lbl">Eficiencia Operativa</div>
+          <div class="dash-metric-val"><span>98</span>.4%</div>
+        </div>
+
+        <div class="dash-bars" role="list" aria-label="Indicadores por área">
+          <div class="dash-bar-row" role="listitem">
+            <span class="dash-bar-lbl">Inbound</span>
+            <div class="dash-bar-track" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">
+              <div class="dash-bar-fill" style="--bar-w:94%"></div>
+            </div>
+            <span class="dash-bar-pct">94%</span>
+          </div>
+          <div class="dash-bar-row" role="listitem">
+            <span class="dash-bar-lbl">WMS</span>
+            <div class="dash-bar-track" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
+              <div class="dash-bar-fill" style="--bar-w:98%"></div>
+            </div>
+            <span class="dash-bar-pct">98%</span>
+          </div>
+          <div class="dash-bar-row" role="listitem">
+            <span class="dash-bar-lbl">Outbound</span>
+            <div class="dash-bar-track" role="progressbar" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100">
+              <div class="dash-bar-fill" style="--bar-w:97%"></div>
+            </div>
+            <span class="dash-bar-pct">97%</span>
+          </div>
+        </div>
+
+        <div class="dash-alert" role="status" aria-live="polite">
+          Picking acelerado — Zona Lima Norte completado al 100%
+        </div>
+      </aside>
+
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span class="hero-scroll-text">scroll</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       STORYTELLING — Flujo de operación
+  ════════════════════════════════════════════════════ -->
+  <section id="flujo" aria-labelledby="flujo-title">
+  <div class="flujo-head js-up">
+    <p class="section-label">Flujo de Operación</p>
+    <h2 id="flujo-title">Del origen al <span class="text-gradient">destino final</span></h2>
+    <p>Cada etapa de tu cadena de suministro bajo un único sistema de gestión inteligente, trazable y en tiempo real.</p>
+  </div>
+
+  <div class="flujo-journey" role="list" aria-label="Pasos del flujo de operación">
+
+    <!-- 01 — Red de Proveedores -->
+    <div class="fj-row" role="listitem">
+      <div class="fj-text">
+        <span class="fj-deco-num" aria-hidden="true">01</span>
+        <div class="fj-icon-badge" aria-hidden="true">
+          <!-- Globe / Red global -->
+          <svg viewBox="0 0 24 24"><path d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+        </div>
+        <p class="fj-step-tag">Paso 01</p>
+        <h3 class="fj-step-title">Red de Proveedores</h3>
+        <p class="fj-step-desc">Coordinamos con tu red de proveedores desde el origen: auditorías, acuerdos de nivel de servicio y visibilidad total del upstream.</p>
+      </div>
+      <div class="fj-photo">
+        <img src="assets/Sección Por qué Supply360.jpeg" alt="Red de proveedores Supply360" loading="lazy"/>
+        <div class="fj-photo-overlay" aria-hidden="true"></div>
       </div>
     </div>
+
+    <!-- 02 — Inbound Logistics (foto izquierda) -->
+    <div class="fj-row fj-row--alt" role="listitem">
+      <div class="fj-text">
+        <span class="fj-deco-num" aria-hidden="true">02</span>
+        <div class="fj-icon-badge" aria-hidden="true">
+          <!-- Avión de carga -->
+          <svg viewBox="0 0 24 24"><path d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"/></svg>
+        </div>
+        <p class="fj-step-tag">Paso 02</p>
+        <h3 class="fj-step-title">Inbound Logistics</h3>
+        <p class="fj-step-desc">Recepción, verificación y control de calidad de mercancías. Gestión de importaciones, aforos y transporte internacional de origen.</p>
+      </div>
+      <div class="fj-photo">
+        <img src="assets/Card A — Inbound Logistics.jpeg" alt="Inbound Logistics Supply360" loading="lazy"/>
+        <div class="fj-photo-overlay" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- 03 — Almacenamiento WMS -->
+    <div class="fj-row" role="listitem">
+      <div class="fj-text">
+        <span class="fj-deco-num" aria-hidden="true">03</span>
+        <div class="fj-icon-badge" aria-hidden="true">
+          <!-- Almacén -->
+          <svg viewBox="0 0 24 24"><path d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z"/></svg>
+        </div>
+        <p class="fj-step-tag">Paso 03</p>
+        <h3 class="fj-step-title">Almacenamiento WMS</h3>
+        <p class="fj-step-desc">Almacenes inteligentes habilitados DIGESA/SENASA. Gestión refrigerada, seca y valorizada con visibilidad 360° en tiempo real.</p>
+      </div>
+      <div class="fj-photo">
+        <img src="assets/Card B — Almacenamiento WMS.jpeg" alt="Almacenamiento WMS Supply360" loading="lazy"/>
+        <div class="fj-photo-overlay" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- 04 — Gestión de Inventario (foto izquierda) -->
+    <div class="fj-row fj-row--alt" role="listitem">
+      <div class="fj-text">
+        <span class="fj-deco-num" aria-hidden="true">04</span>
+        <div class="fj-icon-badge" aria-hidden="true">
+          <!-- Cajas / inventario -->
+          <svg viewBox="0 0 24 24"><path d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5m8.25 3v6.75m0 0l-3-3m3 3l3-3M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
+        </div>
+        <p class="fj-step-tag">Paso 04</p>
+        <h3 class="fj-step-title">Gestión de Inventario</h3>
+        <p class="fj-step-desc">Control de stocks, fechas de vencimiento, rotación y reposición automática. Kitting, maquila y acondicionamiento de producto.</p>
+      </div>
+      <div class="fj-photo">
+        <img src="assets/Card B — Almacenamiento WMS.jpeg" alt="Gestión de inventario Supply360" loading="lazy" style="object-position:center bottom"/>
+        <div class="fj-photo-overlay" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- 05 — Distribución & Última Milla -->
+    <div class="fj-row" role="listitem">
+      <div class="fj-text">
+        <span class="fj-deco-num" aria-hidden="true">05</span>
+        <div class="fj-icon-badge" aria-hidden="true">
+          <!-- Camión de reparto -->
+          <svg viewBox="0 0 24 24"><path d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+        </div>
+        <p class="fj-step-tag">Paso 05</p>
+        <h3 class="fj-step-title">Distribución &amp; Última Milla</h3>
+        <p class="fj-step-desc">Distribución B2B, canal moderno y e-commerce fulfillment. Tracking en vivo y confirmación de entrega con evidencia digital.</p>
+      </div>
+      <div class="fj-photo">
+        <img src="assets/Card C — Outbound  Distribución.jpeg" alt="Distribución y última milla Supply360" loading="lazy"/>
+        <div class="fj-photo-overlay" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <!-- 06 — Entrega al Cliente Final (foto izquierda) -->
+    <div class="fj-row fj-row--alt" role="listitem">
+      <div class="fj-text">
+        <span class="fj-deco-num" aria-hidden="true">06</span>
+        <div class="fj-icon-badge" aria-hidden="true">
+          <!-- Casa / entrega en domicilio -->
+          <svg viewBox="0 0 24 24"><path d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+        </div>
+        <p class="fj-step-tag">Paso 06</p>
+        <h3 class="fj-step-title">Entrega al Cliente Final</h3>
+        <p class="fj-step-desc">Entrega impecable, trazable y medible. Logística inversa dinámica y ciclo de retroalimentación para la mejora continua.</p>
+      </div>
+      <div class="fj-photo">
+        <img src="assets/Card A — Inbound Logistics.jpeg" alt="Entrega al cliente final Supply360" loading="lazy" style="object-position:center 30%"/>
+        <div class="fj-photo-overlay" aria-hidden="true"></div>
+      </div>
+    </div>
+
   </div>
-</footer>
+</section>
 
-<!-- Back to top -->
-<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba">
-  <svg class="w-5 h-5 text-navy-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 15l7-7 7 7"/>
-  </svg>
-</button>
+  <!-- ═══════════════════════════════════════════════════
+       SERVICES
+  ════════════════════════════════════════════════════ -->
+  <section id="servicios" aria-labelledby="servicios-title">
+    <div class="container">
 
-<!-- ================================================================
-     JAVASCRIPT
-================================================================ -->
-<script>
-gsap.registerPlugin(ScrollTrigger);
+      <header class="svc-head js-up">
+        <p class="section-label">Nuestros Servicios</p>
+        <h2 id="servicios-title">
+          Soluciones end-to-end<br>para tu <span class="text-gradient">cadena de suministro</span>
+        </h2>
+        <p>
+          Operamos cada eslabón de tu logística con tecnología, trazabilidad y equipos especializados.
+        </p>
+      </header>
 
-// ── Mobile nav ──────────────────────────────────────────────────
-const hamBtn = document.getElementById('ham-btn');
-const mobileNav = document.getElementById('mobile-nav');
-let menuOpen = false;
+      <div class="svc-grid">
 
-hamBtn.addEventListener('click', () => {
-  menuOpen = !menuOpen;
-  if (menuOpen) {
-    mobileNav.style.maxHeight = mobileNav.scrollHeight + 'px';
-    mobileNav.style.opacity = '1';
-  } else {
-    mobileNav.style.maxHeight = '0';
-    mobileNav.style.opacity = '0';
-  }
-});
+        <!-- Card A: Inbound -->
+        <article class="svc-card" aria-label="Servicio: Inbound Logistics">
+          <div class="svc-img">
+            <img src="assets/Card A — Inbound Logistics.jpeg"
+                 alt="Inbound Logistics — Supply360" loading="lazy" />
+            <div class="svc-img-grad" aria-hidden="true"></div>
+            <span class="svc-img-tag">A · Inbound</span>
+          </div>
+          <div class="svc-body">
+            <h3>Inbound Logistics</h3>
+            <p>Gestión estratégica del flujo de entrada: importaciones, aforos, transporte de origen y control de calidad en recepción.</p>
+            <ul class="svc-features" aria-label="Características">
+              <li class="svc-feature">Gestión de importaciones y aforos aduaneros</li>
+              <li class="svc-feature">Transporte nacional e internacional de origen</li>
+              <li class="svc-feature">Control de calidad y mermas en recepción</li>
+              <li class="svc-feature">Coordinación con proveedores y navieras</li>
+            </ul>
+            <a href="#contacto" class="svc-link" aria-label="Consultar servicio Inbound Logistics">
+              Consultar servicio
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
 
-function closeMenu() {
-  menuOpen = false;
-  mobileNav.style.maxHeight = '0';
-  mobileNav.style.opacity = '0';
-}
+        <!-- Card B: WMS -->
+        <article class="svc-card" aria-label="Servicio: Almacenamiento WMS">
+          <div class="svc-img">
+            <img src="assets/Card B — Almacenamiento WMS.jpeg"
+                 alt="Almacenamiento WMS — Supply360" loading="lazy" />
+            <div class="svc-img-grad" aria-hidden="true"></div>
+            <span class="svc-img-tag">B · Almacenamiento</span>
+          </div>
+          <div class="svc-body">
+            <h3>Almacenamiento, WMS &amp; Valor Agregado</h3>
+            <p>El corazón inteligente de tu operación con visibilidad 360° en tiempo real y habilitaciones sanitarias completas.</p>
+            <ul class="svc-features" aria-label="Características">
+              <li class="svc-feature">WMS refrigerado, seco y valorizado — DIGESA/SENASA</li>
+              <li class="svc-feature">Maquila, kitting, etiquetado y packs promocionales</li>
+              <li class="svc-feature">Cross-docking avanzado sin almacenamiento prolongado</li>
+              <li class="svc-feature">Inventario en tiempo real con alertas automáticas</li>
+            </ul>
+            <a href="#contacto" class="svc-link" aria-label="Consultar servicio WMS">
+              Consultar servicio
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
 
-// ── Back to top ─────────────────────────────────────────────────
-const backTop = document.getElementById('back-top');
-window.addEventListener('scroll', () => {
-  backTop.classList.toggle('visible', window.scrollY > 500);
-});
+        <!-- Card C: Outbound -->
+        <article class="svc-card" aria-label="Servicio: Distribución y Última Milla">
+          <div class="svc-img">
+            <img src="assets/Card C — Outbound  Distribución.jpeg"
+                 alt="Distribución y Última Milla — Supply360" loading="lazy" />
+            <div class="svc-img-grad" aria-hidden="true"></div>
+            <span class="svc-img-tag">C · Outbound</span>
+          </div>
+          <div class="svc-body">
+            <h3>Distribución, Última Milla &amp; Reversa</h3>
+            <p>Entrega impecable, trazable y predictiva hasta el consumidor final con confirmación digital de entrega.</p>
+            <ul class="svc-features" aria-label="Características">
+              <li class="svc-feature">Distribución B2B, retail y canal moderno</li>
+              <li class="svc-feature">E-commerce fulfillment con integración API</li>
+              <li class="svc-feature">Tracking en vivo y evidencia fotográfica</li>
+              <li class="svc-feature">Logística inversa y re-acondicionamiento</li>
+            </ul>
+            <a href="#contacto" class="svc-link" aria-label="Consultar servicio Distribución">
+              Consultar servicio
+              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
 
-// ── Smooth scroll for anchor links ──────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 80, behavior: 'smooth' });
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       PLATFORM / DASHBOARD
+  ════════════════════════════════════════════════════ -->
+  <section id="plataforma" aria-labelledby="plat-title">
+    <div class="container plat-inner">
+
+      <!-- Text -->
+      <div class="plat-text">
+        <p class="section-label">Supply360 OS</p>
+        <h2 id="plat-title">
+          Inteligencia operacional<br>en <span class="text-gradient">tiempo real</span>
+        </h2>
+        <p>
+          Nuestra plataforma centraliza cada operación, alerta y KPI de tu cadena de suministro
+          en un único panel de control accesible desde cualquier dispositivo.
+        </p>
+
+        <div class="plat-features" role="list">
+
+          <div class="plat-feat" role="listitem">
+            <div class="plat-feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 20V10M18 20V4M6 20v-4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="plat-feat-title">KPIs en tiempo real</div>
+              <div class="plat-feat-text">Métricas de eficiencia, OTIF y costos actualizadas al instante.</div>
+            </div>
+          </div>
+
+          <div class="plat-feat" role="listitem">
+            <div class="plat-feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+              </svg>
+            </div>
+            <div>
+              <div class="plat-feat-title">Alertas preventivas</div>
+              <div class="plat-feat-text">Notificaciones automáticas ante desviaciones operativas antes de que impacten.</div>
+            </div>
+          </div>
+
+          <div class="plat-feat" role="listitem">
+            <div class="plat-feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 20H5a2 2 0 01-2-2V6a2 2 0 012-2h4M15 20h4a2 2 0 002-2V6a2 2 0 00-2-2h-4M9 12h6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="plat-feat-title">Trazabilidad total</div>
+              <div class="plat-feat-text">Rastreo de cada unidad desde el proveedor hasta la entrega final con evidencia digital.</div>
+            </div>
+          </div>
+
+          <div class="plat-feat" role="listitem">
+            <div class="plat-feat-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="plat-feat-title">Reportes ejecutivos</div>
+              <div class="plat-feat-text">Informes periódicos con análisis de performance y recomendaciones de mejora.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- OS Panel -->
+      <div class="os-panel" aria-label="Panel de control Supply360 OS">
+        <div class="os-top">
+          <span class="os-title">Supply360 OS · Dashboard</span>
+          <span class="os-status" role="status">Sistema Activo</span>
+        </div>
+
+        <div class="os-kpis" role="list" aria-label="KPIs principales">
+          <div class="os-kpi" role="listitem">
+            <div class="os-kpi-lbl">Eficiencia Oper.</div>
+            <div class="os-kpi-val accent">98.4%</div>
+            <div class="os-kpi-trend">↑ +1.2% vs mes ant.</div>
+          </div>
+          <div class="os-kpi" role="listitem">
+            <div class="os-kpi-lbl">OTIF Rate</div>
+            <div class="os-kpi-val green">97.2%</div>
+            <div class="os-kpi-trend">↑ +0.8% vs mes ant.</div>
+          </div>
+          <div class="os-kpi" role="listitem">
+            <div class="os-kpi-lbl">Alertas activas</div>
+            <div class="os-kpi-val">2</div>
+            <div class="os-kpi-trend neutral">sin incidentes críticos</div>
+          </div>
+          <div class="os-kpi" role="listitem">
+            <div class="os-kpi-lbl">Clientes activos</div>
+            <div class="os-kpi-val accent">148+</div>
+            <div class="os-kpi-trend">↑ +12 este trimestre</div>
+          </div>
+        </div>
+
+        <div class="os-bars" role="list" aria-label="Distribución por zona">
+          <div class="os-bar-row" role="listitem">
+            <span class="os-bar-lbl">Lima Norte</span>
+            <div class="os-bar-track" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100">
+              <div class="os-bar-fill" style="width:78%"></div>
+            </div>
+            <span class="os-bar-val">78%</span>
+          </div>
+          <div class="os-bar-row" role="listitem">
+            <span class="os-bar-lbl">Lima Sur</span>
+            <div class="os-bar-track" role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100">
+              <div class="os-bar-fill" style="width:64%"></div>
+            </div>
+            <span class="os-bar-val">64%</span>
+          </div>
+          <div class="os-bar-row" role="listitem">
+            <span class="os-bar-lbl">Callao &amp; Puerto</span>
+            <div class="os-bar-track" role="progressbar" aria-valuenow="91" aria-valuemin="0" aria-valuemax="100">
+              <div class="os-bar-fill" style="width:91%"></div>
+            </div>
+            <span class="os-bar-val">91%</span>
+          </div>
+          <div class="os-bar-row" role="listitem">
+            <span class="os-bar-lbl">Provincias</span>
+            <div class="os-bar-track" role="progressbar" aria-valuenow="47" aria-valuemin="0" aria-valuemax="100">
+              <div class="os-bar-fill" style="width:47%"></div>
+            </div>
+            <span class="os-bar-val">47%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       KPIs
+  ════════════════════════════════════════════════════ -->
+  <section id="kpis" aria-labelledby="kpis-title">
+    <h2 id="kpis-title" class="sr-only">Indicadores clave de rendimiento</h2>
+    <div class="container">
+      <div class="kpis-grid" role="list">
+
+        <div class="kpi-item" role="listitem">
+          <div class="kpi-num">
+            <span class="kpi-count" data-target="500" aria-live="polite">500</span>
+            <span class="kpi-suffix" aria-label="más">+</span>
+          </div>
+          <p class="kpi-lbl">Clientes Atendidos</p>
+        </div>
+
+        <div class="kpi-item" role="listitem">
+          <div class="kpi-num">
+            <span class="kpi-count" data-target="98" aria-live="polite">98</span>
+            <span class="kpi-suffix" aria-label="por ciento">%</span>
+          </div>
+          <p class="kpi-lbl">Entregas a Tiempo</p>
+        </div>
+
+        <div class="kpi-item" role="listitem">
+          <div class="kpi-num">
+            <span class="kpi-count" data-target="15" aria-live="polite">15</span>
+            <span class="kpi-suffix" aria-label="más">+</span>
+          </div>
+          <p class="kpi-lbl">Años de Experiencia</p>
+        </div>
+
+        <div class="kpi-item" role="listitem">
+          <div class="kpi-num">
+            <span class="kpi-count" data-target="3" aria-live="polite">3</span>
+            <span class="kpi-suffix" aria-label="millones más">M+</span>
+          </div>
+          <p class="kpi-lbl">Unidades Gestionadas</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       USE CASES
+  ════════════════════════════════════════════════════ -->
+  <section id="casos" aria-labelledby="casos-title">
+    <div class="container">
+      <header class="casos-head js-up">
+        <p class="section-label">Casos de Uso</p>
+        <h2 id="casos-title">
+          Operamos para<br>los más <span class="text-gradient">exigentes</span>
+        </h2>
+        <p>
+          Desde consumo masivo hasta e-commerce y retail moderno, adaptamos nuestra
+          plataforma a la complejidad de cada industria.
+        </p>
+      </header>
+    </div>
+
+    <!-- Block 1: Inbound -->
+    <article class="caso-block" aria-labelledby="caso1-title">
+      <div class="caso-img">
+        <img src="assets/Card A — Inbound Logistics.jpeg"
+             alt="Operación de inbound logistics Supply360" loading="lazy" />
+        <div class="caso-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="caso-content">
+        <span class="caso-label" aria-label="Caso de uso 1">01 / Consumo Masivo</span>
+        <h3 id="caso1-title">Logística de entrada para marcas de gran consumo</h3>
+        <p>
+          Coordinamos importaciones desde Asia, Europa y Latinoamérica con control de calidad en origen,
+          despacho aduanero ágil y recepción certificada en almacenes habilitados por DIGESA.
+        </p>
+        <ul class="caso-feats" aria-label="Beneficios">
+          <li class="caso-feat">
+            <span class="caso-feat-dot" aria-hidden="true">
+              <svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            Reducción de costos de importación hasta 18%
+          </li>
+          <li class="caso-feat">
+            <span class="caso-feat-dot" aria-hidden="true">
+              <svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            Trazabilidad documental y de producto 100%
+          </li>
+          <li class="caso-feat">
+            <span class="caso-feat-dot" aria-hidden="true">
+              <svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            Lead times reducidos en hasta 30%
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Block 2: WMS (reverse) -->
+    <article class="caso-block reverse" aria-labelledby="caso2-title">
+      <div class="caso-img">
+        <video class="caso-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/video1.mp4" type="video/mp4" />
+        </video>
+        <div class="caso-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="caso-content">
+        <span class="caso-label" aria-label="Caso de uso 2">02 / Retail &amp; Canal Moderno</span>
+        <h3 id="caso2-title">WMS inteligente para operaciones de alta rotación</h3>
+        <p>
+          Gestionamos almacenes refrigerados y secos con integración a sistemas ERP,
+          control de stock en tiempo real y preparación de pedidos para cadenas de supermercados y retail moderno.
+        </p>
+        <ul class="caso-feats" aria-label="Beneficios">
+          <li class="caso-feat">
+            <span class="caso-feat-dot" aria-hidden="true">
+              <svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            99.8% de exactitud de inventario
+          </li>
+          <li class="caso-feat">
+            <span class="caso-feat-dot" aria-hidden="true">
+              <svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            Preparación de pedidos en menos de 4 horas
+          </li>
+          <li class="caso-feat">
+            <span class="caso-feat-dot" aria-hidden="true">
+              <svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            Cumplimiento DIGESA, SENASA e ISO
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- Block 3: Outbound -->
+    <article class="caso-block" aria-labelledby="caso3-title">
+      <div class="caso-img">
+        <img src="assets/Card C — Outbound  Distribución.jpeg"
+             alt="Distribución y última milla Supply360" loading="lazy" />
+        <div class="caso-img-overlay" aria-hidden="true"></div>
+      </div>
+      <div class="caso-content">
+        <span class="caso-label" aria-label="Caso de uso 3">03 / E-commerce &amp; Última Milla</span>
+        <h3 id="caso3-title">Distribución ágil para operaciones de e-commerce</h3>
+        <p>
+          Fulfillment integral con integración API a plataformas de e-commerce, picking ágil,
+          empaque personalizado y entrega con confirmación digital en todo Lima y provincias.
+        </p>
+        <ul class="caso-feats" aria-label="Beneficios">
+          <li class="caso-feat">
+            <span class="caso-feat-dot" aria-hidden="true">
+              <svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            Integración con Shopify, WooCommerce, Vtex y Mercado Libre
+          </li>
+          <li class="caso-feat">
+            <span class="caso-feat-dot" aria-hidden="true">
+              <svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            Entregas same-day y next-day en Lima Metropolitana
+          </li>
+          <li class="caso-feat">
+            <span class="caso-feat-dot" aria-hidden="true">
+              <svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            </span>
+            98% tasa de entrega en el primer intento
+          </li>
+        </ul>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CTA FINAL
+  ════════════════════════════════════════════════════ -->
+  <section id="contacto" aria-labelledby="cta-title">
+    <div class="container cta-inner">
+
+      <p class="section-label" style="display:inline-flex;justify-content:center;">Habla con un Experto</p>
+
+      <h2 id="cta-title">
+        Solicita tu<br>
+        <span class="text-gradient">Diagnóstico</span><br>
+        Operativo Gratuito
+      </h2>
+
+      <p>
+        Cuéntanos sobre tu operación y un especialista de Supply360 te contactará
+        en menos de 24 horas con un análisis personalizado y sin compromiso.
+      </p>
+
+      <div class="cta-actions">
+        <div class="magnetic">
+          <a href="mailto:info@supply360.com" class="btn btn-primary">
+            <svg viewBox="0 0 20 20" fill="none" width="16" height="16" aria-hidden="true">
+              <path d="M2 4h16v12H2V4zm0 0l8 7 8-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            info@supply360.com
+          </a>
+        </div>
+        <div class="magnetic">
+          <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20Supply360"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       COMPLIANCE
+  ════════════════════════════════════════════════════ -->
+  <section id="compliance" aria-label="Certificaciones y habilitaciones">
+    <div class="container comp-inner">
+      <span class="comp-label">Habilitaciones</span>
+      <div class="comp-badges" role="list">
+        <span class="comp-badge" role="listitem" title="Habilitación sanitaria de almacenes">DIGESA</span>
+        <span class="comp-badge" role="listitem" title="Productos agropecuarios certificados">SENASA</span>
+        <span class="comp-badge" role="listitem" title="Certificaciones de calidad operativa">ISO</span>
+        <span class="comp-badge" role="listitem" title="Libro de Reclamaciones digital activo">INDECOPI</span>
+        <span class="comp-badge" role="listitem" title="Apto para licitaciones públicas">ESTADO PE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════ -->
+  <footer id="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <img src="assets/logo/LOGO SUPPLY 360.png" alt="Supply360" width="120" height="30" loading="lazy" />
+          <p>
+            Soluciones multiservicios de gestión de cadena de suministro y logística integral end-to-end en Perú.
+          </p>
+          <div class="footer-socials" aria-label="Redes sociales">
+            <a href="https://www.facebook.com/profile.php?id=61589657582574"
+               target="_blank" rel="noopener noreferrer" class="social-a" aria-label="Facebook">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/supply360.pe/"
+               target="_blank" rel="noopener noreferrer" class="social-a" aria-label="Instagram">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@supply.360"
+               target="_blank" rel="noopener noreferrer" class="social-a" aria-label="TikTok">
+              <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.84 1.56V6.79a4.85 4.85 0 01-1.07-.1z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@supply360_peru"
+               target="_blank" rel="noopener noreferrer" class="social-a" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Servicios -->
+        <nav aria-label="Servicios">
+          <p class="footer-col-title">Servicios</p>
+          <ul class="footer-links">
+            <li><a href="#servicios" class="footer-link">Inbound Logistics</a></li>
+            <li><a href="#servicios" class="footer-link">Almacenamiento WMS</a></li>
+            <li><a href="#servicios" class="footer-link">Maquila y Kitting</a></li>
+            <li><a href="#servicios" class="footer-link">Cross-Docking</a></li>
+            <li><a href="#servicios" class="footer-link">Distribución B2B</a></li>
+            <li><a href="#servicios" class="footer-link">E-commerce Fulfillment</a></li>
+            <li><a href="#servicios" class="footer-link">Logística Inversa</a></li>
+          </ul>
+        </nav>
+
+        <!-- Empresa -->
+        <nav aria-label="Empresa">
+          <p class="footer-col-title">Empresa</p>
+          <ul class="footer-links">
+            <li><a href="#flujo"      class="footer-link">Flujo Operativo</a></li>
+            <li><a href="#plataforma" class="footer-link">Plataforma</a></li>
+            <li><a href="#casos"      class="footer-link">Casos de Uso</a></li>
+            <li><a href="#compliance" class="footer-link">Certificaciones</a></li>
+            <li><a href="https://rrhh.supplylogistic360.com" target="_blank" rel="noopener noreferrer" class="footer-link">Intranet ↗</a></li>
+            <li><a href="#" class="footer-link">Política de Privacidad</a></li>
+          </ul>
+        </nav>
+
+        <!-- Contacto -->
+        <div>
+          <p class="footer-col-title">Contacto</p>
+          <ul class="footer-links">
+            <li>
+              <a href="mailto:info@supply360.com" class="footer-link">
+                info@supply360.com
+              </a>
+            </li>
+
+            <li class="footer-address">
+              Av. República de Chile 324 Int. 601,<br>Jesús María, Lima — Perú
+            </li>
+          </ul>
+          <a href="libro-de-reclamaciones.php"
+             class="footer-reclam-img"
+             title="Libro de Reclamaciones Virtual — Ley N° 29571"
+             aria-label="Libro de Reclamaciones Virtual Supply360">
+            <img src="Libro-reclamaciones/AvisoVirtual_page1.png"
+                 alt="Aviso — Libro de Reclamaciones Virtual INDECOPI"
+                 width="160" height="84" loading="lazy" />
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Footer bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copy">
+          © 2025 – 2026 Supply360 S.A.C.S. · RUC 20615946207 · Todos los derechos reservados.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ── Accessibility: skip link ─────────────────────── -->
+  <a href="#hero" class="sr-only" style="position:fixed;top:1rem;left:1rem;z-index:9999;
+     background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:4px;font-weight:600;
+     opacity:0;pointer-events:none;">
+    Saltar al contenido principal
+  </a>
+
+  <!-- ── Scripts ───────────────────────────────────────── -->
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/SplitText.min.js"></script>
+
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Main -->
+  <script src="js/main.js"></script>
+
+  <style>
+    /* sr-only utility (needed before CSS loads) */
+    .sr-only {
+      position:absolute; width:1px; height:1px;
+      overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap;
     }
-  });
-});
+  </style>
 
-// ── Hero Particle Canvas ─────────────────────────────────────────
-(function () {
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  let pts = [];
-
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-
-  function mkPt() {
-    return {
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.45,
-      vy: (Math.random() - 0.5) * 0.45,
-      r: Math.random() * 1.8 + 0.8,
-      op: Math.random() * 0.5 + 0.2,
-      gold: Math.random() > 0.65,
-    };
-  }
-
-  function init() {
-    resize();
-    pts = Array.from({ length: 90 }, mkPt);
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const D = 140;
-    pts.forEach((p, i) => {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
-      if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.gold ? `rgba(255,208,0,${p.op})` : `rgba(30,58,110,${p.op})`;
-      ctx.fill();
-
-      for (let j = i + 1; j < pts.length; j++) {
-        const dx = pts[j].x - p.x, dy = pts[j].y - p.y;
-        const d = Math.sqrt(dx * dx + dy * dy);
-        if (d < D) {
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(255,208,0,${(1 - d / D) * 0.22})`;
-          ctx.lineWidth = 0.6;
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(pts[j].x, pts[j].y);
-          ctx.stroke();
-        }
-      }
-    });
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', resize);
-  init(); draw();
-})();
-
-// ── Hero entrance ────────────────────────────────────────────────
-gsap.timeline({ delay: 0.15 })
-  .from('#h-badge',  { opacity: 0, y: 18, duration: 0.6, ease: 'power2.out' })
-  .from('#h-title',  { opacity: 0, y: 42, duration: 0.85, ease: 'power3.out' }, '-=0.3')
-  .from('#h-sub',    { opacity: 0, y: 28, duration: 0.7, ease: 'power2.out' }, '-=0.4')
-  .from('#h-ctas',   { opacity: 0, y: 18, duration: 0.6, ease: 'power2.out' }, '-=0.3')
-  .from('#h-stats > *', { opacity: 0, y: 18, duration: 0.5, stagger: 0.1, ease: 'power2.out' }, '-=0.2');
-
-// ── Counters ─────────────────────────────────────────────────────
-document.querySelectorAll('.counter').forEach(el => {
-  const target = +el.dataset.target;
-  ScrollTrigger.create({
-    trigger: el, start: 'top 88%', once: true,
-    onEnter: () => {
-      gsap.to({ v: 0 }, {
-        v: target, duration: 2.2, ease: 'power2.out',
-        onUpdate() { el.textContent = Math.round(this.targets()[0].v); }
-      });
-    }
-  });
-});
-
-// ── Generic reveal helper ────────────────────────────────────────
-function reveal(selector, opts = {}) {
-  gsap.from(selector, {
-    opacity: 0,
-    y: opts.y ?? 50,
-    x: opts.x ?? 0,
-    stagger: opts.stagger ?? 0,
-    duration: opts.dur ?? 0.85,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: typeof selector === 'string' ? selector : selector[0],
-      start: 'top 82%',
-      once: true,
-      ...opts.st
-    }
-  });
-}
-
-// ── Section reveals ──────────────────────────────────────────────
-reveal('.reveal');
-gsap.utils.toArray('.reveal-stagger').forEach(section => {
-  gsap.from(section.children, {
-    opacity: 0, y: 45, stagger: 0.15, duration: 0.75, ease: 'power3.out',
-    scrollTrigger: { trigger: section, start: 'top 80%', once: true }
-  });
-});
-
-// Services cards
-gsap.from('.svc-card-new', {
-  opacity: 0, y: 60, stagger: 0.18, duration: 0.85, ease: 'power3.out',
-  scrollTrigger: { trigger: '#servicios .grid', start: 'top 80%', once: true }
-});
-
-// Why section — slide from sides
-gsap.from('#why-img', {
-  opacity: 0, x: -60, duration: 0.9, ease: 'power3.out',
-  scrollTrigger: { trigger: '#nosotros', start: 'top 78%', once: true }
-});
-gsap.from('#why-content', {
-  opacity: 0, x: 60, duration: 0.9, ease: 'power3.out',
-  scrollTrigger: { trigger: '#nosotros', start: 'top 78%', once: true }
-});
-gsap.from('#why-content .feat-card', {
-  opacity: 0, x: 40, stagger: 0.12, duration: 0.65, ease: 'power2.out',
-  scrollTrigger: { trigger: '#why-content', start: 'top 72%', once: true }
-});
-
-// Process steps
-gsap.from('.proc-step', {
-  opacity: 0, x: -36, stagger: 0.15, duration: 0.7, ease: 'power2.out',
-  scrollTrigger: { trigger: '#proc-timeline', start: 'top 80%', once: true }
-});
-
-// CTA
-gsap.from('#cta-copy', {
-  opacity: 0, x: -50, duration: 0.9, ease: 'power3.out',
-  scrollTrigger: { trigger: '#contacto', start: 'top 78%', once: true }
-});
-gsap.from('#cta-form', {
-  opacity: 0, x: 50, duration: 0.9, ease: 'power3.out',
-  scrollTrigger: { trigger: '#contacto', start: 'top 78%', once: true }
-});
-
-// Compliance
-gsap.from('#comp-grid > *', {
-  opacity: 0, y: 28, stagger: 0.1, duration: 0.65, ease: 'power2.out',
-  scrollTrigger: { trigger: '#comp-grid', start: 'top 85%', once: true }
-});
-
-// Autoplay showcase video when it enters viewport
-ScrollTrigger.create({
-  trigger: '#showcase-video',
-  start: 'top 75%',
-  once: true,
-  onEnter: () => document.getElementById('showcase-video').play()
-});
-
-// ── Form submit ──────────────────────────────────────────────────
-function submitForm(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submit-btn');
-  btn.textContent = '✓ Solicitud Enviada — Te contactamos pronto';
-  btn.style.background = '#16a34a';
-  btn.style.boxShadow = 'none';
-  btn.disabled = true;
-}
-</script>
 </body>
 </html>

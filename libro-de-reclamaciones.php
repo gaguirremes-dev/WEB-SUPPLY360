@@ -66,9 +66,9 @@ function generarPDFReclamo(array $d): string {
     $pdf->AddPage();
 
     // Cabecera
-    $pdf->SetFillColor(10, 22, 40);   // navy #0A1628
+    $pdf->SetFillColor(17, 17, 17);   // dark #111111
     $pdf->Rect(0, 0, 210, 38, 'F');
-    $pdf->SetTextColor(255, 208, 0);  // gold accent
+    $pdf->SetTextColor(246, 87, 38);  // accent #F65726
     $pdf->SetFont('Arial', 'B', 15);
     $pdf->SetXY(10, 7);
     $pdf->Cell(0, 8, $c('HOJA DE RECLAMACIÓN VIRTUAL'), 0, 1, 'C');
@@ -423,8 +423,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $emailBody = "
         <div style='font-family:Arial,sans-serif;color:#333;max-width:600px;margin:0 auto;border:1px solid #e0e0e0;border-radius:8px;overflow:hidden;'>
-            <div style='background:#0A1628;padding:25px;text-align:center;'>
-                <h2 style='margin:0;font-size:22px;color:#FFD000;'>HOJA DE RECLAMACIÓN VIRTUAL</h2>
+            <div style='background:#111111;padding:25px;text-align:center;'>
+                <h2 style='margin:0;font-size:22px;color:#F65726;'>HOJA DE RECLAMACIÓN VIRTUAL</h2>
                 <p style='margin:5px 0 0;color:#fff;font-size:14px;font-weight:bold;'>Código: " . esc($generatedCode) . "</p>
             </div>
             <div style='padding:25px;line-height:1.6;'>
@@ -432,7 +432,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <p>Confirmamos la recepción de tu reclamación registrada el <strong>" . date('d/m/Y') . "</strong>. Adjunto encontrarás el cargo de tu Hoja de Reclamación Virtual.</p>
                 <p>De acuerdo con la legislación vigente en el Perú (Ley N° 29571), daremos respuesta a tu requerimiento en un plazo máximo de <strong>15 días hábiles</strong>.</p>
                 <hr style='border:none;border-top:1px solid #eee;margin:20px 0;'>
-                <h3 style='color:#0A1628;'>Detalle de la Reclamación</h3>
+                <h3 style='color:#111111;'>Detalle de la Reclamación</h3>
                 <table style='width:100%;border-collapse:collapse;font-size:14px;'>
                     <tr><td style='padding:6px 0;font-weight:bold;width:150px;'>Consumidor:</td><td>" . esc($nombres) . " (" . esc($doc_tipo) . " " . esc($doc_nro) . ")</td></tr>
                     <tr><td style='padding:6px 0;font-weight:bold;'>Bien contratado:</td><td style='text-transform:capitalize;'>" . esc($bien_tipo) . " — S/. " . esc($monto) . "</td></tr>
@@ -453,16 +453,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div style='font-family:Arial,sans-serif;color:#333;max-width:600px;margin:0 auto;border:1px solid #e0e0e0;border-radius:8px;padding:25px;'>
             <h2 style='color:#dc2626;margin-top:0;'>Nuevo Reclamo/Queja Registrado</h2>
             <p>Código: <strong>" . esc($generatedCode) . "</strong> — Plazo máximo: <strong>15 días hábiles</strong>.</p>
-            <h3 style='border-bottom:2px solid #eee;padding-bottom:5px;color:#0A1628;'>1. Reclamante</h3>
+            <h3 style='border-bottom:2px solid #eee;padding-bottom:5px;color:#111111;'>1. Reclamante</h3>
             <p><strong>Nombre:</strong> " . esc($nombres) . "<br><strong>Doc:</strong> " . esc($doc_tipo) . " " . esc($doc_nro) . "<br>
             <strong>Tel:</strong> " . esc($telefono) . "<br><strong>Email:</strong> " . esc($email) . "<br>
             <strong>Dirección:</strong> " . esc($direccion) . ", " . esc($distrito) . " - " . esc($provincia) . " (" . esc($departamento) . ")</p>
-            <h3 style='border-bottom:2px solid #eee;padding-bottom:5px;color:#0A1628;'>2. Bien Contratado</h3>
+            <h3 style='border-bottom:2px solid #eee;padding-bottom:5px;color:#111111;'>2. Bien Contratado</h3>
             <p><strong>Tipo:</strong> " . esc(ucfirst($bien_tipo)) . " — S/. " . esc($monto) . "<br><strong>Descripción:</strong> " . esc($bien_desc) . "</p>
-            <h3 style='border-bottom:2px solid #eee;padding-bottom:5px;color:#0A1628;'>3. Reclamo</h3>
+            <h3 style='border-bottom:2px solid #eee;padding-bottom:5px;color:#111111;'>3. Reclamo</h3>
             <p><strong>Tipo:</strong> " . esc(strtoupper($reclamo_tipo)) . "</p>
             <div style='background:#f7f7f7;padding:12px;border-left:4px solid #dc2626;margin-bottom:10px;'><strong>Detalle:</strong><br>" . nl2br(esc($detalle)) . "</div>
-            <div style='background:#f7f7f7;padding:12px;border-left:4px solid #FFD000;'><strong>Pedido:</strong><br>" . nl2br(esc($pedido)) . "</div>
+            <div style='background:#f7f7f7;padding:12px;border-left:4px solid #F65726;'><strong>Pedido:</strong><br>" . nl2br(esc($pedido)) . "</div>
         </div>";
 
         $errEmpresa = '';
@@ -505,8 +505,8 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
             theme: {
                 extend: {
                     colors: {
-                        navy: { deep: '#0A1628', mid: '#132040', light: '#1E3A6E' },
-                        brand: { DEFAULT: '#FFD000', light: '#FFF3B0', pale: '#FFFAE8' },
+                        navy: { deep: '#111111', mid: '#1C1C1C', light: '#495057' },
+                        brand: { DEFAULT: '#F65726', light: '#FF9A80', pale: '#FFF0EC' },
                     },
                     fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
                 }
@@ -520,19 +520,19 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
 
         .glass {
             background: #FFFFFF;
-            border: 1px solid rgba(255,208,0,0.22);
-            box-shadow: 0 2px 12px rgba(10,22,40,0.07);
+            border: 1px solid rgba(246,87,38,0.22);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
         }
         .grad-text {
-            background: linear-gradient(135deg, #D97706 0%, #F59E0B 100%);
+            background: linear-gradient(135deg, #F65726 0%, #FF7A52 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         .form-input {
             width: 100%;
-            background: rgba(10,22,40,0.03);
-            border: 1px solid rgba(10,22,40,0.14);
+            background: rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.14);
             border-radius: 12px;
             padding: 10px 14px;
             color: #111827;
@@ -540,26 +540,26 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
             transition: border-color 0.2s, box-shadow 0.2s;
             outline: none;
         }
-        .form-input::placeholder { color: rgba(10,22,40,0.3); }
-        .form-input:focus { border-color: #FFD000; box-shadow: 0 0 0 2px rgba(255,208,0,0.18); }
+        .form-input::placeholder { color: rgba(0,0,0,0.3); }
+        .form-input:focus { border-color: #F65726; box-shadow: 0 0 0 2px rgba(246,87,38,0.18); }
         select.form-input { background-color: #FFFFFF; color: #111827; }
         select.form-input option { background: #FFFFFF; color: #111827; }
 
         .btn-sec {
-            border: 1px solid rgba(10,22,40,0.35);
-            color: #0A1628;
+            border: 1px solid rgba(0,0,0,0.25);
+            color: #111111;
             background: transparent;
             transition: all 0.3s;
         }
-        .btn-sec:hover { background: rgba(10,22,40,0.06); transform: translateY(-1px); }
+        .btn-sec:hover { background: rgba(0,0,0,0.06); transform: translateY(-1px); }
 
         .btn-primary {
-            background: linear-gradient(135deg, #0A1628, #1E3A6E);
+            background: linear-gradient(135deg, #F65726, #D44A1F);
             transition: transform 0.25s, box-shadow 0.25s;
             position: relative;
             overflow: hidden;
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(10,22,40,0.28); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(246,87,38,0.32); }
 
         @media print {
             body { background: white !important; color: black !important; font-size: 11px !important; }
@@ -582,7 +582,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
             <a href="index.html" class="flex items-center gap-3">
                 <img src="LOGO - SUPPLY 360.png" alt="Supply360" class="h-10 w-10 rounded-lg object-contain bg-white p-0.5 border border-navy-deep/10">
                 <div>
-                    <div class="text-navy-deep font-black text-sm tracking-wide">SUPPLY<span class="text-yellow-500">360</span></div>
+                    <div class="text-navy-deep font-black text-sm tracking-wide">SUPPLY<span class="text-brand">360</span></div>
                     <div class="text-navy-deep/40 text-[9px] tracking-widest">SUPPLY CHAIN MANAGEMENT</div>
                 </div>
             </a>
@@ -617,7 +617,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                         <p class="text-xs text-navy-deep/50 mt-1">Conforme a la Ley N° 29571 / D.S. N° 011-2011-PCM</p>
                     </div>
                     <div class="mt-4 sm:mt-0 text-left sm:text-right">
-                        <div class="text-xs text-yellow-600 font-black uppercase tracking-wider print-label">CÓDIGO DE RECLAMACIÓN</div>
+                        <div class="text-xs text-brand font-black uppercase tracking-wider print-label">CÓDIGO DE RECLAMACIÓN</div>
                         <div class="text-xl font-black text-emerald-600 print-title mt-0.5"><?= htmlspecialchars($submittedData['codigo']) ?></div>
                         <div class="text-[10px] text-navy-deep/40 mt-1">Fecha de registro: <?= htmlspecialchars($submittedData['fecha']) ?></div>
                     </div>
@@ -629,7 +629,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                     <div class="md:col-span-2"><span class="block font-bold text-navy-deep/80 print-label">Domicilio Fiscal:</span><?= EMPRESA_DIRECCION ?></div>
                 </div>
 
-                <h3 class="text-sm font-bold uppercase tracking-wider text-yellow-600 mb-3 print-label">1. Identificación del Consumidor Reclamante</h3>
+                <h3 class="text-sm font-bold uppercase tracking-wider text-brand mb-3 print-label">1. Identificación del Consumidor Reclamante</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 text-xs text-navy-deep/70 border-b border-navy-deep/5 pb-4 print-field">
                     <div>
                         <span class="block text-navy-deep/40 print-label">Nombre del consumidor:</span>
@@ -655,14 +655,14 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                     <?php endif; ?>
                 </div>
 
-                <h3 class="text-sm font-bold uppercase tracking-wider text-yellow-600 mb-3 print-label">2. Identificación del Bien Contratado</h3>
+                <h3 class="text-sm font-bold uppercase tracking-wider text-brand mb-3 print-label">2. Identificación del Bien Contratado</h3>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6 text-xs text-navy-deep/70 border-b border-navy-deep/5 pb-4 print-field">
                     <div><span class="block text-navy-deep/40 print-label">Tipo de Bien:</span><span class="text-navy-deep text-sm capitalize"><?= htmlspecialchars($submittedData['bien_tipo']) ?></span></div>
                     <div><span class="block text-navy-deep/40 print-label">Monto Reclamado:</span><span class="text-navy-deep text-sm font-bold">S/. <?= htmlspecialchars($submittedData['monto']) ?></span></div>
                     <div class="sm:col-span-2"><span class="block text-navy-deep/40 print-label">Descripción:</span><span class="text-navy-deep"><?= htmlspecialchars($submittedData['bien_desc'] ?: 'No especificado') ?></span></div>
                 </div>
 
-                <h3 class="text-sm font-bold uppercase tracking-wider text-yellow-600 mb-3 print-label">3. Detalle de la Reclamación y Pedido del Consumidor</h3>
+                <h3 class="text-sm font-bold uppercase tracking-wider text-brand mb-3 print-label">3. Detalle de la Reclamación y Pedido del Consumidor</h3>
                 <div class="space-y-4 text-xs text-navy-deep/70">
                     <div class="flex items-center gap-3">
                         <span class="text-navy-deep/40 print-label">Tipo de Incidencia:</span>
@@ -696,8 +696,8 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
         <?php else: ?>
         <div class="no-print text-center mb-10">
             <div class="inline-flex items-center gap-2 bg-brand-pale border border-brand/30 rounded-full px-4 py-1.5 mb-4">
-                <span class="w-2 h-2 rounded-full bg-yellow-400"></span>
-                <span class="text-yellow-700 text-[10px] font-semibold tracking-widest uppercase">Ley N° 29571</span>
+                <span class="w-2 h-2 rounded-full bg-brand"></span>
+                <span class="text-brand text-[10px] font-semibold tracking-widest uppercase">Ley N° 29571</span>
             </div>
             <h1 class="text-4xl font-black text-navy-deep mb-2">Libro de Reclamaciones <span class="grad-text">Virtual</span></h1>
             <p class="text-navy-deep/60 text-sm max-w-lg mx-auto">
@@ -773,7 +773,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
 
                             <div class="mt-4 bg-navy-deep/5 p-4 rounded-xl border border-navy-deep/5">
                                 <label class="flex items-center gap-3 cursor-pointer">
-                                    <input type="checkbox" id="menor_edad" name="menor_edad" class="w-4 h-4 rounded accent-yellow-500 flex-shrink-0 cursor-pointer" onclick="toggleApoderado()" <?= isset($_POST['menor_edad']) ? 'checked' : '' ?>>
+                                    <input type="checkbox" id="menor_edad" name="menor_edad" class="w-4 h-4 rounded accent-brand flex-shrink-0 cursor-pointer" onclick="toggleApoderado()" <?= isset($_POST['menor_edad']) ? 'checked' : '' ?>>
                                     <span class="text-navy-deep/70 text-xs">Soy menor de edad (se requiere ingresar los datos de un tutor/apoderado).</span>
                                 </label>
                                 <div id="apoderado_fields" class="mt-4 pt-4 border-t border-navy-deep/10 grid grid-cols-1 sm:grid-cols-2 gap-4 hidden">
@@ -808,11 +808,11 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                                     <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Tipo de bien *</label>
                                     <div class="flex items-center gap-6 mt-2">
                                         <label class="flex items-center gap-2 cursor-pointer">
-                                            <input type="radio" name="bien_tipo" value="producto" required class="w-4 h-4 accent-yellow-500" <?= !isset($_POST['bien_tipo']) || $_POST['bien_tipo']=='producto' ? 'checked':'' ?>>
+                                            <input type="radio" name="bien_tipo" value="producto" required class="w-4 h-4 accent-brand" <?= !isset($_POST['bien_tipo']) || $_POST['bien_tipo']=='producto' ? 'checked':'' ?>>
                                             <span class="text-navy-deep/80 text-sm">Producto</span>
                                         </label>
                                         <label class="flex items-center gap-2 cursor-pointer">
-                                            <input type="radio" name="bien_tipo" value="servicio" class="w-4 h-4 accent-yellow-500" <?= isset($_POST['bien_tipo']) && $_POST['bien_tipo']=='servicio' ? 'checked':'' ?>>
+                                            <input type="radio" name="bien_tipo" value="servicio" class="w-4 h-4 accent-brand" <?= isset($_POST['bien_tipo']) && $_POST['bien_tipo']=='servicio' ? 'checked':'' ?>>
                                             <span class="text-navy-deep/80 text-sm">Servicio</span>
                                         </label>
                                     </div>
@@ -839,14 +839,14 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                                     <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Tipo de Reclamación *</label>
                                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-2">
                                         <label class="flex items-start gap-2.5 p-3 rounded-xl bg-navy-deep/5 border border-navy-deep/5 cursor-pointer hover:bg-brand-pale hover:border-brand/20 transition-colors">
-                                            <input type="radio" name="reclamo_tipo" value="reclamo" required class="w-4 h-4 mt-0.5 accent-yellow-500" <?= !isset($_POST['reclamo_tipo']) || $_POST['reclamo_tipo']=='reclamo' ? 'checked':'' ?>>
+                                            <input type="radio" name="reclamo_tipo" value="reclamo" required class="w-4 h-4 mt-0.5 accent-brand" <?= !isset($_POST['reclamo_tipo']) || $_POST['reclamo_tipo']=='reclamo' ? 'checked':'' ?>>
                                             <div>
                                                 <span class="block text-navy-deep text-xs font-bold uppercase tracking-wider">Reclamo</span>
                                                 <span class="text-[10px] text-navy-deep/50 leading-tight block mt-0.5">Disconformidad relacionada a los productos o servicios contratados.</span>
                                             </div>
                                         </label>
                                         <label class="flex items-start gap-2.5 p-3 rounded-xl bg-navy-deep/5 border border-navy-deep/5 cursor-pointer hover:bg-brand-pale hover:border-brand/20 transition-colors">
-                                            <input type="radio" name="reclamo_tipo" value="queja" class="w-4 h-4 mt-0.5 accent-yellow-500" <?= isset($_POST['reclamo_tipo']) && $_POST['reclamo_tipo']=='queja' ? 'checked':'' ?>>
+                                            <input type="radio" name="reclamo_tipo" value="queja" class="w-4 h-4 mt-0.5 accent-brand" <?= isset($_POST['reclamo_tipo']) && $_POST['reclamo_tipo']=='queja' ? 'checked':'' ?>>
                                             <div>
                                                 <span class="block text-navy-deep text-xs font-bold uppercase tracking-wider">Queja</span>
                                                 <span class="text-[10px] text-navy-deep/50 leading-tight block mt-0.5">Disconformidad no relacionada a los productos. Malestar respecto a la atención.</span>
@@ -868,11 +868,11 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                         <!-- Declaraciones -->
                         <div class="pt-4 border-t border-navy-deep/10 space-y-3">
                             <label class="flex items-start gap-3 cursor-pointer">
-                                <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded accent-yellow-500 flex-shrink-0 cursor-pointer">
+                                <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded accent-brand flex-shrink-0 cursor-pointer">
                                 <span class="text-navy-deep/40 text-[10px] leading-relaxed">Declaro ser el usuario titular y que los datos consignados en esta Hoja de Reclamación son reales y verdaderos.</span>
                             </label>
                             <label class="flex items-start gap-3 cursor-pointer">
-                                <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded accent-yellow-500 flex-shrink-0 cursor-pointer">
+                                <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded accent-brand flex-shrink-0 cursor-pointer">
                                 <span class="text-navy-deep/40 text-[10px] leading-relaxed">Acepto el tratamiento de mis datos personales para los fines de responder este reclamo, de acuerdo con la <strong class="text-navy-deep/60">Ley N° 29733</strong> (Protección de Datos Personales en el Perú).</span>
                             </label>
                         </div>
@@ -920,7 +920,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                     <div class="relative rounded-2xl overflow-hidden border border-navy-deep/10 bg-navy-deep/5 group">
                         <img src="Libro-reclamaciones/AvisoVirtual_page1.png" alt="Aviso Virtual de Libro de Reclamaciones INDECOPI" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity">
                         <div class="absolute inset-0 bg-navy-deep/30 flex items-center justify-center opacity-100 group-hover:bg-navy-deep/10 transition-all">
-                            <button onclick="openNoticeModal()" class="bg-yellow-400 text-navy-deep font-bold px-4 py-2 rounded-xl text-xs shadow-lg hover:scale-105 transition-transform cursor-pointer">
+                            <button onclick="openNoticeModal()" class="bg-brand text-white font-bold px-4 py-2 rounded-xl text-xs shadow-lg hover:scale-105 transition-transform cursor-pointer">
                                 Ver a Pantalla Completa
                             </button>
                         </div>
@@ -943,7 +943,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
     <div id="notice-modal" class="no-print fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
         <div class="absolute inset-0 cursor-pointer" onclick="closeNoticeModal()"></div>
         <div class="relative z-10 max-w-lg w-full bg-white rounded-3xl p-4 shadow-2xl flex flex-col items-center">
-            <button onclick="closeNoticeModal()" class="absolute -top-10 right-0 sm:-right-8 text-white hover:text-yellow-400 text-3xl font-light cursor-pointer">✕</button>
+            <button onclick="closeNoticeModal()" class="absolute -top-10 right-0 sm:-right-8 text-white hover:text-brand text-3xl font-light cursor-pointer">✕</button>
             <div class="w-full overflow-y-auto max-h-[80vh] border border-gray-200 rounded-2xl">
                 <img src="Libro-reclamaciones/AvisoVirtual_page1.png" alt="Aviso Virtual Oficial INDECOPI" class="w-full h-auto">
             </div>
