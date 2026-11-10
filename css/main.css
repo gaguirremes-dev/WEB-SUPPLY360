@@ -797,6 +797,52 @@ ul,ol { list-style:none; }
 }
 .comp-badge:hover { border-color:rgba(246,87,38,.3); color:var(--text); }
 
+/* ISO 28000 trust strip (light bg: original badge colors) */
+.comp-iso {
+  display:flex; align-items:center; justify-content:center;
+  gap:2rem; flex-wrap:wrap; margin-bottom:2.5rem; text-align:left;
+}
+.comp-iso-img { width:260px; max-width:100%; height:auto; flex-shrink:0; }
+.comp-iso-text .section-label { margin-bottom:.5rem; }
+.comp-iso-caption {
+  font-family:var(--font-display); font-size:clamp(1.125rem,2vw,1.5rem);
+  font-weight:700; color:var(--text); letter-spacing:-.02em;
+}
+
+/* ISO 28000 in hero (dark video bg: white plate for contrast) */
+.hero-cert {
+  display:inline-flex; align-items:center; gap:1.25rem;
+  margin-top:2.25rem; max-width:100%;
+  animation:hero-cert-in .8s ease-out 1.2s both;
+}
+.hero-cert-plate {
+  display:block; flex-shrink:0; background:#fff;
+  border-radius:var(--r-lg); padding:.625rem .875rem;
+  box-shadow:0 0 0 1px rgba(255,255,255,.25), 0 10px 30px rgba(0,0,0,.35);
+  transition:transform .25s, box-shadow .25s;
+}
+.hero-cert:hover .hero-cert-plate {
+  transform:translateY(-2px);
+  box-shadow:0 0 0 1px rgba(246,87,38,.6), 0 14px 36px rgba(0,0,0,.45);
+}
+.hero-cert-plate img { display:block; width:204px; max-width:100%; height:auto; }
+.hero-cert-text {
+  display:flex; flex-direction:column; gap:.125rem;
+  font-size:.8125rem; line-height:1.4; color:var(--text-invert-dim);
+}
+.hero-cert-text strong {
+  font-family:var(--font-display); font-size:1rem; font-weight:700; color:#fff;
+}
+@keyframes hero-cert-in { from { opacity:0; transform:translateY(16px); } to { opacity:1; transform:none; } }
+@media (prefers-reduced-motion:reduce) {
+  .hero-cert { animation:none; }
+  .hero-cert-plate { transition:none; }
+}
+@media (max-width:480px) {
+  .hero-cert { flex-direction:column; align-items:flex-start; gap:.75rem; }
+  .comp-iso { flex-direction:column; text-align:center; gap:1rem; }
+}
+
 /* ── FOOTER (dark) ───────────────────────────────────────── */
 #footer { background:var(--footer-bg); border-top:1px solid rgba(255,255,255,.06); padding:4.5rem 0 2rem; }
 .footer-grid {

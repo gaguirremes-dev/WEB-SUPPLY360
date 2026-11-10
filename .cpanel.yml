@@ -22,6 +22,10 @@ deployment:
     - /bin/cp assets/Card\ C\ \—\ Outbound\ \ Distribución.jpeg $DEPLOYPATH/assets/
     - /bin/cp assets/Sección\ Por\ qué\ Supply360.jpeg $DEPLOYPATH/assets/
 
+    # ── Assets: certificaciones ────────────────────────────────────
+    - /bin/mkdir -p $DEPLOYPATH/assets/certs
+    - /bin/cp assets/certs/iso28000.svg $DEPLOYPATH/assets/certs/
+
     # ── Assets: favicons y manifest ────────────────────────────────
     - /bin/cp assets/favicon/favicon.ico $DEPLOYPATH/assets/favicon/
     - /bin/cp assets/favicon/favicon-16x16.png $DEPLOYPATH/assets/favicon/
