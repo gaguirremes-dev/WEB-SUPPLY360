@@ -15,7 +15,7 @@ define('DOMINIO_PERMITIDO', 'supplylogistic360.com');
 define('EMPRESA_RAZON_SOCIAL', 'SUPPLY360 S.A.C.S.');
 define('EMPRESA_RUC', '20615946207');
 define('EMPRESA_DIRECCION', 'Av. República de Chile Nro. 324 Int. 601 Urb. Santa Beatriz (Edificio Polaris), Lima - Lima - Jesús María');
-define('EMPRESA_EMAIL', 'info@supplylogistic360.com');
+define('EMPRESA_EMAIL', 'comercial@supplylogistic360.com');
 
 $smtpConfigFile = __DIR__ . '/config.smtp.php';
 if (file_exists($smtpConfigFile)) {

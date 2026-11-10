@@ -93,7 +93,7 @@ El footer unificará la identidad institucional de Supply360 para reflejar el vo
 
 - **Marca Corporativa:** SUPPLY360
 - **Línea de Negocio:** Soluciones Multiservicios, Gestión de Cadena de Suministro y Logística Integral End-to-End
-- **Canal Corporativo Oficial:** info@supply360.com.pe / operaciones@supply360.com.pe
+- **Canal Corporativo Oficial:** comercial@supplylogistic360.com / operaciones@supply360.com.pe
 - **Centrales de Distribución y Almacenes Hubs:** [Espacio reservado para direcciones de almacenes y patios logísticos]
 - **Oficinas Administrativas:** [Espacio reservado para sedes corporativas]
 
