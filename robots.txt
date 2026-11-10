@@ -1,5 +1,5 @@
 # robots.txt — Supply360
-# https://www.supply360.com.pe
+# https://supplylogistic360.com/
 
 # Permitir todos los crawlers
 User-agent: *
@@ -12,7 +12,7 @@ Disallow: /*.env$
 Disallow: /node_modules/
 
 # Sitemap
-Sitemap: https://www.supply360.com.pe/sitemap.xml
+Sitemap: https://supplylogistic360.com/sitemap.xml
 
 # Crawl-delay recomendado (segundos entre requests)
 Crawl-delay: 10

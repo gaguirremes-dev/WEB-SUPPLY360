@@ -12,7 +12,6 @@ deployment:
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp sitemap.xml $DEPLOYPATH
     - /bin/cp robots.txt $DEPLOYPATH
-    - /bin/cp "LOGO - SUPPLY 360.jpg" $DEPLOYPATH
 
     # ── Assets: imágenes y videos ──────────────────────────────────
     - /bin/cp assets/video1.mp4 $DEPLOYPATH/assets/
@@ -21,6 +20,24 @@ deployment:
     - /bin/cp assets/Card\ B\ \—\ Almacenamiento\ WMS.jpeg $DEPLOYPATH/assets/
     - /bin/cp assets/Card\ C\ \—\ Outbound\ \ Distribución.jpeg $DEPLOYPATH/assets/
     - /bin/cp assets/Sección\ Por\ qué\ Supply360.jpeg $DEPLOYPATH/assets/
+
+    # ── Libro de Reclamaciones: card images ────────────────────────
+    - /bin/mkdir -p $DEPLOYPATH/Libro-reclamaciones
+    - /bin/cp Libro-reclamaciones/libro-reclamaciones-card.png $DEPLOYPATH/Libro-reclamaciones/
+    - /bin/cp Libro-reclamaciones/libro-reclamaciones-card.webp $DEPLOYPATH/Libro-reclamaciones/
+
+    # ── Libro de Reclamaciones: PHP + FPDF + aviso INDECOPI ────────
+    # (config.smtp.php y reclamaciones/ son solo del servidor: NO se copian)
+    - /bin/cp libro-de-reclamaciones.php $DEPLOYPATH
+    - /bin/mkdir -p $DEPLOYPATH/lib
+    - /bin/cp lib/fpdf.php $DEPLOYPATH/lib/
+    - /bin/cp Libro-reclamaciones/AvisoVirtual_page1.png $DEPLOYPATH/Libro-reclamaciones/
+
+    # ── CSS, JS y logo usados por index.html y el libro ────────────
+    - /bin/mkdir -p $DEPLOYPATH/css $DEPLOYPATH/js $DEPLOYPATH/assets/logo
+    - /bin/cp css/main.css $DEPLOYPATH/css/
+    - /bin/cp js/main.js $DEPLOYPATH/js/
+    - /bin/cp assets/logo/LOGO\ SUPPLY\ 360.png $DEPLOYPATH/assets/logo/
 
     # ── Assets: certificaciones ────────────────────────────────────
     - /bin/mkdir -p $DEPLOYPATH/assets/certs
