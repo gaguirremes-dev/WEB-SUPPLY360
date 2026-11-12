@@ -61,7 +61,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -144,11 +144,6 @@
 
       <!-- Content -->
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-dot" aria-hidden="true"></span>
-          Operador Estratégico · Supply Chain · Perú
-        </div>
-
         <h1 id="hero-title" class="hero-title">
           <span class="line">La cadena de</span>
           <span class="line"><span class="text-gradient">suministro</span></span>
@@ -173,60 +168,17 @@
             <a href="#servicios" class="btn btn-ghost-dark">Ver Servicios</a>
           </div>
         </div>
-
-        <a href="#compliance" class="hero-cert" aria-label="Ver certificación ISO 28000">
-          <span class="hero-cert-plate">
-            <img src="assets/certs/iso28000.svg"
-                 alt="Certificación ISO 28000 – Seguridad en la Cadena de Suministro"
-                 width="204" height="100" decoding="async" />
-          </span>
-          <span class="hero-cert-text">
-            <strong>ISO 28000</strong>
-            Seguridad en la Cadena de Suministro
-          </span>
-        </a>
       </div>
 
-      <!-- Floating Dashboard -->
-      <aside class="hero-dash" aria-label="Panel operativo en tiempo real">
-        <div class="dash-header">
-          <span class="dash-name">Supply360 OS</span>
-          <span class="dash-live" aria-label="Sistema activo">LIVE</span>
-        </div>
-
-        <div class="dash-metric">
-          <div class="dash-metric-lbl">Eficiencia Operativa</div>
-          <div class="dash-metric-val"><span>98</span>.4%</div>
-        </div>
-
-        <div class="dash-bars" role="list" aria-label="Indicadores por área">
-          <div class="dash-bar-row" role="listitem">
-            <span class="dash-bar-lbl">Inbound</span>
-            <div class="dash-bar-track" role="progressbar" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">
-              <div class="dash-bar-fill" style="--bar-w:94%"></div>
-            </div>
-            <span class="dash-bar-pct">94%</span>
-          </div>
-          <div class="dash-bar-row" role="listitem">
-            <span class="dash-bar-lbl">WMS</span>
-            <div class="dash-bar-track" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100">
-              <div class="dash-bar-fill" style="--bar-w:98%"></div>
-            </div>
-            <span class="dash-bar-pct">98%</span>
-          </div>
-          <div class="dash-bar-row" role="listitem">
-            <span class="dash-bar-lbl">Outbound</span>
-            <div class="dash-bar-track" role="progressbar" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100">
-              <div class="dash-bar-fill" style="--bar-w:97%"></div>
-            </div>
-            <span class="dash-bar-pct">97%</span>
-          </div>
-        </div>
-
-        <div class="dash-alert" role="status" aria-live="polite">
-          Picking acelerado — Zona Lima Norte completado al 100%
-        </div>
-      </aside>
+      <!-- ISO 28000 badge (replaces the floating dashboard card) -->
+      <a href="#compliance" class="hero-iso"
+         aria-label="Ver certificación ISO 28000 – Seguridad en la Cadena de Suministro">
+        <span class="hero-iso-breathe">
+          <img src="assets/certs/iso28000-sello.png"
+               alt="Certificación ISO 28000 – Seguridad en la Cadena de Suministro"
+               width="900" height="445" decoding="async" />
+        </span>
+      </a>
 
     </div>
 
@@ -262,7 +214,7 @@
         <p class="fj-step-desc">Coordinamos con tu red de proveedores desde el origen: auditorías, acuerdos de nivel de servicio y visibilidad total del upstream.</p>
       </div>
       <div class="fj-photo">
-        <img src="assets/Sección Por qué Supply360.jpeg" alt="Red de proveedores Supply360" loading="lazy"/>
+        <img src="assets/reunion-estrategica.webp" alt="Equipo Supply360 coordinando la red de proveedores en una reunión estratégica" loading="lazy"/>
         <div class="fj-photo-overlay" aria-hidden="true"></div>
       </div>
     </div>
@@ -298,7 +250,7 @@
         <p class="fj-step-desc">Almacenes inteligentes habilitados DIGESA/SENASA. Gestión refrigerada, seca y valorizada con visibilidad 360° en tiempo real.</p>
       </div>
       <div class="fj-photo">
-        <img src="assets/Card B — Almacenamiento WMS.jpeg" alt="Almacenamiento WMS Supply360" loading="lazy"/>
+        <img src="assets/centro-logistico.webp" alt="Centro logístico Supply360 con operarios y robots autónomos" loading="lazy"/>
         <div class="fj-photo-overlay" aria-hidden="true"></div>
       </div>
     </div>
@@ -407,8 +359,8 @@
         <!-- Card B: WMS -->
         <article class="svc-card" aria-label="Servicio: Almacenamiento WMS">
           <div class="svc-img">
-            <img src="assets/Card B — Almacenamiento WMS.jpeg"
-                 alt="Almacenamiento WMS — Supply360" loading="lazy" />
+            <img src="assets/centro-logistico.webp"
+                 alt="Centro logístico Supply360 con operarios y robots autónomos" loading="lazy" />
             <div class="svc-img-grad" aria-hidden="true"></div>
             <span class="svc-img-tag">B · Almacenamiento</span>
           </div>
@@ -847,7 +799,7 @@
 
         <!-- Brand -->
         <div class="footer-brand">
-          <img src="assets/logo/LOGO SUPPLY 360.png" alt="Supply360" width="120" height="30" loading="lazy" />
+          <img class="footer-logo" src="assets/logo/LOGO SUPPLY 360 blanco.png" alt="Supply360" width="153" height="48" loading="lazy" />
           <p>
             Soluciones multiservicios de gestión de cadena de suministro y logística integral end-to-end en Perú.
           </p>
@@ -869,6 +821,9 @@
               <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
             </a>
           </div>
+          <img class="footer-iso" src="assets/certs/iso28000-sello-footer.png"
+               alt="Certificación ISO 28000 – Seguridad en la Cadena de Suministro"
+               width="1829" height="905" loading="lazy" decoding="async" />
         </div>
 
         <!-- Servicios -->

@@ -108,16 +108,10 @@ function initHero() {
   }
 
   tl
-    .from('.hero-badge', { opacity: 0, y: 20, duration: .7 }, 0)
     .from('.hero-sub',   { opacity: 0, y: 24, duration: .8 }, .5)
     .from('.hero-ctas .btn', { opacity: 0, y: 20, stagger: .1, duration: .6 }, .7)
-    .from('.hero-dash',  { opacity: 0, x: 30, y: 20, duration: 1, ease: 'power3.out' }, .6)
+    .from('.hero-iso',   { opacity: 0, x: 30, y: 20, duration: 1, ease: 'power3.out' }, .6)
     .from('.hero-scroll', { opacity: 0, duration: .5 }, 1.1);
-
-  // Animate hero dashboard bars after load
-  setTimeout(() => {
-    document.querySelectorAll('.dash-bar-fill').forEach(el => el.classList.add('loaded'));
-  }, 1400);
 }
 
 /* ── Flujo de Operación — Alternating Journey ───────────── */
