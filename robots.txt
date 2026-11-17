@@ -3,7 +3,8 @@
 
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /private/
+# Server-only paths (never useful in search results). CSS, JS and images stay crawlable.
+Disallow: /reclamaciones/
+Disallow: /lib/
 
 Sitemap: https://supplylogistic360.com/sitemap.xml

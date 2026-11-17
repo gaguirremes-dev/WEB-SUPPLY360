@@ -29,25 +29,59 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Supply360",
-    "alternateName": "Supply360 S.A.C.S.",
-    "url": "https://supplylogistic360.com/",
-    "logo": "https://supplylogistic360.com/assets/logo/LOGO%20SUPPLY%20360.png",
-    "description": "Operador estratégico multi-servicios de cadena de suministro global",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Av. República de Chile Nro. 324 Int. 601, Edificio Polaris",
-      "addressLocality": "Jesús María, Lima",
-      "addressCountry": "PE"
-    },
-    "email": "comercial@supplylogistic360.com",
-    "areaServed": { "@type": "Country", "name": "Perú" },
-    "sameAs": [
-      "https://www.facebook.com/profile.php?id=61589657582574",
-      "https://www.instagram.com/somossupply360/",
-      "https://www.tiktok.com/@somossupply360",
-      "https://www.youtube.com/@somossupply360peru"
+    "@graph": [
+      {
+        "@type": [
+          "Organization",
+          "LocalBusiness"
+        ],
+        "@id": "https://supplylogistic360.com/#organization",
+        "name": "Supply360",
+        "legalName": "Supply360 S.A.C.S.",
+        "alternateName": "Supply360 S.A.C.S.",
+        "url": "https://supplylogistic360.com/",
+        "logo": "https://supplylogistic360.com/assets/logo/LOGO%20SUPPLY%20360.png",
+        "image": "https://supplylogistic360.com/assets/favicon/android-chrome-512x512.png",
+        "description": "Operador estratégico multi-servicios de cadena de suministro global",
+        "taxID": "20615946207",
+        "telephone": "+51993527864",
+        "email": "comercial@supplylogistic360.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Av. República de Chile Nro. 324 Int. 601, Edificio Polaris",
+          "addressLocality": "Jesús María",
+          "addressRegion": "Lima",
+          "addressCountry": "PE"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Perú"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "ventas",
+          "telephone": "+51993527864",
+          "email": "comercial@supplylogistic360.com",
+          "areaServed": "PE",
+          "availableLanguage": "es-PE"
+        },
+        "sameAs": [
+          "https://www.facebook.com/profile.php?id=61589657582574",
+          "https://www.instagram.com/somossupply360/",
+          "https://www.tiktok.com/@somossupply360",
+          "https://www.youtube.com/@somossupply360peru"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://supplylogistic360.com/#website",
+        "url": "https://supplylogistic360.com/",
+        "name": "Supply360",
+        "inLanguage": "es-PE",
+        "publisher": {
+          "@id": "https://supplylogistic360.com/#organization"
+        }
+      }
     ]
   }
   </script>
@@ -751,7 +785,7 @@
           </a>
         </div>
         <div class="magnetic">
-          <a href="https://wa.me/51999999999?text=Hola,%20me%20interesa%20conocer%20más%20sobre%20Supply360"
+          <a href="https://wa.me/51993527864?text=Hola,%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20Supply360"
              target="_blank" rel="noopener noreferrer"
              class="btn btn-ghost">
             <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
@@ -805,6 +839,7 @@
         <nav aria-label="Servicios">
           <p class="footer-col-title">Servicios</p>
           <ul class="footer-links">
+            <li><a href="servicios/" class="footer-link">Todos los servicios</a></li>
             <li><a href="servicios/inbound-logistics/" class="footer-link">Inbound Logistics</a></li>
             <li><a href="servicios/almacenamiento-wms/" class="footer-link">Almacenamiento WMS</a></li>
             <li><a href="servicios/maquila-y-kitting/" class="footer-link">Maquila y Kitting</a></li>
@@ -823,7 +858,8 @@
             <li><a href="#plataforma" class="footer-link">Plataforma</a></li>
             <li><a href="#casos"      class="footer-link">Casos de Uso</a></li>
             <li><a href="https://rrhh.supplylogistic360.com" target="_blank" rel="noopener noreferrer" class="footer-link">Intranet ↗</a></li>
-            <li><a href="#" class="footer-link">Política de Privacidad</a></li>
+            <li><a href="politica-de-privacidad/" class="footer-link">Política de Privacidad</a></li>
+            <li><a href="terminos-y-condiciones/" class="footer-link">Términos y Condiciones</a></li>
           </ul>
         </nav>
 
@@ -836,6 +872,7 @@
                 comercial@supplylogistic360.com
               </a>
             </li>
+            <li><a href="tel:+51993527864" class="footer-link">+51 993 527 864</a></li>
 
             <li class="footer-address">
               Av. República de Chile 324 Int. 601,<br>Jesús María, Lima — Perú

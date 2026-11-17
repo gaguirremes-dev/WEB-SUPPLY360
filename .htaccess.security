@@ -1,0 +1,20 @@
+# SUPPLY360 SECURITY RULES -- deny web access to server-only files.
+# Appended once to public_html/.htaccess by .cpanel.yml (separate marker, so it
+# also reaches servers where the SEO rules block was already appended).
+
+<IfModule mod_authz_core.c>
+<FilesMatch "^(config\.smtp.*\.php|\.cpanel\.yml|\.gitignore|\.gitattributes|\.gitmodules|\.htaccess\.security)$">
+Require all denied
+</FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+<FilesMatch "^(config\.smtp.*\.php|\.cpanel\.yml|\.gitignore|\.gitattributes|\.gitmodules|\.htaccess\.security)$">
+Order allow,deny
+Deny from all
+</FilesMatch>
+</IfModule>
+
+# Never serve a .git directory (answer 404, do not reveal it exists)
+<IfModule mod_alias.c>
+RedirectMatch 404 "/\.git(/|$)"
+</IfModule>

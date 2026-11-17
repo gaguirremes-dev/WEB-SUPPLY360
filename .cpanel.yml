@@ -65,5 +65,13 @@ deployment:
     - /bin/cp assets/certs/iso28000-sello-footer.png $DEPLOYPATH/assets/certs/
     - /bin/cp assets/logo/LOGO\ SUPPLY\ 360\ blanco.png $DEPLOYPATH/assets/logo/
 
+    # ── Hub page /servicios/ is inside servicios/ (copied above); legal pages ─
+    - /bin/mkdir -p $DEPLOYPATH/politica-de-privacidad $DEPLOYPATH/terminos-y-condiciones
+    - /bin/cp politica-de-privacidad/index.html $DEPLOYPATH/politica-de-privacidad/
+    - /bin/cp terminos-y-condiciones/index.html $DEPLOYPATH/terminos-y-condiciones/
+
     # ── .htaccess: APPEND once (never overwrite the server's cPanel file) ─
     - /bin/bash -c 'grep -q "SUPPLY360 SEO RULES" "$DEPLOYPATH/.htaccess" 2>/dev/null || { echo >> "$DEPLOYPATH/.htaccess"; /bin/cat .htaccess >> "$DEPLOYPATH/.htaccess"; }'
+
+    # ── .htaccess security rules: separate marker so already-deployed servers also get them ─
+    - /bin/bash -c 'grep -q "SUPPLY360 SECURITY RULES" "$DEPLOYPATH/.htaccess" 2>/dev/null || { echo >> "$DEPLOYPATH/.htaccess"; /bin/cat .htaccess.security >> "$DEPLOYPATH/.htaccess"; }'

@@ -794,8 +794,10 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Libro de Reclamaciones - Supply360</title>
-    <meta name="description" content="Libro de Reclamaciones Virtual de Supply360. Presenta tus quejas o reclamos conforme al Código de Protección al Consumidor en Perú.">
+    <title>Libro de Reclamaciones Virtual | Supply360 S.A.C.S.</title>
+    <meta name="description" content="Libro de Reclamaciones Virtual de Supply360. Presenta tus quejas o reclamos conforme al Código de Protección y Defensa del Consumidor en Perú.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://supplylogistic360.com/libro-de-reclamaciones.php">
     <link rel="icon" type="image/png" href="assets/favicon/favicon-32x32.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -1177,7 +1179,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                             </label>
                             <label class="flex items-start gap-3 cursor-pointer">
                                 <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded accent-brand flex-shrink-0 cursor-pointer">
-                                <span class="text-navy-deep/40 text-[10px] leading-relaxed">Acepto el tratamiento de mis datos personales para los fines de responder este reclamo, de acuerdo con la <strong class="text-navy-deep/60">Ley N° 29733</strong> (Protección de Datos Personales en el Perú).</span>
+                                <span class="text-navy-deep/40 text-[10px] leading-relaxed">Acepto el tratamiento de mis datos personales para los fines de responder este reclamo, de acuerdo con la <strong class="text-navy-deep/60">Ley N° 29733</strong> (Protección de Datos Personales en el Perú). Consulta la <a href="/politica-de-privacidad/" target="_blank" rel="noopener" class="underline">Política de Privacidad</a>.</span>
                             </label>
                         </div>
 
@@ -1239,6 +1241,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
     <footer class="no-print border-t border-navy-deep/10 bg-white py-6 mt-12 text-center text-xs text-navy-deep/40">
         <div class="max-w-6xl mx-auto px-4">
             © <?= date('Y') ?> <?= EMPRESA_RAZON_SOCIAL ?> · RUC <?= EMPRESA_RUC ?> · Todos los derechos reservados.<br>
+            <span class="mt-1 block"><a href="/" class="underline">Inicio</a> · <a href="/politica-de-privacidad/" class="underline">Política de Privacidad</a> · <a href="/terminos-y-condiciones/" class="underline">Términos y Condiciones</a></span>
             <span class="text-[10px] text-navy-deep/20 mt-1 block">Regulado por INDECOPI y en conformidad con la Ley de Protección de Datos Personales N° 29733.</span>
         </div>
     </footer>
