@@ -169,6 +169,7 @@ function initServices() {
 
 /* ── Platform / Dashboard section ──────────────────────── */
 function initPlatform() {
+  if (!document.querySelector('#plataforma')) return; // not present on service pages
   const tl = gsap.timeline({
     scrollTrigger: { trigger: '#plataforma', start: 'top 64%' }
   });
@@ -184,6 +185,7 @@ function initPlatform() {
 /* ── KPI Counters ───────────────────────────────────────── */
 function initKPIs() {
   const kpiItems = document.querySelectorAll('.kpi-item');
+  if (!kpiItems.length) return; // not present on service pages
   gsap.set(kpiItems, { opacity: 0, y: 36 });
   ScrollTrigger.create({
     trigger: '#kpis', start: 'top 80%', once: true,

@@ -785,7 +785,7 @@ ul,ol { list-style:none; }
 }
 .footer-brand img { height:30px; width:auto; margin-bottom:1.25rem; }
 .footer-brand .footer-logo {
-  height:48px; width:auto; margin:-.75rem 0 1rem;
+  height:64px; width:auto; margin:-.75rem 0 1rem;
 }
 .footer-brand p {
   font-size:.875rem; color:rgba(255,255,255,.35);
@@ -810,7 +810,7 @@ ul,ol { list-style:none; }
 .footer-links { display:flex; flex-direction:column; gap:.75rem; }
 .footer-link { font-size:.875rem; color:rgba(255,255,255,.35); transition:color .2s; }
 .footer-link:hover { color:rgba(255,255,255,.8); }
-.footer-address { font-size:.8125rem; color:rgba(255,255,255,.28); line-height:1.65; margin-top:.5rem; }
+.footer-address { font-size:.875rem; color:rgba(255,255,255,.28); line-height:1.65; margin-top:.5rem; }
 
 /* Reclamaciones in footer contact */
 .footer-reclam-img {
@@ -826,7 +826,7 @@ ul,ol { list-style:none; }
 }
 .footer-reclam-img picture { display:block; }
 .footer-reclam-img img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; border-radius:1rem; }
-.footer-reclam-mail { margin-top:.6rem; font-size:.75rem; color:rgba(255,255,255,.35); }
+.footer-reclam-mail { margin-top:.6rem; font-size:.875rem; color:rgba(255,255,255,.35); }
 .footer-reclam-mail a { color:inherit; transition:color .2s; }
 .footer-reclam-mail a:hover { color:rgba(255,255,255,.8); }
 @media (prefers-reduced-motion: reduce) {
@@ -839,7 +839,7 @@ ul,ol { list-style:none; }
   display:flex; align-items:center; justify-content:space-between;
   flex-wrap:wrap; gap:1rem;
 }
-.footer-copy { font-size:.8125rem; color:rgba(255,255,255,.2); }
+.footer-copy { font-size:.875rem; color:rgba(255,255,255,.2); }
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width:1024px) {
@@ -876,3 +876,145 @@ ul,ol { list-style:none; }
 }
 .js-fade { opacity:0; }
 .js-up   { opacity:0; transform:translateY(48px); }
+
+/* ============================================================
+   SERVICE PAGES — /servicios/<slug>/ landing pages and 404
+   (additive block: no existing rule above is modified)
+   ============================================================ */
+
+/* Links to service pages inside the home service cards */
+.svc-feature a { color:inherit; transition:color .2s; }
+.svc-feature a:hover { color:var(--accent); }
+
+/* Hero (dark, so the transparent navbar stays legible) */
+.sp-hero {
+  position:relative; overflow:hidden;
+  background:var(--hero-bg); color:#fff;
+  padding:9.5rem 0 5rem;
+}
+.sp-hero-inner { position:relative; z-index:2; }
+.sp-hero-inner > * { max-width:820px; }
+.sp-hero--404 { min-height:70svh; display:flex; align-items:center; }
+.sp-title {
+  font-family:var(--font-display);
+  font-size:clamp(2rem,4.6vw,3.5rem);
+  font-weight:700; line-height:1.1; letter-spacing:-.03em;
+  color:#fff; margin-bottom:1.25rem;
+}
+.sp-lead {
+  font-size:clamp(1.0625rem,1.6vw,1.25rem); line-height:1.7;
+  color:var(--text-invert-dim); margin-bottom:2.25rem;
+}
+
+/* Breadcrumb */
+.breadcrumb { margin-bottom:1.75rem; }
+.breadcrumb ol { display:flex; flex-wrap:wrap; gap:.5rem; font-size:.8125rem; color:rgba(255,255,255,.6); }
+.breadcrumb li + li::before { content:'/'; margin-right:.5rem; opacity:.5; }
+.breadcrumb a { transition:color .2s; }
+.breadcrumb a:hover { color:#fff; }
+.breadcrumb [aria-current] { color:rgba(255,255,255,.92); }
+
+/* Sections */
+.sp-section { padding:clamp(3.5rem,7vw,5.5rem) 0; background:var(--bg); }
+.sp-section--alt { background:var(--bg-alt); }
+.sp-h2 {
+  font-family:var(--font-display);
+  font-size:clamp(1.625rem,3vw,2.375rem);
+  font-weight:700; line-height:1.15; letter-spacing:-.025em;
+  color:var(--text); margin-bottom:1.25rem;
+}
+.sp-intro { max-width:720px; color:var(--text-dim); font-size:1.0625rem; line-height:1.75; margin-bottom:2rem; }
+
+/* What it is: text + figure */
+.sp-split {
+  display:grid; grid-template-columns:1.15fr .85fr;
+  gap:clamp(2rem,5vw,4.5rem); align-items:start;
+}
+.sp-prose p { color:var(--text-dim); font-size:1.0625rem; line-height:1.75; margin-bottom:1.1rem; }
+.sp-figure {
+  border-radius:var(--r-xl); overflow:hidden;
+  border:1px solid var(--border-card); box-shadow:var(--shadow-md);
+  background:var(--bg-alt2); position:sticky; top:6rem;
+}
+.sp-figure img { width:100%; height:auto; aspect-ratio:4/3; object-fit:cover; }
+
+.sp-checklist { display:grid; gap:.75rem; margin-top:1.75rem; }
+.sp-check { display:flex; align-items:center; gap:.75rem; font-size:.9375rem; color:var(--text); }
+.sp-check svg {
+  width:20px; height:20px; flex-shrink:0; padding:4px;
+  background:var(--accent-pale); border:1px solid rgba(246,87,38,.2);
+  border-radius:var(--r-sm); color:var(--accent);
+}
+
+/* Cards (who it is for, benefits) */
+.sp-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.25rem; }
+.sp-card {
+  background:var(--surface-card); border:1px solid var(--border-card);
+  border-radius:var(--r-lg); padding:1.5rem; box-shadow:var(--shadow-xs);
+  transition:transform .35s var(--ease-out), border-color .3s, box-shadow .35s;
+}
+.sp-card:hover { transform:translateY(-4px); border-color:rgba(246,87,38,.3); box-shadow:var(--shadow-sm); }
+.sp-card h3 {
+  font-family:var(--font-display); font-size:1.0625rem; font-weight:700;
+  color:var(--text); line-height:1.25; margin-bottom:.5rem;
+}
+.sp-card p { font-size:.9375rem; color:var(--text-dim); line-height:1.65; }
+
+/* Steps */
+.sp-steps { counter-reset:sp-step; display:grid; gap:1rem; max-width:860px; }
+.sp-step {
+  counter-increment:sp-step; display:flex; gap:1.25rem; align-items:flex-start;
+  background:var(--surface-card); border:1px solid var(--border-card);
+  border-radius:var(--r-lg); padding:1.25rem 1.5rem;
+}
+.sp-step::before {
+  content:counter(sp-step); flex-shrink:0;
+  width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-weight:700; color:var(--accent);
+  background:var(--accent-pale); border:2px solid rgba(246,87,38,.2);
+}
+.sp-step h3 { font-family:var(--font-display); font-size:1.0625rem; font-weight:700; color:var(--text); margin-bottom:.25rem; }
+.sp-step p { font-size:.9375rem; color:var(--text-dim); line-height:1.65; }
+
+/* FAQ */
+.sp-faq { max-width:860px; }
+.sp-faq-item {
+  background:var(--surface-card); border:1px solid var(--border-card);
+  border-radius:var(--r-lg); margin-bottom:.75rem; overflow:hidden;
+}
+.sp-faq-item summary {
+  cursor:pointer; list-style:none; padding:1.125rem 1.5rem;
+  font-weight:600; color:var(--text); display:flex; justify-content:space-between; gap:1rem;
+}
+.sp-faq-item summary::-webkit-details-marker { display:none; }
+.sp-faq-item summary::after { content:'+'; color:var(--accent); font-size:1.25rem; line-height:1; flex-shrink:0; }
+.sp-faq-item[open] summary::after { content:'\2212'; }
+.sp-faq-item p { padding:0 1.5rem 1.25rem; color:var(--text-dim); line-height:1.7; }
+
+/* Related services */
+.sp-related { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.25rem; }
+.sp-related-card {
+  display:flex; flex-direction:column; gap:.5rem;
+  background:var(--surface-card); border:1px solid var(--border-card);
+  border-radius:var(--r-lg); padding:1.5rem; box-shadow:var(--shadow-xs);
+  transition:transform .35s var(--ease-out), border-color .3s, box-shadow .35s;
+}
+.sp-related-card:hover { transform:translateY(-6px); border-color:rgba(246,87,38,.3); box-shadow:var(--shadow-md); }
+.sp-related-card h3 { font-family:var(--font-display); font-size:1.0625rem; font-weight:700; color:var(--text); }
+.sp-related-card p { font-size:.875rem; color:var(--text-dim); line-height:1.6; flex:1; }
+.sp-back { margin-top:2rem; }
+
+@media (max-width:900px) {
+  .sp-split { grid-template-columns:1fr; }
+  .sp-figure { position:static; }
+}
+@media (max-width:768px) {
+  .sp-hero { padding:7.5rem 0 3.5rem; }
+  .sp-hero .hero-ctas .btn { width:100%; justify-content:center; }
+  .sp-step { padding:1rem 1.125rem; gap:1rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .sp-card, .sp-related-card { transition:none; }
+  .sp-card:hover, .sp-related-card:hover { transform:none; }
+}

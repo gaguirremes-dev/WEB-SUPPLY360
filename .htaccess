@@ -1,0 +1,44 @@
+# SUPPLY360 SEO RULES -- conservative rules for supplylogistic360.com
+# Host-scoped on purpose so subdomains (e.g. rrhh.) are never affected.
+
+# Real 404 status for missing pages
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Keep Let's Encrypt / AutoSSL validation untouched
+RewriteCond %{REQUEST_URI} ^/\.well-known/ [NC]
+RewriteRule ^ - [L]
+
+# www -> non-www over HTTPS (single hop)
+RewriteCond %{HTTP_HOST} ^www\.supplylogistic360\.com$ [NC]
+RewriteRule ^ https://supplylogistic360.com%{REQUEST_URI} [L,R=301]
+
+# HTTP -> HTTPS for the main host
+RewriteCond %{HTTP_HOST} ^supplylogistic360\.com$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://supplylogistic360.com%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Compression
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/xml application/xhtml+xml
+AddOutputFilterByType DEFLATE application/javascript text/javascript application/json application/manifest+json image/svg+xml
+</IfModule>
+
+# Browser caching (HTML is intentionally not cached; CSS/JS kept short because filenames are not versioned)
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/jpeg "access plus 1 year"
+ExpiresByType image/png "access plus 1 year"
+ExpiresByType image/webp "access plus 1 year"
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType image/x-icon "access plus 1 year"
+ExpiresByType video/mp4 "access plus 1 year"
+ExpiresByType font/woff2 "access plus 1 year"
+ExpiresByType text/css "access plus 7 days"
+ExpiresByType application/javascript "access plus 7 days"
+ExpiresByType text/javascript "access plus 7 days"
+</IfModule>

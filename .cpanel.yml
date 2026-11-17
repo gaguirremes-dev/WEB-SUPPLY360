@@ -53,3 +53,17 @@ deployment:
     - /bin/cp assets/favicon/android-chrome-192x192.png $DEPLOYPATH/assets/favicon/
     - /bin/cp assets/favicon/android-chrome-512x512.png $DEPLOYPATH/assets/favicon/
     - /bin/cp assets/favicon/site.webmanifest $DEPLOYPATH/assets/favicon/
+
+    # ── Service landing pages (/servicios/<slug>/) and custom 404 ──
+    - /bin/cp -r servicios $DEPLOYPATH
+    - /bin/cp 404.html $DEPLOYPATH
+
+    # ── Assets used by the service pages (images, seals, white logo) ─
+    - /bin/cp assets/centro-logistico.webp $DEPLOYPATH/assets/
+    - /bin/cp assets/reunion-estrategica.webp $DEPLOYPATH/assets/
+    - /bin/cp assets/certs/iso28000-sello.png $DEPLOYPATH/assets/certs/
+    - /bin/cp assets/certs/iso28000-sello-footer.png $DEPLOYPATH/assets/certs/
+    - /bin/cp assets/logo/LOGO\ SUPPLY\ 360\ blanco.png $DEPLOYPATH/assets/logo/
+
+    # ── .htaccess: APPEND once (never overwrite the server's cPanel file) ─
+    - /bin/bash -c 'grep -q "SUPPLY360 SEO RULES" "$DEPLOYPATH/.htaccess" 2>/dev/null || { echo >> "$DEPLOYPATH/.htaccess"; /bin/cat .htaccess >> "$DEPLOYPATH/.htaccess"; }'
