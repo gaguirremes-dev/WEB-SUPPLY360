@@ -822,26 +822,11 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
     <link rel="manifest" href="/assets/favicon/site.webmanifest">
     <meta name="theme-color" content="#F65726">
 
-    <!-- Tailwind Play CDN pinned to an exact version (runtime CSS generator; see docs/SEO-AUDIT.md) -->
-    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"></noscript>
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        navy: { deep: '#111111', mid: '#1C1C1C', light: '#495057' },
-                        brand: { DEFAULT: '#F65726', light: '#FF9A80', pale: '#FFF0EC' },
-                    },
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
-                }
-            }
-        }
-    </script>
 
     <style>
         * { box-sizing: border-box; }
@@ -899,6 +884,8 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
             .print-label { color: #555 !important; font-weight: bold !important; font-size: 10px !important; }
         }
     </style>
+    <!-- Pre-built Tailwind 3.4.17 (replaces Play CDN); after inline <style> to keep the original cascade order -->
+    <link rel="stylesheet" href="/css/libro.css?v=20261118">
 <?php if (defined('HCAPTCHA_SITE_KEY') && HCAPTCHA_SITE_KEY !== ''): ?>
 <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 <?php endif; ?>

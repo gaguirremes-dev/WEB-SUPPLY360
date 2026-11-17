@@ -27,7 +27,7 @@ Estado: ✅ ok, ⚠️ mejorar, ❌ falla, 👤 manual. Prioridad: P1 bloquea, P
 | F6 | HTTPS y versión única | ✅ | Reglas en .htaccess | Verificar en producción | P1 |
 | F6 | Schema | ✅ | Organization+LocalBusiness y WebSite (home), Service/ItemList y BreadcrumbList (hub), Service+FAQ+Breadcrumb (servicios); JSON-LD parsea; sin horarios, coordenadas ni valoraciones | Validar con la Prueba de resultados enriquecidos; añadir postalCode si se conoce | P3 |
 | F6 | 404 real | ✅ | ErrorDocument 404 /404.html | Comprobar código 404 | P2 |
-| F6 | Core Web Vitals | ⚠️ | Mejoras aplicadas (ver "Rendimiento"); queda Tailwind CDN en el libro y GSAP/Lenis desde CDN | Medir en PageSpeed Insights con datos de campo tras el deploy | P2 |
+| F6 | Core Web Vitals | ⚠️ | Mejoras aplicadas (ver "Rendimiento"); queda GSAP/Lenis desde CDN | Medir en PageSpeed Insights con datos de campo tras el deploy | P2 |
 | F6 | Enlaces rotos | ✅ | Revisión de enlaces internos sin fallos | Repetir tras cambios | P2 |
 | F7 | Búsqueda con IA | ✅ | Sin requisitos extra; páginas rastreables e indexables | Mantener ficha de Google al día | P3 |
 | Legal | Privacidad, términos, libro | ⚠️ | Páginas publicadas y enlazadas en todos los footers | Revisión por abogado peruano | P2 |
@@ -54,6 +54,7 @@ Objetivo móvil: LCP <= 2.5 s, INP <= 200 ms, CLS <= 0.1. Los tamaños son medid
 **Aplicado**
 - LCP: poster del hero (webp 12 KB) precargado con fetchpriority=high; videos con poster, preload=none, muted, playsinline; el archivo se pide tras load y solo si no hay ahorro de datos, 2G ni prefers-reduced-motion (js/main.js, initVideos). En las páginas de servicio el LCP es texto (H1), sin imágenes sobre el pliegue.
 - Recursos bloqueantes: CSS de Swiper (sin uso, CDN) eliminado; Google Fonts carga sin bloquear el render (media=print + onload, con noscript), preconnect ya existía, display=swap ya existía; Inter 300 eliminado (sin uso).
+- Libro: Tailwind Play CDN (script de 407 KB, bloqueante, 3.4.17) reemplazado por css/libro.css (17 KB minificado, compilado con Tailwind 3.4.17 real, mismo config navy/brand/Inter, con Preflight), cargado con ?v=20261118 tras el <style> inline para conservar el orden de cascada. Verificado con Chromium a 390 y 1280 px: capturas idénticas (0 px de diferencia) y estilos computados iguales. Si se agregan clases nuevas al PHP hay que recompilar el CSS.
 - Scripts: defer en GSAP, ScrollTrigger, Lenis y main.js; todos los CDN con versión exacta (gsap 3.12.7, lenis 1.1.18, tailwind 3.4.17). Se quitó SplitText: esa URL devuelve 404 en gsap 3.12.7 (js/main.js ya tenía el plan B, así que no cambia lo visible).
 - CLS: width/height en todas las imágenes, picture con webp para sellos ISO, logo del menú con proporción correcta (125x40).
 - Caché: ?v=20261117 en CSS/JS de todas las páginas; .htaccess.perf (nuevo, con su propio marcador SUPPLY360 PERF RULES y línea en .cpanel.yml) pone CSS/JS a 1 año con immutable, HTML con revalidación y cabeceras de seguridad (nosniff, Referrer-Policy, X-Frame-Options SAMEORIGIN, Permissions-Policy) solo para supplylogistic360.com y solo archivos estáticos (el PHP del libro conserva sus propias cabeceras, más estrictas). Todo dentro de IfModule; sin CSP a propósito (rompería CDN y hCaptcha).
@@ -63,8 +64,6 @@ Objetivo móvil: LCP <= 2.5 s, INP <= 200 ms, CLS <= 0.1. Los tamaños son medid
 - Validado con script propio en 13 páginas: JSON-LD parsea, un H1 por página, sin saltos de encabezado, canonicals = URLs del sitemap (11 de 11), sin recursos ni enlaces rotos, enlaces de carpeta con barra final, target=_blank con noopener, scripts con defer (salvo Tailwind a propósito).
 
 **Recomendado, no aplicado**
-- Libro: reemplazar el CDN de Tailwind por CSS propio. Usa unas 150 clases (valores arbitrarios, opacidades, preflight) y no se pudo verificar el resultado visual sin navegador. Mientras tanto el script de Tailwind (407 KB) bloquea el render; riesgo de LCP/CLS solo en esa página.
-- Alinear versión del script de Tailwind: queda fijado en 3.4.17; el CDN de juego no es para producción según Tailwind.
 - GSAP 3.13+ incluye SplitText gratis: si se quiere la animación de líneas del H1, subir a gsap@3.13.0 y volver a añadir SplitText (cambia lo visible).
 - Fallback tipográfico con size-adjust/ascent-override para Inter e IBM Plex Sans (reduce el salto al cambiar la fuente); requiere medir con Lighthouse.
 - INP: scroll-progress lee scrollHeight en cada scroll y Lenis recibe raf duplicado (propio + ticker de GSAP); ambos se pueden agrupar con requestAnimationFrame. Sin cambios por prudencia.

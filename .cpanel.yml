@@ -36,6 +36,7 @@ deployment:
     # ── CSS, JS y logo usados por index.html y el libro ────────────
     - /bin/mkdir -p $DEPLOYPATH/css $DEPLOYPATH/js $DEPLOYPATH/assets/logo
     - /bin/cp css/main.css $DEPLOYPATH/css/
+    - /bin/cp css/libro.css $DEPLOYPATH/css/
     - /bin/cp js/main.js $DEPLOYPATH/js/
     - /bin/cp assets/logo/LOGO\ SUPPLY\ 360.png $DEPLOYPATH/assets/logo/
 
