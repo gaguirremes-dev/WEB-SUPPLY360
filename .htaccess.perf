@@ -1,0 +1,56 @@
+# SUPPLY360 PERF RULES -- caching, compression and baseline security headers.
+# Appended once to public_html/.htaccess by .cpanel.yml (own marker, so it also
+# reaches servers where the SEO and SECURITY blocks were already appended).
+# Every block is wrapped in <IfModule>: a missing module can never cause a 500.
+# Header rules are host-scoped (env S360_SITE) so subdomains such as rrhh. that live
+# under public_html are never affected.
+#
+# Cache busting: CSS/JS are referenced as file.ext?v=YYYYMMDD. Bump the value in
+# every HTML page whenever css/main.css or js/main.js change (they are cached for
+# one year and marked immutable). Because this block is appended only once, later
+# edits to this file must be applied on the server by hand.
+
+<IfModule mod_setenvif.c>
+SetEnvIfNoCase Host ^(www\.)?supplylogistic360\.com(:[0-9]+)?$ S360_SITE=1
+</IfModule>
+
+<IfModule mod_mime.c>
+AddType application/manifest+json .webmanifest
+AddType image/webp .webp
+AddType image/avif .avif
+AddType font/woff2 .woff2
+</IfModule>
+
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE application/manifest+json application/ld+json image/x-icon
+</IfModule>
+
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/avif "access plus 1 year"
+ExpiresByType font/woff "access plus 1 year"
+ExpiresByType application/manifest+json "access plus 1 week"
+</IfModule>
+
+<IfModule mod_headers.c>
+# One year + immutable for the versioned CSS/JS (replaces the 7-day Cache-Control
+# that the SEO block's mod_expires rule produces)
+<FilesMatch "\.(css|js)$">
+Header set Cache-Control "public, max-age=31536000, immutable" env=S360_SITE
+</FilesMatch>
+
+# HTML: always revalidate (cheap 304) so a new deploy shows up immediately
+<FilesMatch "\.html?$">
+Header set Cache-Control "public, max-age=0, must-revalidate" env=S360_SITE
+</FilesMatch>
+
+# Baseline security headers for static files only. PHP pages (libro de
+# reclamaciones) send their own, stricter headers and are intentionally excluded.
+# No Content-Security-Policy on purpose: it would block the CDN scripts and hCaptcha.
+<FilesMatch "\.(html?|css|js|json|webmanifest|xml|txt|svg|png|jpe?g|webp|avif|gif|ico|mp4|woff2?)$">
+Header always set X-Content-Type-Options "nosniff" env=S360_SITE
+Header always set Referrer-Policy "strict-origin-when-cross-origin" env=S360_SITE
+Header always set X-Frame-Options "SAMEORIGIN" env=S360_SITE
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()" env=S360_SITE
+</FilesMatch>
+</IfModule>

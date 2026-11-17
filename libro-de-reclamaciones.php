@@ -798,12 +798,36 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
     <meta name="description" content="Libro de Reclamaciones Virtual de Supply360. Presenta tus quejas o reclamos conforme al Código de Protección y Defensa del Consumidor en Perú.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://supplylogistic360.com/libro-de-reclamaciones.php">
-    <link rel="icon" type="image/png" href="assets/favicon/favicon-32x32.png">
+    <link rel="alternate" hreflang="es-PE" href="https://supplylogistic360.com/libro-de-reclamaciones.php">
+    <link rel="alternate" hreflang="x-default" href="https://supplylogistic360.com/libro-de-reclamaciones.php">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://supplylogistic360.com/libro-de-reclamaciones.php">
+    <meta property="og:title" content="Libro de Reclamaciones Virtual | Supply360 S.A.C.S.">
+    <meta property="og:description" content="Libro de Reclamaciones Virtual de Supply360. Presenta tus quejas o reclamos conforme al Código de Protección y Defensa del Consumidor en Perú.">
+    <meta property="og:image" content="https://supplylogistic360.com/assets/og/og-supply360-1200x630.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Equipo de Supply360 coordinando una operación logística en Perú">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:site_name" content="Supply360">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://supplylogistic360.com/assets/og/og-supply360-1200x630.jpg">
+    <meta name="twitter:image:alt" content="Equipo de Supply360 coordinando una operación logística en Perú">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/favicon-180x180.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    <meta name="theme-color" content="#F65726">
+
+    <!-- Tailwind Play CDN pinned to an exact version (runtime CSS generator; see docs/SEO-AUDIT.md) -->
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet"></noscript>
 
     <script>
         tailwind.config = {
@@ -880,19 +904,20 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
 <?php endif; ?>
 </head>
 <body class="min-h-screen flex flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[200] focus:bg-black focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm">Saltar al contenido principal</a>
 
     <!-- HEADER -->
     <header class="no-print w-full border-b border-navy-deep/10 bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-3">
-                <img src="assets/logo/LOGO SUPPLY 360.png" alt="Supply360" class="h-10 w-10 rounded-lg object-contain bg-white p-0.5 border border-navy-deep/10">
+            <a href="/" class="flex items-center gap-3">
+                <img src="assets/logo/logo-supply360-360.webp" alt="Supply360" width="40" height="40" class="h-10 w-10 rounded-lg object-contain bg-white p-0.5 border border-navy-deep/10">
                 <div>
                     <div class="text-navy-deep font-black text-sm tracking-wide">SUPPLY<span class="text-brand">360</span></div>
                     <div class="text-navy-deep/40 text-[9px] tracking-widest">SUPPLY CHAIN MANAGEMENT</div>
                 </div>
             </a>
-            <a href="index.html" class="text-navy-deep/50 hover:text-navy-deep text-xs flex items-center gap-1.5 transition-colors">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="/" class="text-navy-deep/50 hover:text-navy-deep text-xs flex items-center gap-1.5 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                 </svg>
                 Volver a la web
@@ -900,7 +925,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
         </div>
     </header>
 
-    <main class="flex-grow max-w-4xl w-full mx-auto px-4 py-10">
+    <main id="main" tabindex="-1" class="flex-grow max-w-4xl w-full mx-auto px-4 py-10 focus:outline-none">
 
         <!-- SUCCESS -->
         <?php if ($success): ?>
@@ -991,7 +1016,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
                     Descargar / Imprimir Reclamo
                 </button>
-                <a href="index.html" class="btn-sec text-center font-semibold px-6 py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
+                <a href="/" class="btn-sec text-center font-semibold px-6 py-3.5 rounded-xl text-sm flex items-center justify-center gap-2">
                     Volver a la Página de Inicio
                 </a>
             </div>
@@ -1035,12 +1060,12 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                             </h2>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <div class="sm:col-span-2">
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Nombres y Apellidos completos *</label>
-                                    <input type="text" name="nombres" required placeholder="Ingresa tus nombres completos" class="form-input" value="<?= isset($_POST['nombres']) ? htmlspecialchars($_POST['nombres']) : '' ?>">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-nombres">Nombres y Apellidos completos *</label>
+                                    <input id="f-nombres" type="text" name="nombres" required placeholder="Ingresa tus nombres completos" class="form-input" value="<?= isset($_POST['nombres']) ? htmlspecialchars($_POST['nombres']) : '' ?>">
                                 </div>
                                 <div>
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Tipo Documento *</label>
-                                    <select name="doc_tipo" required class="form-input">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-doc_tipo">Tipo Documento *</label>
+                                    <select id="f-doc_tipo" name="doc_tipo" required class="form-input">
                                         <option value="DNI" <?= isset($_POST['doc_tipo']) && $_POST['doc_tipo']=='DNI' ? 'selected':'' ?>>DNI (Perú)</option>
                                         <option value="CE" <?= isset($_POST['doc_tipo']) && $_POST['doc_tipo']=='CE' ? 'selected':'' ?>>Carnet de Extranjería</option>
                                         <option value="PASAPORTE" <?= isset($_POST['doc_tipo']) && $_POST['doc_tipo']=='PASAPORTE' ? 'selected':'' ?>>Pasaporte</option>
@@ -1048,32 +1073,32 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Nro Documento *</label>
-                                    <input type="text" name="doc_nro" required placeholder="Número de documento" class="form-input" value="<?= isset($_POST['doc_nro']) ? htmlspecialchars($_POST['doc_nro']) : '' ?>">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-doc_nro">Nro Documento *</label>
+                                    <input id="f-doc_nro" type="text" name="doc_nro" required placeholder="Número de documento" class="form-input" value="<?= isset($_POST['doc_nro']) ? htmlspecialchars($_POST['doc_nro']) : '' ?>">
                                 </div>
                                 <div>
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Correo Electrónico *</label>
-                                    <input type="email" name="email" required placeholder="nombre@correo.com" class="form-input" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-email">Correo Electrónico *</label>
+                                    <input id="f-email" type="email" name="email" required placeholder="nombre@correo.com" class="form-input" value="<?= isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '' ?>">
                                 </div>
                                 <div>
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Teléfono / Celular</label>
-                                    <input type="tel" name="telefono" placeholder="Número de contacto" class="form-input" value="<?= isset($_POST['telefono']) ? htmlspecialchars($_POST['telefono']) : '' ?>">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-telefono">Teléfono / Celular</label>
+                                    <input id="f-telefono" type="tel" name="telefono" placeholder="Número de contacto" class="form-input" value="<?= isset($_POST['telefono']) ? htmlspecialchars($_POST['telefono']) : '' ?>">
                                 </div>
                                 <div class="sm:col-span-2">
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Dirección Completa *</label>
-                                    <input type="text" name="direccion" required placeholder="Av., Calle, Nro., Dpto., Urb." class="form-input" value="<?= isset($_POST['direccion']) ? htmlspecialchars($_POST['direccion']) : '' ?>">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-direccion">Dirección Completa *</label>
+                                    <input id="f-direccion" type="text" name="direccion" required placeholder="Av., Calle, Nro., Dpto., Urb." class="form-input" value="<?= isset($_POST['direccion']) ? htmlspecialchars($_POST['direccion']) : '' ?>">
                                 </div>
                                 <div>
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Departamento *</label>
-                                    <input type="text" name="departamento" required placeholder="Ej: Lima" class="form-input" value="<?= isset($_POST['departamento']) ? htmlspecialchars($_POST['departamento']) : '' ?>">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-departamento">Departamento *</label>
+                                    <input id="f-departamento" type="text" name="departamento" required placeholder="Ej: Lima" class="form-input" value="<?= isset($_POST['departamento']) ? htmlspecialchars($_POST['departamento']) : '' ?>">
                                 </div>
                                 <div>
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Provincia *</label>
-                                    <input type="text" name="provincia" required placeholder="Ej: Lima" class="form-input" value="<?= isset($_POST['provincia']) ? htmlspecialchars($_POST['provincia']) : '' ?>">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-provincia">Provincia *</label>
+                                    <input id="f-provincia" type="text" name="provincia" required placeholder="Ej: Lima" class="form-input" value="<?= isset($_POST['provincia']) ? htmlspecialchars($_POST['provincia']) : '' ?>">
                                 </div>
                                 <div class="sm:col-span-2">
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Distrito *</label>
-                                    <input type="text" name="distrito" required placeholder="Ej: Miraflores" class="form-input" value="<?= isset($_POST['distrito']) ? htmlspecialchars($_POST['distrito']) : '' ?>">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-distrito">Distrito *</label>
+                                    <input id="f-distrito" type="text" name="distrito" required placeholder="Ej: Miraflores" class="form-input" value="<?= isset($_POST['distrito']) ? htmlspecialchars($_POST['distrito']) : '' ?>">
                                 </div>
                             </div>
 
@@ -1084,11 +1109,11 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                                 </label>
                                 <div id="apoderado_fields" class="mt-4 pt-4 border-t border-navy-deep/10 grid grid-cols-1 sm:grid-cols-2 gap-4 hidden">
                                     <div class="sm:col-span-2">
-                                        <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Nombres del Apoderado *</label>
+                                        <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="apoderado_nombres">Nombres del Apoderado *</label>
                                         <input type="text" id="apoderado_nombres" name="apoderado_nombres" placeholder="Nombres del padre, madre o apoderado" class="form-input" value="<?= isset($_POST['apoderado_nombres']) ? htmlspecialchars($_POST['apoderado_nombres']) : '' ?>">
                                     </div>
                                     <div>
-                                        <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Tipo Doc. Apoderado *</label>
+                                        <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="apoderado_doc_tipo">Tipo Doc. Apoderado *</label>
                                         <select id="apoderado_doc_tipo" name="apoderado_doc_tipo" class="form-input">
                                             <option value="DNI" <?= isset($_POST['apoderado_doc_tipo']) && $_POST['apoderado_doc_tipo']=='DNI'?'selected':'' ?>>DNI</option>
                                             <option value="CE" <?= isset($_POST['apoderado_doc_tipo']) && $_POST['apoderado_doc_tipo']=='CE'?'selected':'' ?>>Carnet de Extranjería</option>
@@ -1096,7 +1121,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                                         </select>
                                     </div>
                                     <div>
-                                        <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Nro Doc. Apoderado *</label>
+                                        <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="apoderado_doc_nro">Nro Doc. Apoderado *</label>
                                         <input type="text" id="apoderado_doc_nro" name="apoderado_doc_nro" placeholder="Nro de documento" class="form-input" value="<?= isset($_POST['apoderado_doc_nro']) ? htmlspecialchars($_POST['apoderado_doc_nro']) : '' ?>">
                                     </div>
                                 </div>
@@ -1124,12 +1149,12 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Monto Reclamado (S/. opcional)</label>
-                                    <input type="number" step="0.01" min="0" name="monto" placeholder="S/. 0.00" class="form-input" value="<?= isset($_POST['monto']) ? htmlspecialchars($_POST['monto']) : '' ?>">
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-monto">Monto Reclamado (S/. opcional)</label>
+                                    <input id="f-monto" type="number" step="0.01" min="0" name="monto" placeholder="S/. 0.00" class="form-input" value="<?= isset($_POST['monto']) ? htmlspecialchars($_POST['monto']) : '' ?>">
                                 </div>
                                 <div class="sm:col-span-2">
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Descripción del bien contratado</label>
-                                    <textarea rows="2" name="bien_desc" placeholder="Describe brevemente el producto o servicio contratado" class="form-input resize-none"><?= isset($_POST['bien_desc']) ? htmlspecialchars($_POST['bien_desc']) : '' ?></textarea>
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-bien_desc">Descripción del bien contratado</label>
+                                    <textarea id="f-bien_desc" rows="2" name="bien_desc" placeholder="Describe brevemente el producto o servicio contratado" class="form-input resize-none"><?= isset($_POST['bien_desc']) ? htmlspecialchars($_POST['bien_desc']) : '' ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1161,12 +1186,12 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                                     </div>
                                 </div>
                                 <div>
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Detalle de tu Queja o Reclamo *</label>
-                                    <textarea rows="4" name="detalle" required placeholder="Describe de forma detallada y ordenada lo ocurrido..." class="form-input resize-none"><?= isset($_POST['detalle']) ? htmlspecialchars($_POST['detalle']) : '' ?></textarea>
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-detalle">Detalle de tu Queja o Reclamo *</label>
+                                    <textarea id="f-detalle" rows="4" name="detalle" required placeholder="Describe de forma detallada y ordenada lo ocurrido..." class="form-input resize-none"><?= isset($_POST['detalle']) ? htmlspecialchars($_POST['detalle']) : '' ?></textarea>
                                 </div>
                                 <div>
-                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold">Pedido concreto (¿Qué solicitas?) *</label>
-                                    <textarea rows="3" name="pedido" required placeholder="Indica detalladamente tu solicitud (cambio, devolución, compensación, etc.)" class="form-input resize-none"><?= isset($_POST['pedido']) ? htmlspecialchars($_POST['pedido']) : '' ?></textarea>
+                                    <label class="block text-navy-deep/50 text-[10px] uppercase tracking-widest mb-1.5 font-bold" for="f-pedido">Pedido concreto (¿Qué solicitas?) *</label>
+                                    <textarea id="f-pedido" rows="3" name="pedido" required placeholder="Indica detalladamente tu solicitud (cambio, devolución, compensación, etc.)" class="form-input resize-none"><?= isset($_POST['pedido']) ? htmlspecialchars($_POST['pedido']) : '' ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -1175,11 +1200,11 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                         <div class="pt-4 border-t border-navy-deep/10 space-y-3">
                             <label class="flex items-start gap-3 cursor-pointer">
                                 <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded accent-brand flex-shrink-0 cursor-pointer">
-                                <span class="text-navy-deep/40 text-[10px] leading-relaxed">Declaro ser el usuario titular y que los datos consignados en esta Hoja de Reclamación son reales y verdaderos.</span>
+                                <span class="text-navy-deep/60 text-[10px] leading-relaxed">Declaro ser el usuario titular y que los datos consignados en esta Hoja de Reclamación son reales y verdaderos.</span>
                             </label>
                             <label class="flex items-start gap-3 cursor-pointer">
                                 <input type="checkbox" required class="w-4 h-4 mt-0.5 rounded accent-brand flex-shrink-0 cursor-pointer">
-                                <span class="text-navy-deep/40 text-[10px] leading-relaxed">Acepto el tratamiento de mis datos personales para los fines de responder este reclamo, de acuerdo con la <strong class="text-navy-deep/60">Ley N° 29733</strong> (Protección de Datos Personales en el Perú). Consulta la <a href="/politica-de-privacidad/" target="_blank" rel="noopener" class="underline">Política de Privacidad</a>.</span>
+                                <span class="text-navy-deep/60 text-[10px] leading-relaxed">Acepto el tratamiento de mis datos personales para los fines de responder este reclamo, de acuerdo con la <strong class="text-navy-deep/60">Ley N° 29733</strong> (Protección de Datos Personales en el Perú). Consulta la <a href="/politica-de-privacidad/" target="_blank" rel="noopener" class="underline">Política de Privacidad</a>.</span>
                             </label>
                         </div>
 
@@ -1224,7 +1249,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
                         Conforme al Código de Protección y Defensa del Consumidor, contamos con un Libro de Reclamaciones Virtual. Puedes revisar el poster oficial de INDECOPI a continuación:
                     </p>
                     <div class="relative rounded-2xl overflow-hidden border border-navy-deep/10 bg-navy-deep/5 group">
-                        <img src="Libro-reclamaciones/AvisoVirtual_page1.png" alt="Aviso Virtual de Libro de Reclamaciones INDECOPI" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity">
+                        <img src="Libro-reclamaciones/AvisoVirtual_page1.png" alt="Aviso Virtual de Libro de Reclamaciones INDECOPI" width="1786" height="2526" loading="lazy" decoding="async" class="w-full h-auto object-cover opacity-80 group-hover:opacity-100 transition-opacity">
                         <div class="absolute inset-0 bg-navy-deep/30 flex items-center justify-center opacity-100 group-hover:bg-navy-deep/10 transition-all">
                             <button onclick="openNoticeModal()" class="bg-brand text-white font-bold px-4 py-2 rounded-xl text-xs shadow-lg hover:scale-105 transition-transform cursor-pointer">
                                 Ver a Pantalla Completa
@@ -1247,12 +1272,12 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
     </footer>
 
     <!-- Modal Aviso Virtual -->
-    <div id="notice-modal" class="no-print fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
+    <div id="notice-modal" role="dialog" aria-modal="true" aria-label="Aviso Virtual de INDECOPI" class="no-print fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/90 backdrop-blur-sm">
         <div class="absolute inset-0 cursor-pointer" onclick="closeNoticeModal()"></div>
         <div class="relative z-10 max-w-lg w-full bg-white rounded-3xl p-4 shadow-2xl flex flex-col items-center">
-            <button onclick="closeNoticeModal()" class="absolute -top-10 right-0 sm:-right-8 text-white hover:text-brand text-3xl font-light cursor-pointer">✕</button>
+            <button type="button" aria-label="Cerrar aviso" onclick="closeNoticeModal()" class="absolute -top-10 right-0 sm:-right-8 text-white hover:text-brand text-3xl font-light cursor-pointer">✕</button>
             <div class="w-full overflow-y-auto max-h-[80vh] border border-gray-200 rounded-2xl">
-                <img src="Libro-reclamaciones/AvisoVirtual_page1.png" alt="Aviso Virtual Oficial INDECOPI" class="w-full h-auto">
+                <img src="Libro-reclamaciones/AvisoVirtual_page1.png" alt="Aviso Virtual Oficial INDECOPI" width="1786" height="2526" loading="lazy" decoding="async" class="w-full h-auto">
             </div>
             <p class="text-gray-500 text-[10px] mt-3 text-center">
                 Aviso oficial de disponibilidad de Libro de Reclamaciones - INDECOPI.

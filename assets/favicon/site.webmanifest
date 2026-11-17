@@ -2,10 +2,13 @@
   "name": "Supply360 — Supply Chain Management",
   "short_name": "Supply360",
   "description": "Operador estratégico multi-servicios de cadena de suministro global. Del Proveedor de tu Proveedor al Cliente de tu Cliente.",
+  "lang": "es-PE",
+  "id": "/",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#0A1628",
-  "theme_color": "#FFD000",
+  "background_color": "#0A0A0A",
+  "theme_color": "#F65726",
   "icons": [
     {
       "src": "/assets/favicon/android-chrome-192x192.png",

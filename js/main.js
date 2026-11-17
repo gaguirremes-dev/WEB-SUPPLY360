@@ -13,13 +13,7 @@ function initLenis() {
     easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
   });
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
-
-  // Sync with GSAP ticker
+  // Single raf driver: GSAP ticker
   gsap.ticker.add(t => lenis && lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
   lenis.on('scroll', ScrollTrigger.update);
@@ -33,11 +27,23 @@ if (typeof SplitText !== 'undefined') gsap.registerPlugin(SplitText);
 function initProgressBar() {
   const bar = document.getElementById('scroll-progress');
   if (!bar) return;
+  let total = 0, ticking = false;
+  const measure = () => {
+    total = document.body.scrollHeight - window.innerHeight;
+  };
+  const paint = () => {
+    ticking = false;
+    bar.style.width = (window.scrollY / total * 100) + '%';
+  };
+  measure();
   window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const total    = document.body.scrollHeight - window.innerHeight;
-    bar.style.width = (scrolled / total * 100) + '%';
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(paint);
   }, { passive: true });
+  window.addEventListener('resize', measure, { passive: true });
+  window.addEventListener('load', measure);
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(measure).observe(document.body);
 }
 
 
@@ -300,6 +306,38 @@ function initNavActive() {
   sections.forEach(s => observer.observe(s));
 }
 
+/* ── Background videos ──────────────────────────────────────
+   Videos ship with a poster and no source (data-src). The file is only
+   requested after the page has loaded and the video is near the viewport,
+   and never on data-saver / 2G connections or when the visitor prefers
+   reduced motion (the poster stays as a still background). ────── */
+function initVideos() {
+  const vids = document.querySelectorAll('video[data-src]');
+  if (!vids.length) return;
+
+  const conn     = navigator.connection || {};
+  const saveData = conn.saveData === true || /2g$/.test(conn.effectiveType || '');
+  const reduce   = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (saveData || reduce) return;
+
+  const start = v => {
+    if (v.dataset.started) return;
+    v.dataset.started = '1';
+    v.src = v.dataset.src;
+    v.load();
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {});
+  };
+
+  if (!('IntersectionObserver' in window)) { vids.forEach(start); return; }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { start(e.target); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '200px 0px' });
+  vids.forEach(v => io.observe(v));
+}
+
 /* ── Init ────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   initLenis();
@@ -309,6 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 window.addEventListener('load', () => {
+  initVideos();
   initHero();
   initStorytelling();
   initServices();

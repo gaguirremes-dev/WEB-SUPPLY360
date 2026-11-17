@@ -27,7 +27,7 @@ Estado: ✅ ok, ⚠️ mejorar, ❌ falla, 👤 manual. Prioridad: P1 bloquea, P
 | F6 | HTTPS y versión única | ✅ | Reglas en .htaccess | Verificar en producción | P1 |
 | F6 | Schema | ✅ | Organization+LocalBusiness y WebSite (home), Service/ItemList y BreadcrumbList (hub), Service+FAQ+Breadcrumb (servicios); JSON-LD parsea; sin horarios, coordenadas ni valoraciones | Validar con la Prueba de resultados enriquecidos; añadir postalCode si se conoce | P3 |
 | F6 | 404 real | ✅ | ErrorDocument 404 /404.html | Comprobar código 404 | P2 |
-| F6 | Core Web Vitals | ⚠️ | Video de fondo, GSAP/Lenis desde CDN, Tailwind CDN en el libro | Medir en PageSpeed Insights con datos de campo | P2 |
+| F6 | Core Web Vitals | ⚠️ | Mejoras aplicadas (ver "Rendimiento"); queda Tailwind CDN en el libro y GSAP/Lenis desde CDN | Medir en PageSpeed Insights con datos de campo tras el deploy | P2 |
 | F6 | Enlaces rotos | ✅ | Revisión de enlaces internos sin fallos | Repetir tras cambios | P2 |
 | F7 | Búsqueda con IA | ✅ | Sin requisitos extra; páginas rastreables e indexables | Mantener ficha de Google al día | P3 |
 | Legal | Privacidad, términos, libro | ⚠️ | Páginas publicadas y enlazadas en todos los footers | Revisión por abogado peruano | P2 |
@@ -39,6 +39,49 @@ Estado: ✅ ok, ⚠️ mejorar, ❌ falla, 👤 manual. Prioridad: P1 bloquea, P
 - Breadcrumbs de servicios apuntan a /servicios/; footers con enlaces legales.
 - Libro de reclamaciones: title, canonical, robots y enlaces legales.
 - robots.txt, sitemap.xml, .htaccess.security y .cpanel.yml actualizados.
+
+## Rendimiento y Core Web Vitals (2026-11-17)
+Objetivo móvil: LCP <= 2.5 s, INP <= 200 ms, CLS <= 0.1. Los tamaños son medidos en disco; los tiempos reales deben medirse en producción (no hay navegador en el entorno de trabajo).
+
+**Medido (peso de medios de la home, escritorio 1x, scroll completo)**
+- Antes: 24.16 MB. Después: 2.31 MB.
+- Medios del primer viewport: 5.93 MB antes (logo PNG 169 KB + sello ISO PNG 194 KB + video de 5.56 MB con autoplay) frente a 0.10 MB después (logo webp 13 KB + sello webp 72 KB + poster 12 KB); el video de 0.65 MB arranca tras el evento load.
+- Video hero: 5.56 MB a 0.65 MB (960x540, sin audio, faststart). Video de casos: 7.16 MB a 1.13 MB (sin audio) y solo se pide al acercarse al viewport.
+- Fotos Card A/B/C: 3.89 / 3.11 / 3.23 MB (JPEG 2752 px) a webp de 31-212 KB en tres anchos (480/800/1280) con srcset y sizes.
+- Logo del menú: 169 KB (PNG 5431 px) a 13 KB (webp 360 px). Logo blanco del footer: 39 KB a 10 KB. Sello ISO del footer: 563 KB a 37 KB.
+- Los originales no se borraron (siguen como respaldo y para el JSON-LD).
+
+**Aplicado**
+- LCP: poster del hero (webp 12 KB) precargado con fetchpriority=high; videos con poster, preload=none, muted, playsinline; el archivo se pide tras load y solo si no hay ahorro de datos, 2G ni prefers-reduced-motion (js/main.js, initVideos). En las páginas de servicio el LCP es texto (H1), sin imágenes sobre el pliegue.
+- Recursos bloqueantes: CSS de Swiper (sin uso, CDN) eliminado; Google Fonts carga sin bloquear el render (media=print + onload, con noscript), preconnect ya existía, display=swap ya existía; Inter 300 eliminado (sin uso).
+- Scripts: defer en GSAP, ScrollTrigger, Lenis y main.js; todos los CDN con versión exacta (gsap 3.12.7, lenis 1.1.18, tailwind 3.4.17). Se quitó SplitText: esa URL devuelve 404 en gsap 3.12.7 (js/main.js ya tenía el plan B, así que no cambia lo visible).
+- CLS: width/height en todas las imágenes, picture con webp para sellos ISO, logo del menú con proporción correcta (125x40).
+- Caché: ?v=20261117 en CSS/JS de todas las páginas; .htaccess.perf (nuevo, con su propio marcador SUPPLY360 PERF RULES y línea en .cpanel.yml) pone CSS/JS a 1 año con immutable, HTML con revalidación y cabeceras de seguridad (nosniff, Referrer-Policy, X-Frame-Options SAMEORIGIN, Permissions-Policy) solo para supplylogistic360.com y solo archivos estáticos (el PHP del libro conserva sus propias cabeceras, más estrictas). Todo dentro de IfModule; sin CSP a propósito (rompería CDN y hCaptcha).
+- SEO: hreflang es-PE y x-default autorreferenciados en todas las páginas indexables, og:image 1200x630 (recorte de reunion-estrategica.webp, foto propia) con tipo, ancho, alto y alt, twitter:image y alt, theme-color y manifest también en el libro, site.webmanifest con colores de marca coherentes (theme #F65726) y lang es-PE.
+- Accesibilidad: enlace "Saltar al contenido principal" funcional y primero en el body (en la home el anterior era invisible y estaba al final), <main> en la home, anillo de foco :focus-visible, etiquetas label/for asociadas en el formulario del libro, aria-label en el botón de cerrar el aviso, role=dialog en el modal.
+- Contraste del footer: rgba(255,255,255,.35) sobre #0D0D0D daba 3.2:1 (falla). Ahora .55 = 6.2:1; la línea de copyright (.2) pasa a .5 = 5.3:1; la dirección (.28) pasa a .55. Texto legal del formulario (10 px) de 40% a 60% de opacidad.
+- Validado con script propio en 13 páginas: JSON-LD parsea, un H1 por página, sin saltos de encabezado, canonicals = URLs del sitemap (11 de 11), sin recursos ni enlaces rotos, enlaces de carpeta con barra final, target=_blank con noopener, scripts con defer (salvo Tailwind a propósito).
+
+**Recomendado, no aplicado**
+- Libro: reemplazar el CDN de Tailwind por CSS propio. Usa unas 150 clases (valores arbitrarios, opacidades, preflight) y no se pudo verificar el resultado visual sin navegador. Mientras tanto el script de Tailwind (407 KB) bloquea el render; riesgo de LCP/CLS solo en esa página.
+- Alinear versión del script de Tailwind: queda fijado en 3.4.17; el CDN de juego no es para producción según Tailwind.
+- GSAP 3.13+ incluye SplitText gratis: si se quiere la animación de líneas del H1, subir a gsap@3.13.0 y volver a añadir SplitText (cambia lo visible).
+- Fallback tipográfico con size-adjust/ascent-override para Inter e IBM Plex Sans (reduce el salto al cambiar la fuente); requiere medir con Lighthouse.
+- INP: scroll-progress lee scrollHeight en cada scroll y Lenis recibe raf duplicado (propio + ticker de GSAP); ambos se pueden agrupar con requestAnimationFrame. Sin cambios por prudencia.
+- Quitar del despliegue los originales pesados que ya no se referencian (video1.mp4, Background loop del Hero.mp4 y los JPEG Card A/B/C) para acelerar cada deploy; se dejaron las líneas cp existentes.
+- og:image propia por servicio y avif (no hay encoder avif disponible aquí).
+- Agrupar CSS+JS de GSAP en un solo bundle propio (ahorra 3 peticiones a CDN) y evaluar self-host de fuentes.
+- Mover el cache-busting ?v a un paso de build o a un archivo de include cuando haya más de unas pocas páginas.
+
+**Qué verificar en el navegador tras el deploy**
+- PageSpeed Insights (móvil) para: https://supplylogistic360.com/ , https://supplylogistic360.com/servicios/inbound-logistics/ , https://supplylogistic360.com/libro-de-reclamaciones.php
+- Home: el fondo del hero muestra el poster al instante y el video arranca solo después; con "Ahorro de datos" o "Reducir movimiento" se queda en la imagen fija. Las fotos de las secciones se ven nítidas y recortadas igual que antes. Sin saltos de diseño al cargar fuentes.
+- Pulsar Tab en la primera pantalla: aparece "Saltar al contenido principal" y lleva al contenido; foco visible en enlaces y botones.
+- Libro de reclamaciones: enviar un reclamo de prueba (hCaptcha, sesión, correo y PDF siguen igual); comprobar etiquetas y modal del aviso.
+- Cabeceras (curl -I): CSS/JS con Cache-Control public, max-age=31536000, immutable; HTML con max-age=0, must-revalidate; X-Frame-Options SAMEORIGIN en estáticos; libro con X-Frame-Options DENY (el de PHP). Comprobar que rrhh. no cambió.
+- Los archivos nuevos (assets/img, assets/og, videos, webp de logos y sellos, .htaccess.perf) deben estar versionados en git para que .cpanel.yml no falle al copiar; .htaccess.perf se añade una sola vez al .htaccess del servidor (si luego se edita, aplicar a mano).
+- Compartir una URL en WhatsApp/LinkedIn y revisar la vista previa con la nueva og:image.
+- Search Console: Core Web Vitals y cobertura 2 a 4 semanas después.
 
 ## Qué medir y cuándo
 - Cada 2 a 4 semanas al inicio: páginas indexadas, impresiones, clics, consultas y posición media (Search Console); Core Web Vitals.

@@ -788,7 +788,7 @@ ul,ol { list-style:none; }
   height:64px; width:auto; margin:-.75rem 0 1rem;
 }
 .footer-brand p {
-  font-size:.875rem; color:rgba(255,255,255,.35);
+  font-size:.875rem; color:rgba(255,255,255,.55);
   line-height:1.7; margin-bottom:1.75rem; max-width:240px;
 }
 .footer-socials { display:flex; gap:.75rem; }
@@ -797,7 +797,7 @@ ul,ol { list-style:none; }
   width:36px; height:36px; border-radius:var(--r-md);
   background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08);
   display:flex; align-items:center; justify-content:center;
-  color:rgba(255,255,255,.35); transition:all .2s;
+  color:rgba(255,255,255,.55); transition:all .2s;
 }
 .social-a:hover { background:rgba(246,87,38,.15); border-color:rgba(246,87,38,.3); color:var(--accent); }
 .social-a svg { width:16px; height:16px; fill:currentColor; }
@@ -808,9 +808,9 @@ ul,ol { list-style:none; }
   text-transform:uppercase; letter-spacing:.06em;
 }
 .footer-links { display:flex; flex-direction:column; gap:.75rem; }
-.footer-link { font-size:.875rem; color:rgba(255,255,255,.35); transition:color .2s; }
+.footer-link { font-size:.875rem; color:rgba(255,255,255,.55); transition:color .2s; }
 .footer-link:hover { color:rgba(255,255,255,.8); }
-.footer-address { font-size:.875rem; color:rgba(255,255,255,.28); line-height:1.65; margin-top:.5rem; }
+.footer-address { font-size:.875rem; color:rgba(255,255,255,.55); line-height:1.65; margin-top:.5rem; }
 
 /* Reclamaciones in footer contact */
 .footer-reclam-img {
@@ -826,7 +826,7 @@ ul,ol { list-style:none; }
 }
 .footer-reclam-img picture { display:block; }
 .footer-reclam-img img { display:block; width:100%; height:auto; aspect-ratio:1/1; object-fit:cover; border-radius:1rem; }
-.footer-reclam-mail { margin-top:.6rem; font-size:.875rem; color:rgba(255,255,255,.35); }
+.footer-reclam-mail { margin-top:.6rem; font-size:.875rem; color:rgba(255,255,255,.55); }
 .footer-reclam-mail a { color:inherit; transition:color .2s; }
 .footer-reclam-mail a:hover { color:rgba(255,255,255,.8); }
 @media (prefers-reduced-motion: reduce) {
@@ -839,7 +839,7 @@ ul,ol { list-style:none; }
   display:flex; align-items:center; justify-content:space-between;
   flex-wrap:wrap; gap:1rem;
 }
-.footer-copy { font-size:.875rem; color:rgba(255,255,255,.2); }
+.footer-copy { font-size:.875rem; color:rgba(255,255,255,.5); }
 
 /* ── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width:1024px) {
@@ -868,6 +868,21 @@ ul,ol { list-style:none; }
   .cta-inner h2 { letter-spacing:-.03em; }
   .hero-ctas .btn { width:100%; justify-content:center; }
 }
+
+/* ── Accessibility: skip link + focus ring ───────────────── */
+.skip-link {
+  position:fixed; top:.75rem; left:.75rem; z-index:10000;
+  background:#111; color:#fff; padding:.6rem 1rem;
+  border-radius:var(--r-sm); font-size:.875rem; font-weight:600;
+  transform:translateY(-250%);
+}
+.skip-link:focus { transform:translateY(0); outline:2px solid var(--accent); outline-offset:2px; }
+a:focus-visible, button:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+  outline:2px solid var(--accent); outline-offset:3px;
+}
+main[tabindex="-1"]:focus { outline:none; }
+/* <picture> wrappers must not change the existing img layout */
+.hero-iso picture, .footer-brand picture { display:block; }
 
 /* ── Utilities ───────────────────────────────────────────── */
 .sr-only {
