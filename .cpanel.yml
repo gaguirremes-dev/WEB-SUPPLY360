@@ -13,13 +13,8 @@ deployment:
     - /bin/cp sitemap.xml $DEPLOYPATH
     - /bin/cp robots.txt $DEPLOYPATH
 
-    # ── Assets: imágenes y videos ──────────────────────────────────
-    - /bin/cp assets/video1.mp4 $DEPLOYPATH/assets/
-    - /bin/cp assets/Background\ loop\ del\ Hero.mp4 $DEPLOYPATH/assets/
-    - /bin/cp assets/Card\ A\ \—\ Inbound\ Logistics.jpeg $DEPLOYPATH/assets/
-    - /bin/cp assets/Card\ B\ \—\ Almacenamiento\ WMS.jpeg $DEPLOYPATH/assets/
-    - /bin/cp assets/Card\ C\ \—\ Outbound\ \ Distribución.jpeg $DEPLOYPATH/assets/
-    - /bin/cp assets/Sección\ Por\ qué\ Supply360.jpeg $DEPLOYPATH/assets/
+    # ── Assets: imágenes y videos (originals/ pesados NO se despliegan) ─
+    - /bin/mkdir -p $DEPLOYPATH/assets/img/hero $DEPLOYPATH/assets/img/servicios $DEPLOYPATH/assets/img/general $DEPLOYPATH/assets/img/legal $DEPLOYPATH/assets/video
 
     # ── Libro de Reclamaciones: card images ────────────────────────
     - /bin/mkdir -p $DEPLOYPATH/Libro-reclamaciones
@@ -59,12 +54,9 @@ deployment:
     - /bin/cp -r servicios $DEPLOYPATH
     - /bin/cp 404.html $DEPLOYPATH
 
-    # ── Assets used by the service pages (images, seals, white logo) ─
-    - /bin/cp assets/centro-logistico.webp $DEPLOYPATH/assets/
-    - /bin/cp assets/reunion-estrategica.webp $DEPLOYPATH/assets/
+    # ── Assets used by the service pages (images, seals) ─
     - /bin/cp assets/certs/iso28000-sello.png $DEPLOYPATH/assets/certs/
     - /bin/cp assets/certs/iso28000-sello-footer.png $DEPLOYPATH/assets/certs/
-    - /bin/cp assets/logo/LOGO\ SUPPLY\ 360\ blanco.png $DEPLOYPATH/assets/logo/
 
     # ── Hub page /servicios/ is inside servicios/ (copied above); legal pages ─
     - /bin/mkdir -p $DEPLOYPATH/politica-de-privacidad $DEPLOYPATH/terminos-y-condiciones
@@ -72,11 +64,13 @@ deployment:
     - /bin/cp terminos-y-condiciones/index.html $DEPLOYPATH/terminos-y-condiciones/
 
     # ── Performance assets: webp variants, posters, web videos, OG image ─
-    - /bin/mkdir -p $DEPLOYPATH/assets/img $DEPLOYPATH/assets/og
-    - /bin/cp assets/img/*.webp $DEPLOYPATH/assets/img/
+    - /bin/mkdir -p $DEPLOYPATH/assets/og
+    - /bin/cp assets/img/hero/*.webp $DEPLOYPATH/assets/img/hero/
+    - /bin/cp assets/img/servicios/*.webp $DEPLOYPATH/assets/img/servicios/
+    - /bin/cp assets/img/general/*.webp $DEPLOYPATH/assets/img/general/
+    - /bin/cp assets/img/legal/*.webp $DEPLOYPATH/assets/img/legal/
+    - /bin/cp assets/video/*.mp4 $DEPLOYPATH/assets/video/
     - /bin/cp assets/og/og-supply360-1200x630.jpg $DEPLOYPATH/assets/og/
-    - /bin/cp assets/hero-loop.mp4 $DEPLOYPATH/assets/
-    - /bin/cp assets/video1-web.mp4 $DEPLOYPATH/assets/
     - /bin/cp assets/logo/logo-supply360-360.webp $DEPLOYPATH/assets/logo/
     - /bin/cp assets/logo/logo-supply360-blanco-408.webp $DEPLOYPATH/assets/logo/
     - /bin/cp assets/certs/iso28000-sello.webp $DEPLOYPATH/assets/certs/

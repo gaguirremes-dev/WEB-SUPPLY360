@@ -96,6 +96,7 @@ function initNav() {
 function initHero() {
   const titleEl = document.querySelector('.hero-title');
   if (!titleEl) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
@@ -115,9 +116,9 @@ function initHero() {
 
   tl
     .from('.hero-sub',   { opacity: 0, y: 24, duration: .8 }, .5)
-    .from('.hero-ctas .btn', { opacity: 0, y: 20, stagger: .1, duration: .6 }, .7)
-    .from('.hero-iso',   { opacity: 0, x: 30, y: 20, duration: 1, ease: 'power3.out' }, .6)
-    .from('.hero-scroll', { opacity: 0, duration: .5 }, 1.1);
+    .from('.hero-rule',  { scaleX: 0, transformOrigin: 'left center', duration: .9 }, .6)
+    .from('.hero-ctas .btn', { opacity: 0, y: 20, stagger: .1, duration: .6, clearProps: 'opacity,transform' }, .7)
+    .from('.hero-meta',  { opacity: 0, y: 16, duration: .8, ease: 'power3.out' }, .9);
 }
 
 /* ── Flujo de Operación — Alternating Journey ───────────── */
@@ -158,16 +159,19 @@ function initStorytelling() {
 function initServices() {
   const cards = document.querySelectorAll('.svc-card');
   if (!cards.length) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  gsap.set(cards, { opacity: 0, y: 64 });
+  gsap.set(cards, { opacity: 0, y: 48 });
 
   ScrollTrigger.create({
     trigger: '.svc-grid',
-    start: 'top 80%',
+    start: 'top 85%',
     once: true,
     onEnter() {
+      // clearProps so the CSS hover lift (transform) keeps working afterwards
       gsap.to(cards, {
-        opacity: 1, y: 0, duration: .9, stagger: .14, ease: 'power3.out'
+        opacity: 1, y: 0, duration: .8, stagger: .08, ease: 'power3.out',
+        clearProps: 'opacity,transform'
       });
     }
   });
@@ -265,25 +269,6 @@ function initReveal() {
       scrollTrigger: { trigger: el, start: 'top 82%' }
     });
   });
-
-  document.querySelectorAll('.js-fade').forEach(el => {
-    gsap.to(el, {
-      opacity: 1, duration: .8, ease: 'power2.out',
-      scrollTrigger: { trigger: el, start: 'top 82%' }
-    });
-  });
-}
-
-/* ── Parallax decorations ───────────────────────────────── */
-function initParallax() {
-  gsap.utils.toArray('[data-parallax]').forEach(el => {
-    const speed = +(el.dataset.parallax) || .2;
-    gsap.to(el, {
-      yPercent: speed * -100,
-      ease: 'none',
-      scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true }
-    });
-  });
 }
 
 /* ── Nav active link highlight ──────────────────────────── */
@@ -356,7 +341,6 @@ window.addEventListener('load', () => {
   initCasos();
   initCTA();
   initReveal();
-  initParallax();
   initNavActive();
   ScrollTrigger.refresh();
 });

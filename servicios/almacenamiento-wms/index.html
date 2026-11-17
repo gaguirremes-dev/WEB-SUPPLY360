@@ -149,8 +149,10 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
 
+  <!-- Hero image (desktop only) -->
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high" imagesrcset="/assets/img/servicios/hero-puerto-lluvia-800.webp 800w, /assets/img/servicios/hero-puerto-lluvia-1280.webp 1280w, /assets/img/servicios/hero-puerto-lluvia-1672.webp 1672w" imagesizes="100vw" href="/assets/img/servicios/hero-puerto-lluvia-1280.webp" />
   <!-- Main CSS -->
-  <link rel="stylesheet" href="/css/main.css?v=20261117" />
+  <link rel="stylesheet" href="/css/main.css?v=20261129" />
 </head>
 <body>
   <a href="#main" class="skip-link">Saltar al contenido principal</a>
@@ -161,7 +163,7 @@
   <nav id="navbar" role="navigation" aria-label="Navegación principal">
     <div class="container nav-inner">
       <a href="/" class="nav-logo" aria-label="Supply360 — Inicio">
-        <img src="/assets/logo/logo-supply360-360.webp" alt="Supply360 logo" width="125" height="40" />
+        <img src="/assets/logo/logo-supply360-blanco-408.webp" alt="Supply360 logo" width="153" height="48" />
       </a>
       <div class="nav-links" role="list">
         <a href="/#flujo"      class="nav-link" role="listitem">Flujo Operativo</a>
@@ -197,6 +199,7 @@
 
     <!-- Hero -->
     <section class="sp-hero" aria-labelledby="sp-title">
+      <img class="sp-hero-bg" src="/assets/img/servicios/hero-puerto-lluvia-1280.webp" srcset="/assets/img/servicios/hero-puerto-lluvia-800.webp 800w, /assets/img/servicios/hero-puerto-lluvia-1280.webp 1280w, /assets/img/servicios/hero-puerto-lluvia-1672.webp 1672w" sizes="100vw" alt="" aria-hidden="true" width="1672" height="941" fetchpriority="high" decoding="async" />
       <div class="hero-overlay" aria-hidden="true"></div>
       <div class="hero-grid-lines" aria-hidden="true"></div>
       <div class="container sp-hero-inner">
@@ -235,7 +238,7 @@
           </ul>
         </div>
         <figure class="sp-figure">
-          <img src="/assets/centro-logistico.webp" srcset="/assets/img/centro-logistico-800.webp 800w, /assets/centro-logistico.webp 1808w" sizes="(max-width:1024px) calc(100vw - 2.5rem), 450px" alt="Centro logístico de Supply360 con operarios y robots autónomos trabajando en el almacén" width="1808" height="870" loading="lazy" decoding="async" />
+          <img src="/assets/img/general/centro-logistico.webp" srcset="/assets/img/general/centro-logistico-800.webp 800w, /assets/img/general/centro-logistico.webp 1808w" sizes="(max-width:1024px) calc(100vw - 2.5rem), 450px" alt="Centro logístico de Supply360 con operarios y robots autónomos trabajando en el almacén" width="1808" height="870" loading="lazy" decoding="async" />
         </figure>
       </div>
     </section>
@@ -426,6 +429,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
-  <script src="/js/main.js?v=20261118" defer></script>
+  <script src="/js/main.js?v=20261128" defer></script>
 </body>
 </html>

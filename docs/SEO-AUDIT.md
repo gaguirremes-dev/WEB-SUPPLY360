@@ -82,8 +82,23 @@ Objetivo móvil: LCP <= 2.5 s, INP <= 200 ms, CLS <= 0.1. Los tamaños son medid
 - Compartir una URL en WhatsApp/LinkedIn y revisar la vista previa con la nueva og:image.
 - Search Console: Core Web Vitals y cobertura 2 a 4 semanas después.
 
+## Rediseño del hero y de Servicios (home, 2026-11-19)
+- Hero en tarjeta redondeada con navbar "pill" flotante (CSS compartido: se aplica a todas las páginas con el mismo HTML). Se mantiene un único H1 con "operador logístico en Perú" y "cadena de suministro", `id="hero-title"`, poster con preload y video diferido (sin cambios de comportamiento), sello ISO 28000, teléfono y WhatsApp.
+- Nueva sección "Quiénes somos" bajo el hero (texto tomado de /servicios/). `#servicios` pasa a 7 tarjetas con foto, cada una enlazada a su página /servicios/<slug>/ (antes 3 tarjetas con 12 enlaces internos); se reutilizan las imágenes existentes (sin descargas nuevas, `loading="lazy"`, srcset webp).
+- JSON-LD, meta y canonical sin cambios. Cache-busting `?v=20261119` en CSS/JS de todas las páginas.
+- Verificar tras publicar: contraste de botones (se usó naranja `#C8431A` para texto pequeño blanco), LCP/CLS en PageSpeed y que los enlaces internos a servicios sigan rastreándose.
+
 ## Qué medir y cuándo
 - Cada 2 a 4 semanas al inicio: páginas indexadas, impresiones, clics, consultas y posición media (Search Console); Core Web Vitals.
 - Una vez instalado GA4: clics en WhatsApp, correo y teléfono, y reclamos enviados por página de origen.
 - Al mes: ficha de Google (vistas, llamadas, clics a la web).
 - Revisar este informe cada trimestre o tras cambios grandes. No se prometen posiciones ni plazos de indexación.
+
+## Imagen del hero de servicios y reorganización de assets (2026-11-26)
+- Las 7 páginas de servicio muestran una foto compartida del puerto nocturno en el hero (solo escritorio >= 900 px; en móvil el `<picture>` resuelve a un GIF de 1 px embebido, por lo que no se descargan bytes). Variantes webp 480/800/1200/1448 en `assets/img/servicios/puerto-lluvia-*.webp`, con preload condicionado a `min-width:900px`. CSS `?v=20261126`.
+- Nueva estructura: `assets/img/hero/`, `assets/img/servicios/` (tarjetas y puerto-lluvia), `assets/img/general/`, `assets/video/` y `assets/originals/` (fuentes pesadas, NO se despliega). `.cpanel.yml` crea y copia las carpetas nuevas; las reglas de caché de `.htaccess.perf` son por tipo MIME/extensión, no dependen de rutas.
+
+## Cleanup and full-bleed service hero (2026-11)
+
+- The service-page hero now uses the rainy-port photo as a full-bleed background (`assets/img/servicios/hero-puerto-lluvia-{800,1280,1672}.webp`, preloaded on every viewport). The earlier right-hand 4:3 card (`puerto-lluvia-*.webp`) was removed. CSS `?v=20261127`.
+- Deleted unused files: the Card A/B/C, "Por que Supply360" JPEGs and `video1.mp4` / `Background loop del Hero.mp4` originals, `assets/video/hero-loop.mp4`, `assets/img/hero/hero-poster.webp`, the old logo JPEG/white PNG, the ISO certificate source PNG and the root favicon JPG. `assets/originals/` now only keeps the two port PNG sources.

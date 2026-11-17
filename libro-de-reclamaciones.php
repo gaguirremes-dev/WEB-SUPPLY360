@@ -885,7 +885,7 @@ if (isset($_GET['ok']) && !empty($_SESSION['reclamo_success'])) {
         }
     </style>
     <!-- Pre-built Tailwind 3.4.17 (replaces Play CDN); after inline <style> to keep the original cascade order -->
-    <link rel="stylesheet" href="/css/libro.css?v=20261118">
+    <link rel="stylesheet" href="/css/libro.css?v=20261119">
 <?php if (defined('HCAPTCHA_SITE_KEY') && HCAPTCHA_SITE_KEY !== ''): ?>
 <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 <?php endif; ?>
