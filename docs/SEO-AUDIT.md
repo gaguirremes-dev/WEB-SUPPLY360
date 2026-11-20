@@ -102,3 +102,4 @@ Objetivo móvil: LCP <= 2.5 s, INP <= 200 ms, CLS <= 0.1. Los tamaños son medid
 
 - The service-page hero now uses the rainy-port photo as a full-bleed background (`assets/img/servicios/hero-puerto-lluvia-{800,1280,1672}.webp`, preloaded on every viewport). The earlier right-hand 4:3 card (`puerto-lluvia-*.webp`) was removed. CSS `?v=20261127`.
 - Deleted unused files: the Card A/B/C, "Por que Supply360" JPEGs and `video1.mp4` / `Background loop del Hero.mp4` originals, `assets/video/hero-loop.mp4`, `assets/img/hero/hero-poster.webp`, the old logo JPEG/white PNG, the ISO certificate source PNG and the root favicon JPG. `assets/originals/` now only keeps the two port PNG sources.
+- Home use case 02 (Retail) now plays `assets/video/caso-02-retail.mp4` (poster `assets/img/general/caso-02-poster.webp`); `video1-web.mp4` and `caso-poster.webp` were deleted.

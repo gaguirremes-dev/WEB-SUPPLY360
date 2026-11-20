@@ -418,10 +418,12 @@ ul,ol { list-style:none; }
   margin-top:clamp(2rem,4vw,3rem); border-radius:clamp(20px,2.4vw,32px);
   overflow:hidden; aspect-ratio:16/9; background:var(--bg-alt2);
 }
-.intro-photo img { width:100%; height:100%; object-fit:cover; object-position:center 40%; }
+.intro-photo img,
+.intro-photo video { display:block; width:100%; height:100%; object-fit:cover; object-position:center 40%; }
 @media (min-width:769px) {
   .intro-grid { grid-template-columns:1.1fr 1fr; }
-  .intro-photo { aspect-ratio:21/8; }
+  .intro-photo { aspect-ratio:2/1; }
+  .intro-photo video { object-position:center 12%; }
 }
 
 /* ── FLUJO DE OPERACIÓN — Alternating Journey ────────────── */
@@ -452,11 +454,13 @@ ul,ol { list-style:none; }
 .fj-photo {
   position:relative; overflow:hidden; background:var(--bg-alt2);
 }
-.fj-photo img {
+.fj-photo img,
+.fj-photo video {
   position:absolute; inset:0; width:100%; height:100%;
   object-fit:cover; transition:transform 1s var(--ease-out);
 }
-.fj-row:hover .fj-photo img { transform:scale(1.05); }
+.fj-row:hover .fj-photo img,
+.fj-row:hover .fj-photo video { transform:scale(1.05); }
 .fj-photo-overlay {
   position:absolute; inset:0;
   background:linear-gradient(135deg,rgba(246,87,38,.12),transparent 55%);

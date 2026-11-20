@@ -76,3 +76,6 @@ contexto.md
 # ── Libro de Reclamaciones (credenciales y registros) ─────────────
 config.smtp.php
 reclamaciones/
+
+# Heavy source MP4s (not pushed to GitHub)
+assets/originals/*.mp4
